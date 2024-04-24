@@ -11,6 +11,10 @@ namespace Techtronica.Data.Models
         public int Id { get; set; }
         public DateTime OrderDate {  get; set; }
         public int OrderPrice { get; set; }
-        public int ClientId { get; set; }
+        public int UserId { get; set; }
+
+        public virtual User User { get; set; }
+        public virtual ICollection<OrderCompound> OrderCompounds { get; set; }
+        //public virtual OrderCompound OrderCompound { get; set; }
     }
 }

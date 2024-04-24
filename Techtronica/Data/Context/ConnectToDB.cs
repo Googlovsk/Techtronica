@@ -8,6 +8,6 @@ namespace Techtronica.Data.Context
 {
     public class ConnectToDB
     {
-        public AppDBContext appDBContext = new AppDBContext();
+        public static AppDBContext appDBContext = new AppDBContext();
     }
 }

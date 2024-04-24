@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\lgor2\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\lgor2\\.nuget\\packages"
+    ]
+  }
+}

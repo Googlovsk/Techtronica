@@ -16,5 +16,10 @@ namespace Techtronica.Data.Models
         public bool IsActive { get; set; }
         public int ProductCategoryId { get; set; }
         public int ManufacturerId { get; set; }
+
+        public virtual Manufacturer Manufacturer { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
+
+        public virtual ICollection<OrderCompound> OrderCompounds { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Techtronica.Data.Models
         public int Amount { get; set; }
         public int UnitPrice { get; set; }
 
-        public List<Order> Orders { get; set; }
-        public List<Product> Products { get; set; }
+        public virtual Order Order { get; set; } //FK --> Order.Id
+        public virtual Product Product { get; set; } //FK --> Product.Id
     }
 }

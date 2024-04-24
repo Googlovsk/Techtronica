@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Techtronica.Data.Context;
 
 namespace Techtronica
 {
@@ -23,6 +24,7 @@ namespace Techtronica
         public MainWindow()
         {
             InitializeComponent();
+            AppDBContext appDBContext = new AppDBContext();
         }
     }
 }
