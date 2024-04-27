@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Techtronica"
         mc:Ignorable="d"
+        Background="#FFCACACA"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <!--<Border x:Name="BlurOverlay" Visibility="Collapsed" Background="Black" Opacity="0.5" VerticalAlignment="Stretch">
+            --><!--<Border.Effect>
+                <BlurEffect Radius="60" KernelType="Gaussian"/>
+            </Border.Effect>--><!--
+        </Border>-->
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
