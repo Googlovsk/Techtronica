@@ -13,6 +13,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Techtronica.Data.Context;
 using Techtronica.Data.Services;
 
 namespace Techtronica.View
@@ -26,7 +27,14 @@ namespace Techtronica.View
         {
             InitializeComponent(); 
             NavigationSupport.mainFrame = MainFrame;
-            
+
+            var user = UserContext.CurrentUser;
+
+            if (user != null)
+            {
+                STK_LoginRegister.Visibility = Visibility.Collapsed;
+                STK_Account.Visibility = Visibility.Visible;
+            }
         }
         public void ShowBlur()
         {
@@ -51,6 +59,11 @@ namespace Techtronica.View
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             HideBlur();
+        }
+
+        private void BtnAccount_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationSupport.mainFrame.Navigate(new AccountPage());
         }
     }
 }

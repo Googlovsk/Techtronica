@@ -1,0 +1,57 @@
+﻿<Page x:Class="Techtronica.View.AccountPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Techtronica.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AccountPage">
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Border Height="450" Width="300" Background="#FFD2BD97" HorizontalAlignment="Right" VerticalAlignment="Center" Opacity="0.8">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,20,0,20">
+                    <StackPanel Width="20" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Image Width="20" Height="40"/>
+                    </StackPanel>
+                    <StackPanel Width="280" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Right">
+                        <Label Content="Аккаунт" Style="{StaticResource LoginTitleLabel}" Margin="0,0,20,10"/>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Имя:" Grid.Column="0" Style="{StaticResource LoginLabel}"/>
+                            <TextBlock Grid.Column="1" x:Name="AccountName" Text="{Binding}"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Email:" Grid.Column="0" Style="{StaticResource LoginLabel}"/>
+                            <TextBlock Grid.Column="1" x:Name="AccountEmail" Text="{Binding}"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Телефон:" Style="{StaticResource LoginLabel}" Width="100" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" x:Name="AccountPhone" Text="{Binding}"/>
+                        </Grid>
+
+                        <Button Content="Выход" Margin="0,0,20,0" Style="{StaticResource BtnSuccess}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+</Page>

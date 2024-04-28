@@ -9,10 +9,13 @@
       Background="#FFCACACA"
       Title="MainPage" Loaded="Page_Loaded">
     <Grid>
-        
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10">
+
+        <StackPanel x:Name="STK_LoginRegister" Visibility="Visible" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10">
             <Button x:Name="BtnLogin" Content="Вход" Click="BtnLogin_Click" Margin="5"/>
             <Button x:Name="BtnRegister" Content="Регистрация" Click="BtnRegister_Click" Margin="5"/>
+        </StackPanel>
+        <StackPanel x:Name="STK_Account" Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10">
+            <Button x:Name="BtnAccount" Content="Аккаунт" Click="BtnAccount_Click" Margin="5"/>
         </StackPanel>
 
         <Border x:Name="BlurOverlay" Visibility="Collapsed" Background="Black" Opacity="0.5" VerticalAlignment="Stretch"/>

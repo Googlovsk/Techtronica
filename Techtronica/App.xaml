@@ -4,7 +4,11 @@
              xmlns:local="clr-namespace:Techtronica"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="BtnLogin" TargetType="Button">
+        
+        <SolidColorBrush x:Key="HoverOnSuccessButton" Color="#FFA78668"/>
+        <SolidColorBrush x:Key="LeaveOnSuccessButton" Color="#FFB99D84"/>
+        
+        <Style x:Key="BtnSuccess" TargetType="Button">
             <Setter Property="Background" Value="#FFB99D84"/>
             <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="FontFamily" Value="Century Gothic"/>
@@ -23,7 +27,6 @@
         </Style>
         <Style x:Key="TransparentBtn" TargetType="Button">
             <Setter Property="Width" Value="140"/>
-            <!--<Setter Property="FontWeight" Value="Medium"/>-->
             <Setter Property="Foreground" Value="#FF2534AD"/>
             <Setter Property="FontFamily" Value="Century Gothic"/>
             <Setter Property="FontSize" Value="14"/>
@@ -37,9 +40,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <!--<Style x:Key="PageBorder" TargetType="Border">
-            <Setter Property="Width" Value=""
-        </Style>-->
         <Style x:Key="LoginLabel" TargetType="Label">
             <Setter Property="Width" Value="80"/>
             <Setter Property="Height" Value="35"/>
@@ -67,33 +67,19 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="22"/>
         </Style>
-        <Style x:Key="LoginTB" TargetType="TextBox">
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border Background="#FFF"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="12">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="RegisterTB" TargetType="TextBox">
+        <Style x:Key="TBInput" TargetType="TextBox">
             <Setter Property="Height" Value="30"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#000"/>
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
-                        <Border Background="#FFF"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="10">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        <Border Background="#FFF" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="3"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
