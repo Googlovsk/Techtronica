@@ -12,17 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Techtronica.Data.Services;
 
 namespace Techtronica.View
 {
     /// <summary>
-    /// Логика взаимодействия для AccountPage.xaml
+    /// Логика взаимодействия для AdminPanelPage.xaml
     /// </summary>
-    public partial class AccountPage : Page
+    public partial class AdminPanelPage : Page
     {
-        public AccountPage()
+        public AdminPanelPage()
         {
             InitializeComponent();
+        }
+
+        private void BtnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationSupport.mainFrame.Navigate(new MainPage());
         }
     }
 }

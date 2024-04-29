@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Techtronica"
         mc:Ignorable="d"
         Background="#FFCACACA"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="780" Width="1280">
     <Grid>
         <!--<Border x:Name="BlurOverlay" Visibility="Collapsed" Background="Black" Opacity="0.5" VerticalAlignment="Stretch">
             --><!--<Border.Effect>

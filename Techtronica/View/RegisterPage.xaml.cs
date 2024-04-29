@@ -44,6 +44,10 @@ namespace Techtronica.View
             NavigationSupport.mainFrame.Navigate(new MainPage());
         }
 
+
+
+
+
         private static readonly Regex phoneRegex = new Regex(@"^[0-9+\-()]*$");
         private void TBPhoneField_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

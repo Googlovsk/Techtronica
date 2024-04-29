@@ -25,15 +25,16 @@ namespace Techtronica.View
     {
         public MainPage()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            HideBlur();
             NavigationSupport.mainFrame = MainFrame;
+            Background = (SolidColorBrush)FindResource("DefaultBG");
 
             var user = UserContext.CurrentUser;
-
             if (user != null)
             {
-                STK_LoginRegister.Visibility = Visibility.Collapsed;
-                STK_Account.Visibility = Visibility.Visible;
+                MainPageUIUnAuthorizedUser.Visibility = Visibility.Collapsed;
+                MainPageUIAuthorizedUser.Visibility = Visibility.Visible;
             }
         }
         public void ShowBlur()
@@ -61,7 +62,13 @@ namespace Techtronica.View
             HideBlur();
         }
 
-        private void BtnAccount_Click(object sender, RoutedEventArgs e)
+        //private void BtnAccount_Click(object sender, RoutedEventArgs e)
+        //{
+        //    NavigationSupport.mainFrame.Navigate(new AccountPage());
+        //    //MPKatalogBtn.Visibility = Visibility.Collapsed;
+        //}
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             NavigationSupport.mainFrame.Navigate(new AccountPage());
         }

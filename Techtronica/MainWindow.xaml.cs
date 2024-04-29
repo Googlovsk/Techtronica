@@ -27,10 +27,31 @@ namespace Techtronica
         {
             InitializeComponent();
 
-            AppDBContext appDBContext = new AppDBContext();
-
             NavigationSupport.mainFrame = MainFrame;
-            NavigationSupport.mainFrame.Navigate(new MainPage());
+
+            LoadUser();
+
+        }
+        private void LoadUser()
+        {
+            var savedAccountName = Properties.ApplicationSettings.Default.AccountName;
+
+            //Проверка поля настроек на содержание
+            if (!string.IsNullOrWhiteSpace(savedAccountName))
+            {
+                var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.AccountName == savedAccountName);
+
+                if (user != null)
+                {
+                    UserContext.CurrentUser = user;
+                    NavigationSupport.mainFrame.Navigate(new MainPage());
+                }
+                else
+                {
+                    NavigationSupport.mainFrame.Navigate(new LoginPage());
+                }
+            }
+            else NavigationSupport.mainFrame.Navigate(new MainPage());
         }
     }
 }

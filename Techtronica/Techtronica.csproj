@@ -8,7 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\add.png" />
+    <None Remove="Resources\app_info.png" />
+    <None Remove="Resources\arrow_down.png" />
     <None Remove="Resources\Back_Arrow.png" />
+    <None Remove="Resources\basket.png" />
+    <None Remove="Resources\cross.png" />
+    <None Remove="Resources\edit.png" />
+    <None Remove="Resources\factory.png" />
+    <None Remove="Resources\language_settings.png" />
+    <None Remove="Resources\logout.png" />
+    <None Remove="Resources\notify.png" />
+    <None Remove="Resources\order.png" />
+    <None Remove="Resources\search.png" />
+    <None Remove="Resources\Settings.png" />
+    <None Remove="Resources\support_chat.png" />
+    <None Remove="Resources\wallet.png" />
+    <None Remove="Resources\white_arrow.png" />
+    <None Remove="Resources\white_arrow_right.png" />
+    <None Remove="Resources\white_arrow_up.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,10 +35,33 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\add.png" />
+    <Resource Include="Resources\app_info.png" />
+    <Resource Include="Resources\arrow_down.png" />
     <Resource Include="Resources\Back_Arrow.png" />
+    <Resource Include="Resources\basket.png" />
+    <Resource Include="Resources\cross.png" />
+    <Resource Include="Resources\edit.png" />
+    <Resource Include="Resources\factory.png" />
+    <Resource Include="Resources\language_settings.png" />
+    <Resource Include="Resources\logout.png" />
+    <Resource Include="Resources\notify.png" />
+    <Resource Include="Resources\order.png" />
+    <Resource Include="Resources\search.png" />
+    <Resource Include="Resources\Settings.png" />
+    <Resource Include="Resources\support_chat.png" />
+    <Resource Include="Resources\wallet.png" />
+    <Resource Include="Resources\white_arrow.png" />
+    <Resource Include="Resources\white_arrow_right.png" />
+    <Resource Include="Resources\white_arrow_up.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\ApplicationSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApplicationSettings.settings</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -33,6 +74,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\ApplicationSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ApplicationSettings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

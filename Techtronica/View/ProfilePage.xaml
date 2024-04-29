@@ -1,0 +1,161 @@
+﻿<Page x:Class="Techtronica.View.AccountPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Techtronica.Data.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="780" d:DesignWidth="1280"
+      Title="AccountPage">
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Border Width="330" 
+                Margin="0,70,5,0" 
+                CornerRadius="10" 
+                Background="#FFECDFD2" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Top">
+            <Border.Effect>
+                <DropShadowEffect Color="#000" ShadowDepth="5" Opacity=".1" Direction="180"/>
+            </Border.Effect>
+
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" 
+                        CornerRadius="10" 
+                        BorderThickness="0,0,0,2" 
+                        BorderBrush="White" 
+                        Background="#FFDAC8B7" 
+                        Margin="5,5,5,0" 
+                        MouseLeftButtonDown="BtnBack_MouseLeftButtonDown">
+                    <Image x:Name="BtnBack" 
+                           Source="/Resources/white_arrow_up.png" 
+                           Width="20" Height="20" 
+                           Margin="0,5,0,5" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center"/>
+                </Border>
+
+                <Border Grid.Row="1" 
+                        CornerRadius="10" 
+                        Background="#FFDAC8B7" 
+                        Margin="5,5,5,0">
+                    <StackPanel HorizontalAlignment="Stretch"  
+                                VerticalAlignment="Top"
+                                Margin="5,10,5,10">
+                        <Label Content="Основное" 
+                               HorizontalAlignment="Left" 
+                               Margin="0,10,0,10" 
+                               FontSize="20" 
+                               FontWeight="Bold" 
+                               Style="{StaticResource LoginLabel}" 
+                               Width="120"/>
+                        <Grid x:Name="ProfileAdminPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="ProfileAdminPanel_MouseLeftButtonDown">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Resources/edit.png" Grid.Column="0"/>
+                            <Label Grid.Column="1" Content="" Style="{StaticResource LoginLabel}" Width="189"/>
+                            <Label Grid.Column="1" Content="Панель администратора" Style="{StaticResource LoginLabel}" Width="245"/>
+                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Resources/order.png" Grid.Column="0"/>
+                            <Label Grid.Column="1" Content="Заказы" Style="{StaticResource LoginLabel}" Width="144"/>
+                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Resources/notify.png" Grid.Column="0"/>
+                            <Label Grid.Column="1" Content="Уведомления" Style="{StaticResource LoginLabel}" Width="144"/>
+                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15,0,0,0" Cursor="Hand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Resources/wallet.png" Grid.Column="0"/>
+                            <Label Grid.Column="1" Content="Баланс" Style="{StaticResource LoginLabel}" Width="144"/>
+                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
+                        </Grid>
+                        <Label Content="Настройки" HorizontalAlignment="Left" Margin="0,10,0,10" FontSize="20" FontWeight="Bold" Style="{StaticResource LoginLabel}" Width="120"/>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15,0,0,0" Cursor="Hand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Resources/settings.png" Grid.Column="0"/>
+                            <Label Grid.Column="1" Content="Настройки" Style="{StaticResource LoginLabel}" Width="144"/>
+                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15,0,0,0" Cursor="Hand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Resources/language_settings.png" Grid.Column="0"/>
+                            <Label Grid.Column="1" Content="Русский язык" Style="{StaticResource LoginLabel}" Width="144"/>
+                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
+                        </Grid>
+
+                        <Label Content="Информация" HorizontalAlignment="Left" Margin="0,10,0,10" FontSize="20" FontWeight="Bold" Style="{StaticResource LoginLabel}" Width="150"/>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15,0,0,0" Cursor="Hand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Resources/support_chat.png" Grid.Column="0"/>
+                            <Label Grid.Column="1" Content="Служба поддержки" Style="{StaticResource LoginLabel}" Width="189"/>
+                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15,0,0,10" Cursor="Hand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Resources/app_info.png" Grid.Column="0"/>
+                            <Label Grid.Column="1" Content="О приложении" Style="{StaticResource LoginLabel}" Width="189"/>
+                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+
+                <Border Background="#FFDAC8B7" Grid.Row="2" CornerRadius="10" Margin="5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,5,20,5" Cursor="Hand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Resources/logout.png" Grid.Column="0"/>
+                        <Label Grid.Column="1" Content="Выйти из аккаунта" Style="{StaticResource LoginLabel}" Width="189"/>
+                    </Grid>
+
+                    <!--<Button Content="Выход" Height="40" Background="#FFDA5959" Margin="20,10,20,10" Style="{StaticResource BtnSuccess}"  VerticalAlignment="Bottom"/>-->
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

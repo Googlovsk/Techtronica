@@ -7,7 +7,8 @@
         
         <SolidColorBrush x:Key="HoverOnSuccessButton" Color="#FFA78668"/>
         <SolidColorBrush x:Key="LeaveOnSuccessButton" Color="#FFB99D84"/>
-        
+        <SolidColorBrush x:Key="DefaultBG" Color="Gainsboro"/>
+
         <Style x:Key="BtnSuccess" TargetType="Button">
             <Setter Property="Background" Value="#FFB99D84"/>
             <Setter Property="Foreground" Value="#FFFFFF"/>
@@ -30,6 +31,7 @@
             <Setter Property="Foreground" Value="#FF2534AD"/>
             <Setter Property="FontFamily" Value="Century Gothic"/>
             <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">

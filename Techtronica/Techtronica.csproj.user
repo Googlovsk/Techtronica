@@ -7,7 +7,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\AccountPage.xaml.cs">
+    <Compile Update="View\AdminPanelPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ProfilePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\LoginPage.xaml.cs">
@@ -24,7 +27,10 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\AccountPage.xaml">
+    <Page Update="View\AdminPanelPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ProfilePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\LoginPage.xaml">

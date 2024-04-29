@@ -56,7 +56,7 @@ namespace Techtronica.View
         }
         private void BtnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            
+            NavigationSupport.mainFrame.Navigate(new MainPage());
         }
 
         private void SuccessLoginBtn_MouseEnter(object sender, MouseEventArgs e)
