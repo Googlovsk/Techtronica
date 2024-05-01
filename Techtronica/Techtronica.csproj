@@ -19,6 +19,7 @@
     <None Remove="Resources\language_settings.png" />
     <None Remove="Resources\logout.png" />
     <None Remove="Resources\notify.png" />
+    <None Remove="Resources\no_product_image.png" />
     <None Remove="Resources\order.png" />
     <None Remove="Resources\search.png" />
     <None Remove="Resources\Settings.png" />
@@ -46,6 +47,7 @@
     <Resource Include="Resources\language_settings.png" />
     <Resource Include="Resources\logout.png" />
     <Resource Include="Resources\notify.png" />
+    <Resource Include="Resources\no_product_image.png" />
     <Resource Include="Resources\order.png" />
     <Resource Include="Resources\search.png" />
     <Resource Include="Resources\Settings.png" />

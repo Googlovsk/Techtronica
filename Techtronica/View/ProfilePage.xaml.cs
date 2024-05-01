@@ -20,21 +20,21 @@ namespace Techtronica.View
     /// <summary>
     /// Логика взаимодействия для AccountPage.xaml
     /// </summary>
-    public partial class AccountPage : Page
+    public partial class ProfilePage : Page
     {
 
-        public AccountPage()
+        public ProfilePage()
         {
             InitializeComponent();
 
             var user = UserContext.CurrentUser;
             if (user.RoleId == 1) ProfileAdminPanel.Visibility = Visibility.Visible;
         }
-
         private void BtnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             NavigationSupport.mainFrame.Navigate(new MainPage());
-
+            NavigationService.RemoveBackEntry();
+            //NavigateToPage(typeof(MainPage));
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -49,6 +49,8 @@ namespace Techtronica.View
 
 
             NavigationSupport.mainFrame.Navigate(new MainPage());
+
+
         }
 
         private void ProfileAdminPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -56,6 +58,11 @@ namespace Techtronica.View
             var user = UserContext.CurrentUser;
             if (user.RoleId == 1) NavigationSupport.mainFrame.Navigate(new AdminPanelPage());
             else MessageBox.Show("Ты как сюда попал!?", "Несанкционированный доступ!", MessageBoxButton.OK);
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

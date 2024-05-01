@@ -6,196 +6,221 @@
       xmlns:local="clr-namespace:Techtronica.Data.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="1280"
-      Background="#00000002"
       Title="MainPage" Loaded="Page_Loaded">
 
     <Page.DataContext>
         <local:MainPageViewModel/>
     </Page.DataContext>
+    
 
     <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Grid Background="#FFECDFD2" Height="60" VerticalAlignment="Top" Margin="0,5,0,0">
-            <Grid.Effect>
-                <DropShadowEffect Color="#000" Direction="270" ShadowDepth="5" Opacity=".1"/>
-            </Grid.Effect>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="600"/>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Border Background="White" CornerRadius="10" Grid.Column="0" Margin="10,5,5,5" Cursor="Hand">
+            <Border Grid.Row="0" Background="#FFECDFD2" Height="60" VerticalAlignment="Top" Margin="0,5,0,0">
                 <Border.Effect>
-                    <DropShadowEffect Color="#000" ShadowDepth="5" Opacity=".1"/>
+                    <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="270" BlurRadius="5" Opacity=".3"/>
                 </Border.Effect>
-                <Label Content="Техтроника" 
-                       HorizontalAlignment="Center" 
-                       VerticalAlignment="Center" 
-                       Foreground="#000" 
-                       FontWeight="Bold" 
-                       FontSize="24" 
-                       Style="{StaticResource LoginLabel}" 
-                       Width="148" Height="40"/>
-            </Border>
 
-            <Border Background="White" Grid.Column="1" HorizontalAlignment="Stretch" CornerRadius="10" Margin="5">
-                <Border.Effect>
-                    <DropShadowEffect Color="#000" ShadowDepth="5" Opacity=".1"/>
-                </Border.Effect>
-                <Grid>
+                <Grid Margin="20,0,20,0">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
                         <ColumnDefinition Width="520"/>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBox Grid.Column="0" 
-                             VerticalContentAlignment="Center" 
-                             HorizontalAlignment="Left" 
-                             Margin="10,0,0,0" 
-                             Foreground="Gray" 
-                             FontSize="16" 
-                             VerticalAlignment="Center" 
-                             Background="Transparent" 
-                             BorderThickness="0" Text="Поиск" 
-                             Width="510" Height="50"/>
-                    
-                    <Border Grid.Column="1" 
-                            Height="20" 
-                            Width="30" 
-                            Visibility="Collapsed" 
-                            BorderBrush="Gray" 
-                            BorderThickness="0,0,1,0">
-
-                        <Image Source="/Resources/cross.png" Width="20" HorizontalAlignment="Left"/>
-                    </Border>
-                    <Image Grid.Column="2" 
-                           Source="/Resources/search.png" 
-                           Width="20" Height="20" 
-                           HorizontalAlignment="Center" 
-                           Margin="10"/>
-                </Grid>
-            </Border>
-            <Border Grid.Column="2" 
-                    x:Name="MPKatalogBtn" 
-                    Background="White" 
-                    Visibility="Visible" 
-                    CornerRadius="10" 
-                    Margin="5" 
-                    Cursor="Hand">
-                <Border.Effect>
-                    <DropShadowEffect Color="#000" ShadowDepth="5" Opacity=".1"/>
-                </Border.Effect>
-                
-                <Grid Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="24"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" 
-                           Content="Каталог" 
-                           HorizontalContentAlignment="Center" 
-                           VerticalContentAlignment="Center" 
-                           HorizontalAlignment="Center" 
-                           Foreground="#000" 
-                           FontWeight="Bold" 
-                           Style="{StaticResource LoginLabel}" 
-                           Width="110"/>
-                    
-                    <Image Grid.Column="1" 
-                           Source="/Resources/arrow_down.png" 
-                           Width="24" Height="24"/>
-                </Grid>
-            </Border>
-
-            <StackPanel Grid.Column="3" 
-                        VerticalAlignment="Center" 
-                        HorizontalAlignment="Stretch" 
-                        Margin="10,5,10,5">
-                <StackPanel 
-                    x:Name="MainPageUIUnAuthorizedUser" 
-                    Visibility="Visible" 
-                    Orientation="Horizontal" 
-                    HorizontalAlignment="Right" 
-                    VerticalAlignment="Center" 
-                    Margin="10">
-                    
-                    <Button x:Name="BtnLogin" 
-                            Content="Вход" Style="{StaticResource TransparentBtn}" 
-                            Width="60" 
-                            Margin="5" 
-                            Click="BtnLogin_Click"/>
-                    <Button x:Name="BtnRegister" 
-                            Content="Регистрация" Style="{StaticResource TransparentBtn}" 
-                            Width="Auto" 
-                            Margin="5"
-                            Click="BtnRegister_Click" />
-                </StackPanel>
-                <!--<StackPanel x:Name="STK_Account" Visibility="Visible" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10">
-                    <Button x:Name="BtnAccount" Content="Аккаунт" Click="BtnAccount_Click" Margin="5"/>
-                </StackPanel>-->
-                <Grid x:Name="MainPageUIAuthorizedUser" Visibility="Collapsed">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    
-                    <Border Grid.Column="0" 
-                            HorizontalAlignment="Stretch" 
-                            CornerRadius="10" 
-                            Background="#FFDAC8B7" 
-                            Margin="5" 
-                            Cursor="Hand">
-                        <Image Source="/Resources/basket.png" 
-                               Width="20" Height="20"/>
+
+                    <Border Background="White" CornerRadius="10" Grid.Column="0" Margin="0,5,5,5" Cursor="Hand">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="270" BlurRadius="5" Opacity=".3"/>
+                        </Border.Effect>
+                        <Label Content="Техтроника" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               Foreground="#000" 
+                               FontWeight="Bold" 
+                               FontSize="24" 
+                               Style="{StaticResource LoginLabel}" 
+                               Width="148" Height="40"/>
                     </Border>
-                    <Border Grid.Column="1" 
-                            Cursor="Hand" HorizontalAlignment="Stretch" 
-                            CornerRadius="10" 
-                            Background="#FFDAC8B7" 
-                            Margin="5,5,0,5" 
-                            MouseLeftButtonDown="Border_MouseLeftButtonDown">
-                        
-                        <Grid Margin="5">
+
+                    <Border Background="White" Grid.Column="1" HorizontalAlignment="Stretch" CornerRadius="10" Margin="5">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="270" BlurRadius="5" Opacity=".3"/>
+                        </Border.Effect>
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="520"/>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" 
-                                       Width="204" Height="28"
-                                       HorizontalAlignment="Center"   
-                                       VerticalAlignment="Center" 
-                                       Text="{Binding AccountName}"/>
-                            
-                            <Ellipse Grid.Column="1" 
-                                     Stroke="White" 
-                                     StrokeThickness="1.5" 
-                                     Height="40" Width="40" 
+                            <TextBox Grid.Column="0" 
+                                     VerticalContentAlignment="Center" 
+                                     HorizontalAlignment="Left" 
+                                     Margin="10,0,0,0" 
+                                     Foreground="Gray" 
+                                     FontSize="16" 
                                      VerticalAlignment="Center" 
-                                     HorizontalAlignment="Left">
-                                <Ellipse.Fill>
-                                    <SolidColorBrush Color="Gray"/>
-                                    <!--Пока затычка-->
-                                    <!--<ImageBrush ImageSource="..."/>-->
-                                </Ellipse.Fill>
-                            </Ellipse>
+                                     Background="Transparent" 
+                                     BorderThickness="0" Text="Поиск" 
+                                     Width="510" Height="50"/>
+
+                            <Border Grid.Column="1" 
+                                    Height="20" 
+                                    Width="30" 
+                                    Visibility="Collapsed" 
+                                    BorderBrush="Gray" 
+                                    BorderThickness="0,0,1,0">
+
+                                <Image Source="/Resources/cross.png" Width="20" HorizontalAlignment="Left"/>
+                            </Border>
+                            <Image Grid.Column="2" 
+                                   Source="/Resources/search.png" 
+                                   Width="20" Height="20" 
+                                   HorizontalAlignment="Center" 
+                                   Margin="10"/>
                         </Grid>
                     </Border>
+                    <Border Grid.Column="2" 
+                            x:Name="MPKatalogBtn" 
+                            Background="White" 
+                            Visibility="Visible" 
+                            CornerRadius="10" 
+                            Margin="5" 
+                            Cursor="Hand">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="270" BlurRadius="5" Opacity=".3"/>
+                        </Border.Effect>
+
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="24"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" 
+                                   Content="Каталог" 
+                                   HorizontalContentAlignment="Center" 
+                                   VerticalContentAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Foreground="#000" 
+                                   FontWeight="Bold" 
+                                   Style="{StaticResource LoginLabel}" 
+                                   Width="110"/>
+
+                            <Image Grid.Column="1" 
+                                   Source="/Resources/arrow_down.png" 
+                                   Width="24" Height="24"/>
+                        </Grid>
+                    </Border>
+
+                    <StackPanel Grid.Column="3" 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Stretch" 
+                                Margin="10,5,0,5">
+                        <StackPanel x:Name="MainPageUIUnAuthorizedUser" 
+                                    Visibility="Visible" 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Center" 
+                                    Margin="10">
+
+                            <Button x:Name="BtnLogin" 
+                                    Content="Вход" Style="{StaticResource TransparentBtn}" 
+                                    Width="60" 
+                                    Margin="5" 
+                                    Click="BtnLogin_Click"/>
+                            <Button x:Name="BtnRegister" 
+                                    Content="Регистрация" Style="{StaticResource TransparentBtn}" 
+                                    Width="Auto" 
+                                    Margin="5"
+                                    Click="BtnRegister_Click" />
+                        </StackPanel>
+                        <Grid x:Name="MainPageUIAuthorizedUser" Visibility="Collapsed">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Column="0" 
+                                    HorizontalAlignment="Stretch" 
+                                    CornerRadius="10" 
+                                    Background="#FFDAC8B7" 
+                                    Margin="5" 
+                                    Cursor="Hand">
+                                <Image Source="/Resources/basket.png" Width="20" Height="20"/>
+                            </Border>
+                            <Border Grid.Column="1" 
+                                    Cursor="Hand" HorizontalAlignment="Stretch" 
+                                    CornerRadius="10" 
+                                    Background="#FFDAC8B7" 
+                                    Margin="5,5,0,5" 
+                                    MouseLeftButtonDown="Border_MouseLeftButtonDown">
+
+                                <Grid Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" 
+                                               Width="204" Height="28"
+                                               HorizontalAlignment="Center"   
+                                               VerticalAlignment="Center" 
+                                               Text="{Binding UserName}"/>
+
+                                    <Ellipse Grid.Column="1" 
+                                             Stroke="White" 
+                                             StrokeThickness="1.5" 
+                                             Height="40" Width="40" 
+                                             VerticalAlignment="Center" 
+                                             HorizontalAlignment="Left">
+                                        <Ellipse.Fill>
+                                            <SolidColorBrush Color="Gray"/>
+                                            <!--Пока затычка-->
+                                            <!--<ImageBrush ImageSource="..."/>-->
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+
                 </Grid>
-            </StackPanel>
+            </Border>
+
+            <Grid Grid.Row="1" Margin="20,20,20,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="245"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" CornerRadius="10" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="0" Opacity=".3" BlurRadius="5"/>
+                    </Border.Effect>
+                </Border>
+                <Border Grid.Column="1"  Margin="10,0,0,0" CornerRadius="10" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="0" Opacity=".3" BlurRadius="5"/>
+                    </Border.Effect>
+                    
+                    
+                    <Frame x:Name="MainPageFrame" NavigationUIVisibility="Hidden"/>
+                </Border>
+            </Grid>
 
         </Grid>
+        
 
         <Border x:Name="BlurOverlay" 
                 Visibility="Collapsed" 
                 Background="Black" 
                 Opacity="0.5" 
                 VerticalAlignment="Stretch"/>
-        
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+
+        <Frame x:Name="MainPageFrameLayout" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

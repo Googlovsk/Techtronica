@@ -25,13 +25,25 @@ namespace Techtronica.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Admin")]
         public string AccountName {
             get {
                 return ((string)(this["AccountName"]));
             }
             set {
                 this["AccountName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-")]
+        public string AccountEmail {
+            get {
+                return ((string)(this["AccountEmail"]));
+            }
+            set {
+                this["AccountEmail"] = value;
             }
         }
     }

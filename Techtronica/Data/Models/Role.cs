@@ -10,7 +10,6 @@ namespace Techtronica.Data.Models
     {
         public int Id { get; set; }
         public string RoleName { get; set; }
-        public bool IsAdmin { get; set; }
         public virtual ICollection<User> Users { get; set; }
     }
 }

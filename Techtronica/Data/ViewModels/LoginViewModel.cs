@@ -14,11 +14,17 @@ namespace Techtronica.Data.ViewModels
 {
     class LoginViewModel : INotifyPropertyChanged
     {
-        private string _accountName;
-        public string AccountName
+        private string _email;
+        public string Email
         {
-            get { return _accountName; }
-            set {_accountName = value; OnPropertyChanged(value); }
+            get { return _email; }
+            set { _email = value; OnPropertyChanged(value); }
+        }
+        private string _userName;
+        public string UserName
+        {
+            get { return _userName; }
+            set { _userName = value; OnPropertyChanged(value); }
         }
         private string _password;
         public string Password
@@ -53,18 +59,26 @@ namespace Techtronica.Data.ViewModels
         }
         private void PerformLogin()
         {
-            var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.AccountName == _accountName && u.Password == _password);
-            if (user != null) 
-            { 
-                Properties.ApplicationSettings.Default.AccountName = user.AccountName;
-                Properties.ApplicationSettings.Default.Save();
+            try
+            {
+                var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.UserName == _userName && u.Email == _email && u.Password == _password);
+                if (user != null)
+                {
+                    Properties.ApplicationSettings.Default.AccountName = user.UserName;
+                    Properties.ApplicationSettings.Default.AccountEmail = user.Email;
+                    Properties.ApplicationSettings.Default.Save();
 
-                UserContext.CurrentUser = user;
+                    UserContext.CurrentUser = user;
 
-                //MessageBox.Show("Успех!", "Ошибка!", MessageBoxButton.OK);
-                NavigationSupport.mainFrame.Navigate(new MainPage());
+                    //MessageBox.Show("Успех!", "Ошибка!", MessageBoxButton.OK);
+                    NavigationSupport.mainFrame.Navigate(new MainPage());
+                }
             }
-            else MessageBox.Show("OK", "Err", MessageBoxButton.OK);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Err", MessageBoxButton.OK);
+            }
+            
         }
     }
 }

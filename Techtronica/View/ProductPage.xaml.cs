@@ -17,23 +17,15 @@ using Techtronica.Data.Services;
 namespace Techtronica.View
 {
     /// <summary>
-    /// Логика взаимодействия для AdminPanelPage.xaml
+    /// Логика взаимодействия для ProductPage.xaml
     /// </summary>
-    public partial class AdminPanelPage : Page
+    public partial class ProductPage : Page
     {
-        public AdminPanelPage()
+        public ProductPage()
         {
             InitializeComponent();
-        }
 
-        private void BtnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            NavigationSupport.mainFrame.Navigate(new MainPage());
-        }
-
-        private void BtnToAddProduct_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            NavigationSupport.mainFrame.Navigate(new AddProductPage());
+            
         }
     }
 }

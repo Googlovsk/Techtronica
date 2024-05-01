@@ -10,13 +10,13 @@
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Border Width="330" 
-            Margin="0,70,5,0" 
-            CornerRadius="10" 
+            Margin="0,70,15,0" 
+            CornerRadius="0,0,10,10" 
             Background="#FFECDFD2" 
             HorizontalAlignment="Right" 
             VerticalAlignment="Top">
             <Border.Effect>
-                <DropShadowEffect Color="#000" ShadowDepth="5" Opacity=".1" Direction="180"/>
+                <DropShadowEffect Color="#000" ShadowDepth="0" BlurRadius="5" Opacity=".3"/>
             </Border.Effect>
 
             <Grid HorizontalAlignment="Stretch">
@@ -64,7 +64,7 @@
                             <Label Grid.Column="1" Content="Редоктировать товары" Style="{StaticResource LoginLabel}" Width="245"/>
                             <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
                         </Grid>
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand">
+                        <Grid x:Name="BtnToAddProduct" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnToAddProduct_MouseLeftButtonDown">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20"/>
                                 <ColumnDefinition Width="*"/>

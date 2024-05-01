@@ -26,8 +26,13 @@ namespace Techtronica.View
         public MainPage()
         {
             InitializeComponent();
+
             HideBlur();
-            NavigationSupport.mainFrame = MainFrame;
+
+            NavigationSupport.mainFrame = MainPageFrameLayout;
+
+            MainPageFrame.Navigate(new ProductPage());
+
             Background = (SolidColorBrush)FindResource("DefaultBG");
 
             var user = UserContext.CurrentUser;
@@ -70,7 +75,9 @@ namespace Techtronica.View
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            NavigationSupport.mainFrame.Navigate(new AccountPage());
+            //NavigationSupport.mainFrame.Navigate(new ProfilePage());
+            MainPageFrameLayout.Navigate(new ProfilePage());
+
         }
     }
 }

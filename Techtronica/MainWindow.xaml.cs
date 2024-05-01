@@ -26,6 +26,8 @@ namespace Techtronica
         public MainWindow()
         {
             InitializeComponent();
+            AppDBContext appDBContext = new AppDBContext();
+
 
             NavigationSupport.mainFrame = MainFrame;
 
@@ -35,21 +37,23 @@ namespace Techtronica
         private void LoadUser()
         {
             var savedAccountName = Properties.ApplicationSettings.Default.AccountName;
+            var savedAccountEmail = Properties.ApplicationSettings.Default.AccountEmail;
+
 
             //Проверка поля настроек на содержание
-            if (!string.IsNullOrWhiteSpace(savedAccountName))
+            if (!string.IsNullOrWhiteSpace(savedAccountEmail))
             {
-                var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.AccountName == savedAccountName);
+                var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.UserName == savedAccountName && u.Email == savedAccountEmail);
 
                 if (user != null)
                 {
                     UserContext.CurrentUser = user;
                     NavigationSupport.mainFrame.Navigate(new MainPage());
                 }
-                else
-                {
-                    NavigationSupport.mainFrame.Navigate(new LoginPage());
-                }
+                //else
+                //{
+                //    NavigationSupport.mainFrame.Navigate(new LoginPage());
+                //}
             }
             else NavigationSupport.mainFrame.Navigate(new MainPage());
         }

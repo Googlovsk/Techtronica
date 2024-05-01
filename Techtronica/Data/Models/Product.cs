@@ -12,7 +12,7 @@ namespace Techtronica.Data.Models
         public string Name { get; set; }
         public int Cost { get; set; }
         public string Description { get; set; }
-        public string IconPath { get; set; }
+        public string ImagePath { get; set; }
         public bool IsActive { get; set; }
         public int ProductCategoryId { get; set; }
         public int ManufacturerId { get; set; }

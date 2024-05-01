@@ -14,30 +14,37 @@ namespace Techtronica.Data.ViewModels
 {
     public class CreateAccountViewModel : INotifyPropertyChanged
     {
-        private string _accountName;
-        public string AccountName 
+        private string _userName;
+        public string UserName
         {
-            get { return _accountName; } 
-            set {  _accountName = value; OnPropertyChanged(value); } 
+            get { return _userName; } 
+            set { _userName = value; OnPropertyChanged(value); } 
         }
-
-
+        private DateTime _dateOfBirth;
+        public DateTime DateOfBirth
+        {
+            get { return _dateOfBirth; }
+            set { _dateOfBirth = value; OnPropertyChanged(value); }
+        }
+        //пока затычка
+        private string _userAvatar = "";
+        public string UserAvatar
+        {
+            get { return _userAvatar; }
+            set { _userAvatar = value; OnPropertyChanged(value); }
+        }
         private string _password;
         public string Password
         {
             get { return _password; }
             set { _password = value; OnPropertyChanged(value); }
         }
-
-
         private string _phone;
         public string Phone
         {
             get { return _phone; }
             set { _phone = value; OnPropertyChanged(value); }
         }
-
-
         private string _email;
         public string Email
         {
@@ -73,7 +80,9 @@ namespace Techtronica.Data.ViewModels
                     {
                         var newUser = new User()
                         {
-                            AccountName = _accountName,
+                            UserName = _userName,
+                            DateOfBirth = _dateOfBirth,
+                            UserAvatar = _userAvatar,
                             Password = _password,
                             Phone = _phone,
                             Email = _email,
@@ -95,7 +104,8 @@ namespace Techtronica.Data.ViewModels
         }
         private void ClearInputs()
         {
-            AccountName = default;
+            UserName = default;
+            DateOfBirth = default;
             Password = default;
             Phone = default;
             Email = default;

@@ -11,12 +11,12 @@ namespace Techtronica.Data.ViewModels
 {
     class MainPageViewModel : INotifyPropertyChanged
     {
-        private string _accountName = "";
+        private string _userName = "";
         
-        public string AccountName
+        public string UserName
         {
-            get { LoadUserData(); return _accountName;}
-            set { _accountName = value; OnPropertyChanged(value); }
+            get { LoadUserData(); return _userName; }
+            set { _userName = value; OnPropertyChanged(value); }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -30,7 +30,7 @@ namespace Techtronica.Data.ViewModels
         {
             if (UserContext.CurrentUser != null) 
             {
-                _accountName = UserContext.CurrentUser.AccountName;
+                _userName = UserContext.CurrentUser.UserName;
             }
         }
     }
