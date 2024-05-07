@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -37,7 +38,7 @@ namespace Techtronica.Data.ViewModels
         public string ImagePath
         {
             get { return _imagePath; }
-            set { _imagePath = value; OnPropertyChanged(value); }
+            set { _imagePath = value; /*?? "Resources/no_product_image.png";*/ OnPropertyChanged(value); }
         }
         private bool _isActive = true;
         public bool IsActive
@@ -83,14 +84,16 @@ namespace Techtronica.Data.ViewModels
                             Name = _name,
                             Cost = _cost,
                             Description = _description,
-                            ImagePath = _imagePath,
+                            ImagePath = Path.GetFileName(_imagePath),
                             IsActive = _isActive,
                             ProductCategoryId = _productCategoryId,
                             ManufacturerId = _manufacturerId,
                         };
 
                         ConnectToDB.appDBContext.Products.Add(newProduct);
-                        //GetFileService.CopyImageToProject();
+
+                        
+                        GetFileService.CopyImageToProject();
                         ConnectToDB.appDBContext.SaveChanges();
 
                         ClearInputs();

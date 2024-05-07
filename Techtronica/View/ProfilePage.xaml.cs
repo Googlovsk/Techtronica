@@ -27,7 +27,7 @@ namespace Techtronica.View
         {
             InitializeComponent();
 
-            var user = UserContext.CurrentUser;
+            var user = ObjectContext.CurrentUser;
             if (user.RoleId == 1) ProfileAdminPanel.Visibility = Visibility.Visible;
         }
         private void BtnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -39,9 +39,9 @@ namespace Techtronica.View
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var user = UserContext.CurrentUser;
+            var user = ObjectContext.CurrentUser;
             user = null;
-            UserContext.CurrentUser = user!;
+            ObjectContext.CurrentUser = user!;
 
 
             Properties.ApplicationSettings.Default.AccountName = null;
@@ -55,7 +55,7 @@ namespace Techtronica.View
 
         private void ProfileAdminPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var user = UserContext.CurrentUser;
+            var user = ObjectContext.CurrentUser;
             if (user.RoleId == 1) NavigationSupport.mainFrame.Navigate(new AdminPanelPage());
             else MessageBox.Show("Ты как сюда попал!?", "Несанкционированный доступ!", MessageBoxButton.OK);
         }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Techtronica.Data.Models;
 using Techtronica.Data.Services;
 
 namespace Techtronica.View
@@ -24,8 +25,11 @@ namespace Techtronica.View
         public ProductPage()
         {
             InitializeComponent();
+        }
 
-            
+        private void PrCrdBtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            //NavigationSupport.mainFrame.Navigate(new AddProductPage());
         }
     }
 }

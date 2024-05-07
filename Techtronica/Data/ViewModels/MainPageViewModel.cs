@@ -28,9 +28,9 @@ namespace Techtronica.Data.ViewModels
 
         private void LoadUserData()
         {
-            if (UserContext.CurrentUser != null) 
+            if (ObjectContext.CurrentUser != null) 
             {
-                _userName = UserContext.CurrentUser.UserName;
+                _userName = ObjectContext.CurrentUser.UserName;
             }
         }
     }

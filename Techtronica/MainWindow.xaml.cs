@@ -47,13 +47,13 @@ namespace Techtronica
 
                 if (user != null)
                 {
-                    UserContext.CurrentUser = user;
+                    ObjectContext.CurrentUser = user;
                     NavigationSupport.mainFrame.Navigate(new MainPage());
                 }
-                //else
-                //{
-                //    NavigationSupport.mainFrame.Navigate(new LoginPage());
-                //}
+                else
+                {
+                    NavigationSupport.mainFrame.Navigate(new LoginPage());
+                }
             }
             else NavigationSupport.mainFrame.Navigate(new MainPage());
         }

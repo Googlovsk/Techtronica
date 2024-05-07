@@ -14,6 +14,7 @@ namespace Techtronica.Data.Models
         public string Description { get; set; }
         public string ImagePath { get; set; }
         public bool IsActive { get; set; }
+        public int Amount {  get; set; }
         public int ProductCategoryId { get; set; }
         public int ManufacturerId { get; set; }
 

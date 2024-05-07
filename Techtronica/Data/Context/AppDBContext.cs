@@ -76,10 +76,10 @@ namespace Techtronica.Data.Context
         //private string GetConnectionString() => new SqlConnectionStringBuilder()
         //{
         //    //подключение к серверу
-        //    //DataSource = "192.168.1.100",
-        //    //UserID = "igor",
-        //    //Password = "root",
-        //    //InitialCatalog = "EFProductsDBAndreev"
+        //    DataSource = "192.168.1.100",
+        //    UserID = "igor",
+        //    Password = "root",
+        //    InitialCatalog = "EFProductsDBAndreev"
 
         //    //подключение к локальной базе
         //    //DataSource = @"(LocalDB)\MSSQLLocalDB",

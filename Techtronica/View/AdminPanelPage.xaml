@@ -54,36 +54,96 @@
                            FontWeight="Bold" 
                            Style="{StaticResource LoginLabel}" 
                            Width="309"/>
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand">
+                        <Grid x:Name="BtnOpenProductActivities" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnOpenProductActivities_MouseLeftButtonDown">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="20"/>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="/Resources/order.png" />
-                            <Label Grid.Column="1" Content="Редоктировать товары" Style="{StaticResource LoginLabel}" Width="245"/>
-                            <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
+                            <Image Grid.Column="0" Source="/Resources/order.png"/>
+                            <Label Grid.Column="1" Content="Товары" Style="{StaticResource LoginLabel}" Width="245"/>
                         </Grid>
-                        <Grid x:Name="BtnToAddProduct" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnToAddProduct_MouseLeftButtonDown">
+                        <StackPanel x:Name="ProductActivities">
+                            <Grid x:Name="BtnToAddProduct" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnToAddProduct_MouseLeftButtonDown_1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/add.png" />
+                                <Label Grid.Column="1" Content="Добавить" Style="{StaticResource LoginLabel}" Width="245"/>
+                                <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
+                            </Grid>
+                            <Grid x:Name="BtnToEditProduct" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/edit.png" />
+                                <Label Grid.Column="1" Content="Редоктировать" Style="{StaticResource LoginLabel}" Width="245"/>
+                                <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
+                            </Grid>
+                        </StackPanel>
+                        <Grid x:Name="BtnOpenManufacturerActivities" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="20"/>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="/Resources/add.png"/>
-                            <Label Grid.Column="1" Content="Добавить товар" Style="{StaticResource LoginLabel}" Width="245"/>
-                            <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
+                            <Image Grid.Column="0" Source="/Resources/factory.png"/>
+                            <Label Grid.Column="1" Content="Производители" Style="{StaticResource LoginLabel}" Width="245" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
                         </Grid>
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand">
+                        <StackPanel x:Name="ManufacturerActivities">
+                            <Grid x:Name="BtnToAddManufacturer" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/add.png" />
+                                <Label Grid.Column="1" Content="Добавить" Style="{StaticResource LoginLabel}" Width="245"/>
+                                <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
+                            </Grid>
+                            <Grid x:Name="BtnToEditManufacturer" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/edit.png" />
+                                <Label Grid.Column="1" Content="Редоктировать" Style="{StaticResource LoginLabel}" Width="245"/>
+                                <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
+                            </Grid>
+                        </StackPanel>
+                        <Grid x:Name="BtnOpenCategoryActivities" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="20"/>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="/Resources/add.png"/>
-                            <Label Grid.Column="1" Content="Добавить производителя" Style="{StaticResource LoginLabel}" Width="245"/>
-                            <Image Grid.Column="2" Source="/Resources/white_arrow_right.png" />
+                            <Image Grid.Column="0" Source="/Resources/factory.png"/>
+                            <Label Grid.Column="1" Content="Категории товаров" Style="{StaticResource LoginLabel}" Width="245" MouseLeftButtonDown="Label_MouseLeftButtonDown_1"/>
                         </Grid>
+                        <StackPanel x:Name="CategoryActivities">
+                            <Grid x:Name="BtnTOAddCategory" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/add.png" />
+                                <Label Grid.Column="1" Content="Добавить" Style="{StaticResource LoginLabel}" Width="245"/>
+                                <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
+                            </Grid>
+                            <Grid x:Name="BtnToEditCategory" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/edit.png" />
+                                <Label Grid.Column="1" Content="Редоктировать" Style="{StaticResource LoginLabel}" Width="245"/>
+                                <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
+                            </Grid>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
             </Grid>

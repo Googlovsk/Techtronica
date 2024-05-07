@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Techtronica")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a52f71bd1aadd3a39e1712e22245ae08b75075eb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ef1c6bd225592e4f5480cbf78067755533ce545")]
 [assembly: System.Reflection.AssemblyProductAttribute("Techtronica")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Techtronica")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

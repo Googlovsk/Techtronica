@@ -7,8 +7,9 @@ using Techtronica.Data.Models;
 
 namespace Techtronica.Data.Context
 {
-    public static class UserContext
+    public static class ObjectContext
     {
         public static User CurrentUser { get; set; }
+        public static Product CorrentProduct { get; set; }
     }
 }

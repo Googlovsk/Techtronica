@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ namespace Techtronica.Data.Services
 {
     class GetFileService
     {
-        static string sourceImagePath = null;
-        static string targetImagePath = null;
-        static readonly string dirName = AppDomain.CurrentDomain.BaseDirectory + "Images\\";
+        static string sourceImagePath = string.Empty;
+        static string targetImagePath = string.Empty;
+        static readonly string dirName = ConfigurationManager.AppSettings["ImageDirectory"];
         static readonly DirectoryInfo directory = new DirectoryInfo(dirName);
         static bool isAllowCopy = false;
 
@@ -20,17 +21,27 @@ namespace Techtronica.Data.Services
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = "Файлы изображений (*.jpg, *.png, *.jpeg)|*.jpg;*.png;*.jpeg";
-            if (fileDialog.ShowDialog() == true) sourceImagePath = fileDialog.FileName;
-            targetImagePath = $"{dirName}{Path.GetFileName(sourceImagePath)}";
-            isAllowCopy = true;
-            return Path.GetFileName(targetImagePath);
+            sourceImagePath = (fileDialog.ShowDialog() == true) ? fileDialog.FileName : null;
+
+            if (sourceImagePath != string.Empty) 
+            {
+                targetImagePath = $"{dirName}{Path.GetFileName(sourceImagePath)}";
+                isAllowCopy = true;
+                return dirName + Path.GetFileName(targetImagePath);
+            }
+            else
+            {
+                isAllowCopy = false;
+                return string.Empty;
+            }
         }
         public static void CopyImageToProject()
         {
+            
             if (isAllowCopy)
             {
                 if (!directory.Exists) directory.Create();
-                File.Copy(sourceImagePath, targetImagePath);
+                if (!File.Exists(targetImagePath)) File.Copy(sourceImagePath, targetImagePath);
             }
         }
     }

@@ -9,6 +9,53 @@
         <SolidColorBrush x:Key="LeaveOnSuccessButton" Color="#FFB99D84"/>
         <SolidColorBrush x:Key="DefaultBG" Color="#FFEBEBF5"/>
 
+        <Style x:Key="NoHighlightListBoxItem" TargetType="ListBoxItem">
+            <!-- Удалить все эффекты при наведении или выборе -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Background="Transparent" BorderThickness="0">
+                            <!-- Сделать фон прозрачным -->
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!-- Убрать фокус при наведении -->
+            <Setter Property="Focusable" Value="False" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.Setters>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Trigger.Setters>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="NoHighlightSV" TargetType="ScrollViewer">
+            <!-- Удалить все эффекты при наведении или выборе -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollViewer">
+                        <Border Background="Transparent" BorderThickness="0">
+                            <!-- Сделать фон прозрачным -->
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!-- Убрать фокус при наведении -->
+            <Setter Property="Focusable" Value="False" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.Setters>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Trigger.Setters>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <Style x:Key="BtnSuccess" TargetType="Button">
             <Setter Property="Background" Value="#FFB99D84"/>
             <Setter Property="Foreground" Value="#FFFFFF"/>

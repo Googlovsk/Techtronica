@@ -68,9 +68,8 @@ namespace Techtronica.Data.ViewModels
                     Properties.ApplicationSettings.Default.AccountEmail = user.Email;
                     Properties.ApplicationSettings.Default.Save();
 
-                    UserContext.CurrentUser = user;
+                    ObjectContext.CurrentUser = user;
 
-                    //MessageBox.Show("Успех!", "Ошибка!", MessageBoxButton.OK);
                     NavigationSupport.mainFrame.Navigate(new MainPage());
                 }
             }

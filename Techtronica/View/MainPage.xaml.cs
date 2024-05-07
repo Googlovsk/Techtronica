@@ -23,6 +23,7 @@ namespace Techtronica.View
     /// </summary>
     public partial class MainPage : Page
     {
+        
         public MainPage()
         {
             InitializeComponent();
@@ -30,12 +31,13 @@ namespace Techtronica.View
             HideBlur();
 
             NavigationSupport.mainFrame = MainPageFrameLayout;
+            NavigationSupport.innerFrame = MainPageFrame;
 
             MainPageFrame.Navigate(new ProductPage());
 
             Background = (SolidColorBrush)FindResource("DefaultBG");
 
-            var user = UserContext.CurrentUser;
+            var user = ObjectContext.CurrentUser;
             if (user != null)
             {
                 MainPageUIUnAuthorizedUser.Visibility = Visibility.Collapsed;
@@ -78,6 +80,11 @@ namespace Techtronica.View
             //NavigationSupport.mainFrame.Navigate(new ProfilePage());
             MainPageFrameLayout.Navigate(new ProfilePage());
 
+        }
+
+        private void ToHomeBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationSupport.mainFrame.Navigate(new MainPage());
         }
     }
 }

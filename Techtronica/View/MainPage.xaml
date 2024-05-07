@@ -12,7 +12,6 @@
         <local:MainPageViewModel/>
     </Page.DataContext>
     
-
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -33,7 +32,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Border Background="White" CornerRadius="10" Grid.Column="0" Margin="0,5,5,5" Cursor="Hand">
+                    <Border x:Name="ToHomeBtn" Background="White" CornerRadius="10" Grid.Column="0" Margin="0,5,5,5" Cursor="Hand" MouseLeftButtonDown="ToHomeBtn_MouseLeftButtonDown">
                         <Border.Effect>
                             <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="270" BlurRadius="5" Opacity=".3"/>
                         </Border.Effect>
@@ -202,7 +201,7 @@
                         <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="0" Opacity=".3" BlurRadius="5"/>
                     </Border.Effect>
                 </Border>
-                <Border Grid.Column="1"  Margin="10,0,0,0" CornerRadius="10" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Border Grid.Column="1" CornerRadius="10" Margin="10,0,0,0" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Border.Effect>
                         <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="0" Opacity=".3" BlurRadius="5"/>
                     </Border.Effect>

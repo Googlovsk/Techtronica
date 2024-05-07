@@ -9,6 +9,7 @@ namespace Techtronica.Data.Services
 {
     class NavigationSupport
     {
-        public static Frame mainFrame;
+        public static Frame mainFrame { get; set; }
+        public static Frame innerFrame { get; set; }
     }
 }

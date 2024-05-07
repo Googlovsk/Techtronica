@@ -24,6 +24,10 @@ namespace Techtronica.View
         public AdminPanelPage()
         {
             InitializeComponent();
+
+            ProductActivities.Visibility = Visibility.Collapsed;
+            ManufacturerActivities.Visibility = Visibility.Collapsed;
+            CategoryActivities.Visibility = Visibility.Collapsed;
         }
 
         private void BtnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -31,9 +35,29 @@ namespace Techtronica.View
             NavigationSupport.mainFrame.Navigate(new MainPage());
         }
 
-        private void BtnToAddProduct_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void BtnOpenProductActivities_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            NavigationSupport.mainFrame.Navigate(new AddProductPage());
+            if (ProductActivities.Visibility == Visibility.Collapsed) ProductActivities.Visibility = Visibility.Visible;
+            else ProductActivities.Visibility = Visibility.Collapsed;
+        }
+
+        private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (ManufacturerActivities.Visibility == Visibility.Collapsed) ManufacturerActivities.Visibility = Visibility.Visible;
+            else ManufacturerActivities.Visibility = Visibility.Collapsed;
+        }
+
+        private void Label_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if (CategoryActivities.Visibility == Visibility.Collapsed) CategoryActivities.Visibility = Visibility.Visible;
+            else CategoryActivities.Visibility = Visibility.Collapsed;
+        }
+
+        private void BtnToAddProduct_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            //NavigationSupport.mainFrame.Navigate(new AddProductPage());
+            NavigationSupport.mainFrame.Navigate(new MainPage());
+            NavigationSupport.innerFrame.Navigate(new AddProductPage());
         }
     }
 }
