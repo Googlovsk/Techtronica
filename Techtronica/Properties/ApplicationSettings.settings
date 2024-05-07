@@ -6,7 +6,7 @@
       <Value Profile="(Default)">Admin</Value>
     </Setting>
     <Setting Name="AccountEmail" Type="System.String" Scope="User">
-      <Value Profile="(Default)">-</Value>
+      <Value Profile="(Default)">techtronica@support.com</Value>
     </Setting>
   </Settings>
 </SettingsFile>

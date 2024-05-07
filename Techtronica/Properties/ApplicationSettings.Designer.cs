@@ -37,7 +37,7 @@ namespace Techtronica.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-")]
+        [global::System.Configuration.DefaultSettingValueAttribute("techtronica@support.com")]
         public string AccountEmail {
             get {
                 return ((string)(this["AccountEmail"]));

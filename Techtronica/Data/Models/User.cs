@@ -13,6 +13,7 @@ namespace Techtronica.Data.Models
         public DateTime DateOfBirth { get; set; }
         public string UserAvatar { get; set; } = null!;
         public string Password { get; set; }
+        public string Salt { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public int RoleId { get; set; }

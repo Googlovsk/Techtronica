@@ -9,6 +9,7 @@ using System.Windows;
 using Techtronica.Data.Context;
 using Techtronica.Data.Models;
 using Techtronica.Data.Services;
+using Techtronica.Data.Services.Crypt;
 
 namespace Techtronica.Data.ViewModels
 {
@@ -39,6 +40,7 @@ namespace Techtronica.Data.ViewModels
             get { return _password; }
             set { _password = value; OnPropertyChanged(value); }
         }
+
         private string _phone;
         public string Phone
         {
@@ -52,7 +54,7 @@ namespace Techtronica.Data.ViewModels
             set { _email = value; OnPropertyChanged(value); }
         }
 
-        private int _roleId = 2;
+        private int _roleId = 1;
         public int RoleId
         {
             get { return _roleId; }
@@ -78,12 +80,17 @@ namespace Techtronica.Data.ViewModels
                 {
                     try
                     {
+                        string salt = Enc.GenerateSalt();
+                        string hashedPassword = Enc.HashPassword(_password, salt);
+
+
                         var newUser = new User()
                         {
                             UserName = _userName,
                             DateOfBirth = _dateOfBirth,
                             UserAvatar = _userAvatar,
-                            Password = _password,
+                            Password = hashedPassword,
+                            Salt = salt,
                             Phone = _phone,
                             Email = _email,
                             RoleId = _roleId

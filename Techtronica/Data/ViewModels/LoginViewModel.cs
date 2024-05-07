@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Techtronica.Data.Context;
 using Techtronica.Data.Services;
+using Techtronica.Data.Services.Crypt;
 using Techtronica.View;
 
 namespace Techtronica.Data.ViewModels
@@ -61,8 +62,15 @@ namespace Techtronica.Data.ViewModels
         {
             try
             {
-                var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.UserName == _userName && u.Email == _email && u.Password == _password);
-                if (user != null)
+                var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.UserName == _userName || u.Email == _email);
+
+                if (user == null)
+                {
+                    MessageBox.Show("Пользователь не найден", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                string hashedInputPassword = Enc.HashPassword(_password, user.Salt);
+                if (user.Password == hashedInputPassword)
                 {
                     Properties.ApplicationSettings.Default.AccountName = user.UserName;
                     Properties.ApplicationSettings.Default.AccountEmail = user.Email;
@@ -71,6 +79,10 @@ namespace Techtronica.Data.ViewModels
                     ObjectContext.CurrentUser = user;
 
                     NavigationSupport.mainFrame.Navigate(new MainPage());
+                }
+                else
+                {
+                    MessageBox.Show("Неверный пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)

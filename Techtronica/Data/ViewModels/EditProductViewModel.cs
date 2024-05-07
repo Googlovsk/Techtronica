@@ -51,6 +51,12 @@ namespace Techtronica.Data.ViewModels
             get { return _isActive; }
             set { _isActive = value; OnPropertyChanged(value); }
         }
+        private int _amount;
+        public int Amount
+        {
+            get { return _amount; }
+            set { _amount = value; OnPropertyChanged(value); }
+        }
         private int _productCategoryId = ObjectContext.CorrentProduct.ProductCategoryId;
         public int ProductCategoryId
         {

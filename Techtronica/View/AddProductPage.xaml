@@ -42,7 +42,7 @@
     </Border>-->
             <Border Grid.Row="0" 
             CornerRadius="10" 
-            Background="#FFF" 
+            Background="#FFDADADA" 
             Margin="5,5,5,0">
                 <StackPanel HorizontalAlignment="Stretch"  
                             VerticalAlignment="Top"
@@ -179,7 +179,7 @@
                         <TextBlock Grid.Row="0" x:Name="ProductAmountLabel" Text="Количество товара"/>
                         <TextBox Grid.Row="1" 
                          x:Name="TBProductAmount"
-                         Text="Введите кол-во товара"
+                         Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"
                          Foreground="Gray"
                          HorizontalAlignment="Stretch"
                          Style="{StaticResource TBInput}"/>
