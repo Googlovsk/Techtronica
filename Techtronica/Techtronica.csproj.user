@@ -7,28 +7,34 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\AddProductPage.xaml.cs">
+    <Compile Update="View\ViewData\AddProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\AdminPanelPage.xaml.cs">
+    <Compile Update="View\Layout\AdminPanelPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\EditProductPage.xaml.cs">
+    <Compile Update="View\Main\CatalogPageFrame.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ProductPage.xaml.cs">
+    <Compile Update="View\ViewData\EditProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ProfilePage.xaml.cs">
+    <Compile Update="View\Main\ManufacturerPageFrame.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\LoginPage.xaml.cs">
+    <Compile Update="View\ViewData\ProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\MainPage.xaml.cs">
+    <Compile Update="View\Layout\ProfilePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\RegisterPage.xaml.cs">
+    <Compile Update="View\Auth\LoginPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Main\MainPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Auth\RegisterPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -36,28 +42,34 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\AddProductPage.xaml">
+    <Page Update="View\ViewData\AddProductPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\AdminPanelPage.xaml">
+    <Page Update="View\Layout\AdminPanelPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\EditProductPage.xaml">
+    <Page Update="View\Main\CatalogPageFrame.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ProductPage.xaml">
+    <Page Update="View\ViewData\EditProductPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ProfilePage.xaml">
+    <Page Update="View\Main\ManufacturerPageFrame.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\LoginPage.xaml">
+    <Page Update="View\ViewData\ProductPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\MainPage.xaml">
+    <Page Update="View\Layout\ProfilePage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\RegisterPage.xaml">
+    <Page Update="View\Auth\LoginPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Main\MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Auth\RegisterPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -13,7 +13,7 @@ using Techtronica.Data.Models;
 using Techtronica.Data.Services;
 using Techtronica.View;
 
-namespace Techtronica.Data.ViewModels
+namespace Techtronica.Data.ViewModels.Data
 {
     public class EditProductViewModel : INotifyPropertyChanged
     {
@@ -88,20 +88,20 @@ namespace Techtronica.Data.ViewModels
         {
             get
             {
-                return saveProduct ?? (new RelayCommand(obj =>
+                return saveProduct ?? new RelayCommand(obj =>
                 {
                     try
                     {
-                        
-                        var product = ConnectToDB.appDBContext.Products.SingleOrDefault(p => p.Id == this.Id);
+
+                        var product = ConnectToDB.appDBContext.Products.SingleOrDefault(p => p.Id == Id);
                         if (product != null)
                         {
-                            product.Name = this.Name;
-                            product.Cost = this.Cost;
-                            product.Description = this.Description;
-                            product.ImagePath = this.ImagePath;
-                            product.ManufacturerId = this.ManufacturerId;
-                            product.ProductCategoryId = this.ProductCategoryId;
+                            product.Name = Name;
+                            product.Cost = Cost;
+                            product.Description = Description;
+                            product.ImagePath = ImagePath;
+                            product.ManufacturerId = ManufacturerId;
+                            product.ProductCategoryId = ProductCategoryId;
 
                             ConnectToDB.appDBContext.Entry(product).State = EntityState.Modified;
                         }
@@ -120,7 +120,7 @@ namespace Techtronica.Data.ViewModels
                         MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     NavigationSupport.mainFrame.Navigate(new MainPage());
-                }));
+                });
             }
         }
         private RelayCommand deleteProduct;
@@ -128,11 +128,11 @@ namespace Techtronica.Data.ViewModels
         {
             get
             {
-                return deleteProduct ?? (new RelayCommand(obj =>
+                return deleteProduct ?? new RelayCommand(obj =>
                 {
                     try
                     {
-                        var product = ConnectToDB.appDBContext.Products.SingleOrDefault(p => p.Id == this.Id);
+                        var product = ConnectToDB.appDBContext.Products.SingleOrDefault(p => p.Id == Id);
                         if (product != null)
                         {
                             ConnectToDB.appDBContext.Remove(product);
@@ -145,7 +145,7 @@ namespace Techtronica.Data.ViewModels
                         MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     NavigationSupport.mainFrame.Navigate(new MainPage());
-                }));
+                });
             }
         }
         public RelayCommand AddImage

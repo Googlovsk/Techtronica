@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Techtronica.Data.Context;
 
-namespace Techtronica.Data.ViewModels
+namespace Techtronica.Data.ViewModels.Main
 {
     class MainPageViewModel : INotifyPropertyChanged
     {
         private string _userName = "";
-        
+
         public string UserName
         {
             get { LoadUserData(); return _userName; }
@@ -28,7 +28,7 @@ namespace Techtronica.Data.ViewModels
 
         private void LoadUserData()
         {
-            if (ObjectContext.CurrentUser != null) 
+            if (ObjectContext.CurrentUser != null)
             {
                 _userName = ObjectContext.CurrentUser.UserName;
             }

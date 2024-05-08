@@ -16,6 +16,8 @@
     <None Remove="Resources\cross.png" />
     <None Remove="Resources\edit.png" />
     <None Remove="Resources\factory.png" />
+    <None Remove="Resources\gray_arrow_down.png" />
+    <None Remove="Resources\gray_arrow_up.png" />
     <None Remove="Resources\info_gray_outline.png" />
     <None Remove="Resources\language_settings.png" />
     <None Remove="Resources\logout.png" />
@@ -44,6 +46,8 @@
     <Resource Include="Resources\cross.png" />
     <Resource Include="Resources\edit.png" />
     <Resource Include="Resources\factory.png" />
+    <Resource Include="Resources\gray_arrow_down.png" />
+    <Resource Include="Resources\gray_arrow_up.png" />
     <Resource Include="Resources\info_gray_outline.png" />
     <Resource Include="Resources\language_settings.png" />
     <Resource Include="Resources\logout.png" />

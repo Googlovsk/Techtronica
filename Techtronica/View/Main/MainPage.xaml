@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Techtronica.Data.ViewModels"
+      xmlns:local="clr-namespace:Techtronica.Data.ViewModels.Main"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="1280"
       Title="MainPage" Loaded="Page_Loaded">
@@ -11,7 +11,7 @@
     <Page.DataContext>
         <local:MainPageViewModel/>
     </Page.DataContext>
-    
+
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -27,9 +27,8 @@
                 <Grid Margin="20,0,20,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="250"/>
-                        <ColumnDefinition Width="520"/>
-                        <ColumnDefinition Width="120"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="350"/>
                     </Grid.ColumnDefinitions>
 
                     <Border x:Name="ToHomeBtn" Background="White" CornerRadius="10" Grid.Column="0" Margin="0,5,5,5" Cursor="Hand" MouseLeftButtonDown="ToHomeBtn_MouseLeftButtonDown">
@@ -43,29 +42,30 @@
                                FontWeight="Bold" 
                                FontSize="24" 
                                Style="{StaticResource LoginLabel}" 
-                               Width="148" Height="40"/>
+                               Width="148" Height="40" Cursor=""/>
                     </Border>
 
-                    <Border Background="White" Grid.Column="1" HorizontalAlignment="Stretch" CornerRadius="10" Margin="5">
+                    <Border Background="White" Grid.Column="1" CornerRadius="10" Margin="5,5,5,5">
                         <Border.Effect>
                             <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="270" BlurRadius="5" Opacity=".3"/>
                         </Border.Effect>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="520"/>
+                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
                             <TextBox Grid.Column="0" 
                                      VerticalContentAlignment="Center" 
+                                     x:Name="TBSearch"
                                      HorizontalAlignment="Left" 
                                      Margin="10,0,0,0" 
                                      Foreground="Gray" 
                                      FontSize="16" 
                                      VerticalAlignment="Center" 
                                      Background="Transparent" 
-                                     BorderThickness="0" Text="Поиск" 
+                                     BorderThickness="0" Text="" 
                                      Width="510" Height="50"/>
 
                             <Border Grid.Column="1" 
@@ -81,10 +81,10 @@
                                    Source="/Resources/search.png" 
                                    Width="20" Height="20" 
                                    HorizontalAlignment="Center" 
-                                   Margin="10"/>
+                                   Margin="15"/>
                         </Grid>
                     </Border>
-                    <Border Grid.Column="2" 
+                    <!--<Border Grid.Column="2" 
                             x:Name="MPKatalogBtn" 
                             Background="White" 
                             Visibility="Visible" 
@@ -114,14 +114,13 @@
                                    Source="/Resources/arrow_down.png" 
                                    Width="24" Height="24"/>
                         </Grid>
-                    </Border>
+                    </Border>-->
 
-                    <StackPanel Grid.Column="3" 
+                    <StackPanel Grid.Column="2" 
                                 VerticalAlignment="Center" 
-                                HorizontalAlignment="Stretch" 
-                                Margin="10,5,0,5">
+                                Margin="10,0,0,0" Height="60">
                         <StackPanel x:Name="MainPageUIUnAuthorizedUser" 
-                                    Visibility="Visible" 
+                                    Visibility="Collapsed" 
                                     Orientation="Horizontal" 
                                     HorizontalAlignment="Right" 
                                     VerticalAlignment="Center" 
@@ -138,10 +137,10 @@
                                     Margin="5"
                                     Click="BtnRegister_Click" />
                         </StackPanel>
-                        <Grid x:Name="MainPageUIAuthorizedUser" Visibility="Collapsed">
+                        <Grid x:Name="MainPageUIAuthorizedUser" Visibility="Visible">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="280"/>
                             </Grid.ColumnDefinitions>
 
                             <Border Grid.Column="0" 
@@ -196,23 +195,57 @@
                     <ColumnDefinition Width="245"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" CornerRadius="10" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+
+                <Border CornerRadius="10" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
                     <Border.Effect>
                         <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="0" Opacity=".3" BlurRadius="5"/>
                     </Border.Effect>
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
+                        <Border CornerRadius="10">
+                            <StackPanel>
+                                <Border Height="Auto" VerticalAlignment="Top" Margin="0,0,0,5" BorderBrush="LightGray" BorderThickness="0,0,0,1" CornerRadius="0,0,10,10" >
+                                    <StackPanel x:Name="MainPageCatalog">
+                                        <Grid x:Name="GridBtnCatalog" Margin="5" MouseLeftButtonDown="GridBtnCatalog_MouseLeftButtonDown">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="26"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" x:Name="MenuPunktCatalogArrow" Source="/Resources/gray_arrow_down.png" Width="16" Height="16" Margin="5"/>
+                                            <Label Grid.Column="1" Content="Каталог" FontFamily="Century Gothic" FontWeight="Bold" FontSize="20" Foreground="#FF636363"/>
+                                        </Grid>
+                                        <Frame Margin="15,0,0,0" x:Name="MainPageCatalogFrame" Visibility="Visible" NavigationUIVisibility="Hidden"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Height="Auto" VerticalAlignment="Top" Margin="0,0,0,5" BorderBrush="LightGray" BorderThickness="0,0,0,1" CornerRadius="0,0,10,10">
+                                    <StackPanel x:Name="MainPageManufacturer">
+                                        <Grid x:Name="GridBtnManufacturer" Margin="5" MouseLeftButtonDown="GridBtnManufacturer_MouseLeftButtonDown">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="26"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" x:Name="MenuPunktManufacturerArrow" Source="/Resources/gray_arrow_down.png" Width="16" Height="16" Margin="5"/>
+                                            <Label Grid.Column="1" Content="Производители" FontFamily="Century Gothic" FontWeight="Bold" FontSize="20" Foreground="#FF636363"/>
+                                        </Grid>
+                                        <Frame Margin="15,0,0,0" x:Name="MainPageManufacturerFrame" Visibility="Visible" NavigationUIVisibility="Hidden"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                           
+                        </Border>
+                    </ScrollViewer>
                 </Border>
                 <Border Grid.Column="1" CornerRadius="10" Margin="10,0,0,0" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Border.Effect>
                         <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="0" Opacity=".3" BlurRadius="5"/>
                     </Border.Effect>
-                    
-                    
+
+
                     <Frame x:Name="MainPageFrame" NavigationUIVisibility="Hidden"/>
                 </Border>
             </Grid>
 
         </Grid>
-        
+
 
         <Border x:Name="BlurOverlay" 
                 Visibility="Collapsed" 

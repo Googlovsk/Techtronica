@@ -11,15 +11,15 @@ using Techtronica.Data.Models;
 using Techtronica.Data.Services;
 using Techtronica.Data.Services.Crypt;
 
-namespace Techtronica.Data.ViewModels
+namespace Techtronica.Data.ViewModels.Auth
 {
     public class CreateAccountViewModel : INotifyPropertyChanged
     {
         private string _userName;
         public string UserName
         {
-            get { return _userName; } 
-            set { _userName = value; OnPropertyChanged(value); } 
+            get { return _userName; }
+            set { _userName = value; OnPropertyChanged(value); }
         }
         private DateTime _dateOfBirth;
         public DateTime DateOfBirth
@@ -60,7 +60,7 @@ namespace Techtronica.Data.ViewModels
             get { return _roleId; }
             set { _roleId = value; OnPropertyChanged(value); }
         }
- 
+
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -76,7 +76,7 @@ namespace Techtronica.Data.ViewModels
         {
             get
             {
-                return createAccount ?? (new RelayCommand(obj =>
+                return createAccount ?? new RelayCommand(obj =>
                 {
                     try
                     {
@@ -106,7 +106,7 @@ namespace Techtronica.Data.ViewModels
                         //Console.WriteLine("-----------------\n\n" + ex);
                         MessageBox.Show($"{ex}", "Билли Бонс умер...", MessageBoxButton.OK);
                     }
-                }));
+                });
             }
         }
         private void ClearInputs()

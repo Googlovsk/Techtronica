@@ -11,5 +11,7 @@ namespace Techtronica.Data.Services
     {
         public static Frame mainFrame { get; set; }
         public static Frame innerFrame { get; set; }
+        public static Frame catalogFrame { get; set; }
+        public static Frame manufacturerFrame { get; set; }
     }
 }

@@ -143,6 +143,26 @@ namespace Techtronica.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] gray_arrow_down {
+            get {
+                object obj = ResourceManager.GetObject("gray_arrow_down", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] gray_arrow_up {
+            get {
+                object obj = ResourceManager.GetObject("gray_arrow_up", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] info_gray_outline {
             get {
                 object obj = ResourceManager.GetObject("info_gray_outline", resourceCulture);

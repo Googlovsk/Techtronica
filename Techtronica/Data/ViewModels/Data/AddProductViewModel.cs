@@ -11,15 +11,15 @@ using Techtronica.Data.Context;
 using Techtronica.Data.Models;
 using Techtronica.Data.Services;
 
-namespace Techtronica.Data.ViewModels
+namespace Techtronica.Data.ViewModels.Data
 {
     class AddProductViewModel : INotifyPropertyChanged
     {
         private string _name;
-        public string Name 
-        { 
+        public string Name
+        {
             get { return _name; }
-            set { _name = value; OnPropertyChanged(value); } 
+            set { _name = value; OnPropertyChanged(value); }
         }
         private int _cost;
         public int Cost
@@ -81,7 +81,7 @@ namespace Techtronica.Data.ViewModels
         {
             get
             {
-                return addProduct ?? (new RelayCommand(obj =>
+                return addProduct ?? new RelayCommand(obj =>
                 {
                     try
                     {
@@ -99,7 +99,7 @@ namespace Techtronica.Data.ViewModels
 
                         ConnectToDB.appDBContext.Products.Add(newProduct);
 
-                        
+
                         GetFileService.CopyImageToProject();
                         ConnectToDB.appDBContext.SaveChanges();
 
@@ -107,9 +107,10 @@ namespace Techtronica.Data.ViewModels
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex}", "Билли Бонс умер...", MessageBoxButton.OK);
+                        MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", 
+                            MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                }));
+                });
             }
         }
         private void ClearInputs()

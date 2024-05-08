@@ -11,7 +11,7 @@ using Techtronica.Data.Models;
 using Techtronica.Data.Services;
 using Techtronica.View;
 
-namespace Techtronica.Data.ViewModels
+namespace Techtronica.Data.ViewModels.Data
 {
     class ProductViewModel : INotifyPropertyChanged
     {
@@ -35,7 +35,7 @@ namespace Techtronica.Data.ViewModels
                 {
                     ObjectContext.CorrentProduct = product;
                     NavigationSupport.mainFrame.Navigate(new EditProductPage(product)); // Передаем продукт
-                    
+
                 }
             });
         }
@@ -44,6 +44,6 @@ namespace Techtronica.Data.ViewModels
         private void OnPropertyChanged([CallerMemberName] string member = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
-        } 
+        }
     }
 }

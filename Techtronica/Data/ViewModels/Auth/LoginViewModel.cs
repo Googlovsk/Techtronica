@@ -11,7 +11,7 @@ using Techtronica.Data.Services;
 using Techtronica.Data.Services.Crypt;
 using Techtronica.View;
 
-namespace Techtronica.Data.ViewModels
+namespace Techtronica.Data.ViewModels.Auth
 {
     class LoginViewModel : INotifyPropertyChanged
     {
@@ -35,7 +35,7 @@ namespace Techtronica.Data.ViewModels
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        private void OnPropertyChanged( [CallerMemberName] string member = null)
+        private void OnPropertyChanged([CallerMemberName] string member = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
         }
@@ -45,17 +45,17 @@ namespace Techtronica.Data.ViewModels
         {
             get
             {
-                return login ?? (new RelayCommand(obj =>
+                return login ?? new RelayCommand(obj =>
                 {
                     try
                     {
                         PerformLogin();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Билли Бонс Умер...", ex.Message, MessageBoxButton.OK);
-                    } 
-                }));
+                    }
+                });
             }
         }
         private void PerformLogin()
@@ -89,7 +89,7 @@ namespace Techtronica.Data.ViewModels
             {
                 MessageBox.Show(ex.Message, "Err", MessageBoxButton.OK);
             }
-            
+
         }
     }
 }

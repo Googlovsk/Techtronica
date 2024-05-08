@@ -25,7 +25,7 @@ namespace Techtronica.View
         public RegisterPage()
         {
             InitializeComponent();
-            SetHints();
+            Hints.SetHint(TBPhoneField, "+7(000)-000-00-00", true);
         }
         private void ToSuccessRegister_Click(object sender, RoutedEventArgs e)
         {
@@ -78,18 +78,5 @@ namespace Techtronica.View
                 textBox.CaretIndex = textBox.Text.Length;
             }
         }
-        private void SetHints()
-        {
-            SetHint(TBPhoneField, "+7(000)-000-00-00");
-        }
-        private void SetHint(TextBox textBox, string hint)
-        {
-            textBox.Text = hint;
-            textBox.Foreground = System.Windows.Media.Brushes.Gray;
-            textBox.PreviewMouseLeftButtonDown += (sender, e) => { if (textBox.Text == hint) { textBox.Text = "+7"; textBox.Foreground = System.Windows.Media.Brushes.Black; } };
-            textBox.LostFocus += (sender, e) => { if (/*string.IsNullOrWhiteSpace(textBox.Text)*/ textBox.Text == "+7") { textBox.Text = hint; textBox.Foreground = System.Windows.Media.Brushes.Gray; } };
-        }
-
-
     }
 }

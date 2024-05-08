@@ -9,6 +9,39 @@
         <SolidColorBrush x:Key="LeaveOnSuccessButton" Color="#FFB99D84"/>
         <SolidColorBrush x:Key="DefaultBG" Color="#FFEBEBF5"/>
 
+        <Style x:Key="CheckBoxRounded" TargetType="CheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid>
+                            <Border x:Name="CheckBoxBorder" Width="22" Height="22"
+                                    BorderThickness="1" CornerRadius="4" BorderBrush="{TemplateBinding BorderBrush}" Background="Transparent">
+                                <Grid x:Name="CheckMark" Visibility="Collapsed">
+                                    <Path Data="M 3 10 L 9 15 L 16 6" Stroke="#FFF" StrokeThickness="2"/>
+                                </Grid>
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <!-- Когда CheckBox отмечен -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="CheckBoxBorder" Property="Background" Value="#FFDAC8B7"/>
+                                <Setter TargetName="CheckBoxBorder" Property="BorderThickness" Value="0"/>
+                            </Trigger>
+                            <!-- Когда CheckBox наведен -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="Gray"/>
+                            </Trigger>
+                            <!-- Когда CheckBox отключен -->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="CheckBoxBorder" Property="Background" Value="LightGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="NoHighlightListBoxItem" TargetType="ListBoxItem">
             <!-- Удалить все эффекты при наведении или выборе -->
             <Setter Property="Template">

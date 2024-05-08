@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Techtronica.Data.Models;
 using Techtronica.Data.Services;
-using Techtronica.Data.ViewModels;
+using Techtronica.Data.ViewModels.Data;
 
 namespace Techtronica.View
 {
