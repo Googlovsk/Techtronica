@@ -9,13 +9,6 @@ namespace Techtronica.Data.Services
 {
     public class Hints
     {
-        public static void SetHint(TextBox textBox, string hint, bool withChar)
-        {
-            textBox.Text = hint;
-            textBox.Foreground = System.Windows.Media.Brushes.Gray;
-            textBox.PreviewMouseLeftButtonDown += (sender, e) => { if (textBox.Text == hint) { textBox.Text = "+7"; textBox.Foreground = System.Windows.Media.Brushes.Black; } };
-            textBox.LostFocus += (sender, e) => { if (/*string.IsNullOrWhiteSpace(textBox.Text)*/ textBox.Text == "+7") { textBox.Text = hint; textBox.Foreground = System.Windows.Media.Brushes.Gray; } };
-        }
         public static void SetHint(TextBox textBox, string hint)
         {
             textBox.Text = hint;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Techtronica.Data.Context;
 using Techtronica.Data.Services;
+using Techtronica.Data.ViewModels.Data;
+using Techtronica.Data.ViewModels.Main;
+using Techtronica.View.ViewData;
 
 namespace Techtronica.View
 {
@@ -24,14 +28,19 @@ namespace Techtronica.View
     /// </summary>
     public partial class MainPage : Page
     {
-        private string arrowUp = @"/Resources/gray_arrow_up.png";
-        private string arrowDown = @"/Resources/gray_arrow_down.png";
+
+        private readonly string arrowUp = @"/Resources/gray_arrow_up.png";
+        private readonly string arrowDown = @"/Resources/gray_arrow_down.png";
         public MainPage()
         {
             InitializeComponent();
 
+
+            ObjectContext.BlurOverlayVisibility = false;
             HideBlur();
-            Hints.SetHint(TBSearch, "Поиск");
+
+
+            //Hints.SetHint(TBSearch, "Поиск");
 
             NavigationSupport.mainFrame = MainPageFrameLayout;
             NavigationSupport.innerFrame = MainPageFrame;
@@ -42,6 +51,7 @@ namespace Techtronica.View
             MainPageCatalogFrame.Navigate(new CatalogPageFrame());
             MainPageManufacturerFrame.Navigate(new ManufacturerPageFrame());
 
+            
             Background = (SolidColorBrush)FindResource("DefaultBG");
 
             var user = ObjectContext.CurrentUser;
@@ -53,40 +63,35 @@ namespace Techtronica.View
         }
         public void ShowBlur()
         {
-            BlurOverlay.Visibility = Visibility.Visible;
+            if (ObjectContext.BlurOverlayVisibility) BlurOverlay.Visibility = Visibility.Visible;
         }
         public void HideBlur()
         {
-            BlurOverlay.Visibility = Visibility.Collapsed;
+            if (!ObjectContext.BlurOverlayVisibility) BlurOverlay.Visibility = Visibility.Collapsed;
         }
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            ObjectContext.BlurOverlayVisibility = true;
             ShowBlur();
             NavigationSupport.mainFrame.Navigate(new LoginPage());
         }
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
+            ObjectContext.BlurOverlayVisibility = true;
             ShowBlur();
             NavigationSupport.mainFrame.Navigate(new RegisterPage());
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            ObjectContext.BlurOverlayVisibility = false;
             HideBlur();
         }
 
-        //private void BtnAccount_Click(object sender, RoutedEventArgs e)
-        //{
-        //    NavigationSupport.mainFrame.Navigate(new AccountPage());
-        //    //MPKatalogBtn.Visibility = Visibility.Collapsed;
-        //}
-
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //NavigationSupport.mainFrame.Navigate(new ProfilePage());
             MainPageFrameLayout.Navigate(new ProfilePage());
-
         }
 
         private void ToHomeBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -119,6 +124,36 @@ namespace Techtronica.View
                 MainPageManufacturerFrame.Visibility = Visibility.Visible;
                 MenuPunktManufacturerArrow.Source = new BitmapImage(new Uri(arrowDown, UriKind.Relative));
             }
+        }
+
+        private void TextRemove_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TBSearch.Text = "";
+        }
+
+        private void TBSearch_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (TBSearch.Text == "" || TBSearch.Text == null || TBSearch.Text == string.Empty)
+                TextRemove.Visibility = Visibility.Collapsed;
+            else
+            {
+                TextRemove.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void TBSearch_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            
+        }
+
+        private void ToCartBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationSupport.innerFrame.Navigate(new CartPage());
         }
     }
 }

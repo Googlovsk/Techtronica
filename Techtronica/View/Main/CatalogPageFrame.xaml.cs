@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Techtronica.Data.Context;
 using Techtronica.Data.ViewModels.Main;
 
 namespace Techtronica.View
@@ -41,7 +42,13 @@ namespace Techtronica.View
                 //{
                 //    parameter.IsChecked = !parameter.IsChecked;
                 //}
+
             }
+            ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products
+                                                                    .Where(p => p.ProductCategoryId.Equals(1))
+                                                                    .ToList();
+
         }
+       
     }
 }

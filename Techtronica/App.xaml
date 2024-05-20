@@ -23,17 +23,14 @@
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
                         </Grid>
                         <ControlTemplate.Triggers>
-                            <!-- Когда CheckBox отмечен -->
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                                 <Setter TargetName="CheckBoxBorder" Property="Background" Value="#FFDAC8B7"/>
                                 <Setter TargetName="CheckBoxBorder" Property="BorderThickness" Value="0"/>
                             </Trigger>
-                            <!-- Когда CheckBox наведен -->
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="Gray"/>
                             </Trigger>
-                            <!-- Когда CheckBox отключен -->
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="CheckBoxBorder" Property="Background" Value="LightGray"/>
                             </Trigger>
@@ -42,58 +39,13 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="NoHighlightListBoxItem" TargetType="ListBoxItem">
-            <!-- Удалить все эффекты при наведении или выборе -->
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ListBoxItem">
-                        <Border Background="Transparent" BorderThickness="0">
-                            <!-- Сделать фон прозрачным -->
-                            <ContentPresenter />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <!-- Убрать фокус при наведении -->
-            <Setter Property="Focusable" Value="False" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.Setters>
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                    </Trigger.Setters>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="NoHighlightSV" TargetType="ScrollViewer">
-            <!-- Удалить все эффекты при наведении или выборе -->
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ScrollViewer">
-                        <Border Background="Transparent" BorderThickness="0">
-                            <!-- Сделать фон прозрачным -->
-                            <ContentPresenter />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <!-- Убрать фокус при наведении -->
-            <Setter Property="Focusable" Value="False" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.Setters>
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                    </Trigger.Setters>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
 
         <Style x:Key="BtnSuccess" TargetType="Button">
             <Setter Property="Background" Value="#FFB99D84"/>
             <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="FontFamily" Value="Century Gothic"/>
             <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -105,6 +57,16 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style x:Key="TBlParameterTitleBlack18px" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style x:Key="TBlWarn" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="Foreground" Value="#FFC82E2E"/>
+            <Setter Property="FontSize" Value="14"/>
         </Style>
         <Style x:Key="TransparentBtn" TargetType="Button">
             <Setter Property="Width" Value="140"/>
@@ -161,6 +123,25 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
                         <Border Background="#FFF" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="3"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="TBInputField" TargetType="TextBox">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#000"/>
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="#FFE5E7EF" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                             <ScrollViewer x:Name="PART_ContentHost" Margin="3"/>
                         </Border>
                     </ControlTemplate>

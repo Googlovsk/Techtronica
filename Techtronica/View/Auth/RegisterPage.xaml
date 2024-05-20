@@ -26,15 +26,15 @@
         
         
         
-        <Border CornerRadius="15" Width="600" Height="450" Background="#FFBDBDBD">
+        <Border CornerRadius="15" Width="500" Height="350" Background="#FFBDBDBD">
             <Image x:Name="BtnBack" Source="/Resources/Back_Arrow.png" Width="40" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Cursor="Hand" MouseLeftButtonDown="BtnBack_MouseLeftButtonDown"/>
         </Border>
-        <StackPanel HorizontalAlignment="Stretch" Width="600" VerticalAlignment="Center" Orientation="Vertical">
+        <StackPanel HorizontalAlignment="Stretch" Width="500" VerticalAlignment="Center" Orientation="Vertical">
             <Label Content="Регистрация" Style="{StaticResource LoginTitleLabel}" Margin="0,0,0,20"/>
             <StackPanel Margin="50,0,50,0">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="75"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Имя" Style="{StaticResource RegisterLabel}" Grid.Column="0" Width="145"/>
@@ -42,31 +42,16 @@
                 </Grid>
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Content="Дата рождения" Style="{StaticResource RegisterLabel}" Grid.Column="0" Width="140"/>
-                    <DatePicker x:Name="TBDateOfBirthField" Text="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Cursor="Hand"/>
-                </Grid>
-                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="75"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Пароль" Style="{StaticResource RegisterLabel}" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <TextBox x:Name="TBPasswordField" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource TBInput}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" BorderBrush="#00000000"/>
                 </Grid>
+
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Content="Телефон" Style="{StaticResource RegisterLabel}" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBox x:Name="TBPhoneField" Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource TBInput}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" PreviewTextInput="TBPhoneField_PreviewTextInput" TextChanged="TBPhoneField_TextChanged"/>
-                </Grid>
-                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,0,5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="75"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Email" Style="{StaticResource RegisterLabel}" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>

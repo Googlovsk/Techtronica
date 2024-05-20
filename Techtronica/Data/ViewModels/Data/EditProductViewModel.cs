@@ -17,29 +17,29 @@ namespace Techtronica.Data.ViewModels.Data
 {
     public class EditProductViewModel : INotifyPropertyChanged
     {
-        private int _id = ObjectContext.CorrentProduct.Id;
+        private int _id = ObjectContext.CurrentProduct.Id;
         private int Id { get { return _id; } }
 
-        private string _name = ObjectContext.CorrentProduct.Name;
+        private string _name = ObjectContext.CurrentProduct.Name;
         public string Name
         {
             get { return _name; }
             set { _name = value; OnPropertyChanged(value); }
         }
-        private int _cost = ObjectContext.CorrentProduct.Cost;
+        private int _cost = ObjectContext.CurrentProduct.Cost;
         public int Cost
         {
             get { return _cost; }
             set { _cost = value; OnPropertyChanged(value); }
         }
-        private string _description = ObjectContext.CorrentProduct.Description;
+        private string _description = ObjectContext.CurrentProduct.Description;
 
         public string Description
         {
             get { return _description; }
             set { _description = value; OnPropertyChanged(value); }
         }
-        private string _imagePath = ObjectContext.CorrentProduct.ImagePath;
+        private string _imagePath = ObjectContext.CurrentProduct.ImagePath;
         public string ImagePath
         {
             get { return _imagePath; }
@@ -57,13 +57,13 @@ namespace Techtronica.Data.ViewModels.Data
             get { return _amount; }
             set { _amount = value; OnPropertyChanged(value); }
         }
-        private int _productCategoryId = ObjectContext.CorrentProduct.ProductCategoryId;
+        private int _productCategoryId = ObjectContext.CurrentProduct.ProductCategoryId;
         public int ProductCategoryId
         {
             get { return _productCategoryId; }
             set { _productCategoryId = value; OnPropertyChanged(value); }
         }
-        private int _manufacturerId = ObjectContext.CorrentProduct.ManufacturerId;
+        private int _manufacturerId = ObjectContext.CurrentProduct.ManufacturerId;
         public int ManufacturerId
         {
             get { return _manufacturerId; }
@@ -113,13 +113,14 @@ namespace Techtronica.Data.ViewModels.Data
 
                         GetFileService.CopyImageToProject();
                         ConnectToDB.appDBContext.SaveChanges();
-                        ObjectContext.CorrentProduct = null;
+                        ObjectContext.CurrentProduct = null;
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    NavigationSupport.mainFrame.Navigate(new MainPage());
+                    //NavigationSupport.mainFrame.Navigate(new MainPage());
+                    ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products;
                 });
             }
         }
@@ -138,13 +139,14 @@ namespace Techtronica.Data.ViewModels.Data
                             ConnectToDB.appDBContext.Remove(product);
                         }
                         ConnectToDB.appDBContext.SaveChanges();
-                        ObjectContext.CorrentProduct = null;
+                        ObjectContext.CurrentProduct = null;
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    NavigationSupport.mainFrame.Navigate(new MainPage());
+                    //NavigationSupport.mainFrame.Navigate(new MainPage());
+                    ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products;
                 });
             }
         }

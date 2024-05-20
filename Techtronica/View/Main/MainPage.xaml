@@ -28,7 +28,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="350"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
                     <Border x:Name="ToHomeBtn" Background="White" CornerRadius="10" Grid.Column="0" Margin="0,5,5,5" Cursor="Hand" MouseLeftButtonDown="ToHomeBtn_MouseLeftButtonDown">
@@ -65,15 +65,18 @@
                                      FontSize="16" 
                                      VerticalAlignment="Center" 
                                      Background="Transparent" 
-                                     BorderThickness="0" Text="" 
-                                     Width="510" Height="50"/>
+                                     BorderThickness="0" 
+                                     Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                     Width="510" Height="50" PreviewTextInput="TBSearch_PreviewTextInput" TextChanged="TBSearch_TextChanged"/>
 
                             <Border Grid.Column="1" 
+                                    x:Name="TextRemove"
                                     Height="20" 
                                     Width="30" 
                                     Visibility="Collapsed" 
+                                    Cursor="Hand"
                                     BorderBrush="Gray" 
-                                    BorderThickness="0,0,1,0">
+                                    BorderThickness="0,0,1,0" MouseLeftButtonDown="TextRemove_MouseLeftButtonDown">
 
                                 <Image Source="/Resources/cross.png" Width="20" HorizontalAlignment="Left"/>
                             </Border>
@@ -84,47 +87,17 @@
                                    Margin="15"/>
                         </Grid>
                     </Border>
-                    <!--<Border Grid.Column="2" 
-                            x:Name="MPKatalogBtn" 
-                            Background="White" 
-                            Visibility="Visible" 
-                            CornerRadius="10" 
-                            Margin="5" 
-                            Cursor="Hand">
-                        <Border.Effect>
-                            <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="270" BlurRadius="5" Opacity=".3"/>
-                        </Border.Effect>
 
-                        <Grid Margin="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="24"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" 
-                                   Content="Каталог" 
-                                   HorizontalContentAlignment="Center" 
-                                   VerticalContentAlignment="Center" 
-                                   HorizontalAlignment="Center" 
-                                   Foreground="#000" 
-                                   FontWeight="Bold" 
-                                   Style="{StaticResource LoginLabel}" 
-                                   Width="110"/>
-
-                            <Image Grid.Column="1" 
-                                   Source="/Resources/arrow_down.png" 
-                                   Width="24" Height="24"/>
-                        </Grid>
-                    </Border>-->
-
-                    <StackPanel Grid.Column="2" 
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Left" 
                                 VerticalAlignment="Center" 
-                                Margin="10,0,0,0" Height="60">
+                                Margin="0,0,0,0" Height="60" Width="330">
                         <StackPanel x:Name="MainPageUIUnAuthorizedUser" 
-                                    Visibility="Collapsed" 
-                                    Orientation="Horizontal" 
+                                    Visibility="Visible" 
+                                    Orientation="Horizontal"
+                                    
                                     HorizontalAlignment="Right" 
                                     VerticalAlignment="Center" 
-                                    Margin="10">
+                                    Margin="15">
 
                             <Button x:Name="BtnLogin" 
                                     Content="Вход" Style="{StaticResource TransparentBtn}" 
@@ -137,18 +110,19 @@
                                     Margin="5"
                                     Click="BtnRegister_Click" />
                         </StackPanel>
-                        <Grid x:Name="MainPageUIAuthorizedUser" Visibility="Visible">
+                        <Grid x:Name="MainPageUIAuthorizedUser" Visibility="Collapsed" Margin="5,0,0,0"><!--<Флаг>-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="280"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Border Grid.Column="0" 
+                            <Border Grid.Column="0"
+                                    x:Name="ToCartBtn"
                                     HorizontalAlignment="Stretch" 
                                     CornerRadius="10" 
                                     Background="#FFDAC8B7" 
                                     Margin="5" 
-                                    Cursor="Hand">
+                                    Cursor="Hand" MouseLeftButtonDown="ToCartBtn_MouseLeftButtonDown">
                                 <Image Source="/Resources/basket.png" Width="20" Height="20"/>
                             </Border>
                             <Border Grid.Column="1" 
@@ -165,23 +139,19 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Grid.Column="0" 
-                                               Width="204" Height="28"
-                                               HorizontalAlignment="Center"   
-                                               VerticalAlignment="Center" 
-                                               Text="{Binding UserName}"/>
-
-                                    <Ellipse Grid.Column="1" 
-                                             Stroke="White" 
-                                             StrokeThickness="1.5" 
-                                             Height="40" Width="40" 
-                                             VerticalAlignment="Center" 
-                                             HorizontalAlignment="Left">
-                                        <Ellipse.Fill>
-                                            <SolidColorBrush Color="Gray"/>
-                                            <!--Пока затычка-->
-                                            <!--<ImageBrush ImageSource="..."/>-->
-                                        </Ellipse.Fill>
-                                    </Ellipse>
+                                               FontFamily="Century Gothic"
+                                               FontSize="18"
+                                               Foreground="#FFF"
+                                               FontWeight="Bold"
+                                               Text="{Binding UserName}" VerticalAlignment="Center"/>
+                                    <Grid Grid.Column="1">
+                                        <Ellipse Stroke="White" StrokeThickness="1.5" Height="40" Width="40" Fill="White"/>
+                                        <Image Source="/Resources/user.png" Height="35" Width="35" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="True">
+                                            <Image.Clip>
+                                                <EllipseGeometry RadiusX="20" RadiusY="20" Center="17.5,17.5"/>
+                                            </Image.Clip>
+                                        </Image>
+                                    </Grid>
                                 </Grid>
                             </Border>
                         </Grid>
@@ -193,7 +163,7 @@
             <Grid Grid.Row="1" Margin="20,20,20,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="245"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
                 <Border CornerRadius="10" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
@@ -229,8 +199,9 @@
                                         <Frame Margin="15,0,0,0" x:Name="MainPageManufacturerFrame" Visibility="Visible" NavigationUIVisibility="Hidden"/>
                                     </StackPanel>
                                 </Border>
+                                <Button x:Name="MainMenuSearchBtn" Content="Поиск" Background="#FF76A079" Height="40" Margin="5" VerticalAlignment="Bottom" Style="{StaticResource BtnSuccess}"/>
                             </StackPanel>
-                           
+
                         </Border>
                     </ScrollViewer>
                 </Border>
@@ -239,13 +210,12 @@
                         <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="0" Opacity=".3" BlurRadius="5"/>
                     </Border.Effect>
 
-
-                    <Frame x:Name="MainPageFrame" NavigationUIVisibility="Hidden"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible">
+                        <Frame x:Name="MainPageFrame" NavigationUIVisibility="Hidden"/>
+                    </ScrollViewer>
                 </Border>
             </Grid>
-
         </Grid>
-
 
         <Border x:Name="BlurOverlay" 
                 Visibility="Collapsed" 

@@ -13,80 +13,70 @@
     </Page.DataContext>
 
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Visible">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
-                <ListBox x:Name="LBoxProduct" BorderBrush="Transparent" HorizontalAlignment="Stretch" Background="Transparent" ItemsSource="{Binding Products}">
-                    <ListBox.ItemContainerStyle>
-                        <StaticResource ResourceKey="NoHighlightListBoxItem"/>
-                    </ListBox.ItemContainerStyle>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <ListBoxItem HorizontalAlignment="Stretch" Style="{StaticResource NoHighlightListBoxItem}">
-                                <Border Background="#FFF" CornerRadius="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10">
-                                    <Border.Effect>
-                                        <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="270" Opacity=".3" BlurRadius="5"/>
-                                    </Border.Effect>
-                                    <Grid Margin="10">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid Grid.Row="0" >
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="144"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="144"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Border Grid.Column="0" HorizontalAlignment="Left" CornerRadius="10">
-                                                <Image Source="{Binding ImagePath}" Width="144" Height="144">
-                                                    <Image.Clip>
-                                                        <RectangleGeometry RadiusX="10" RadiusY="10" Rect="0,0,144,144"/>
-                                                    </Image.Clip>
-                                                </Image>
-                                            </Border>
-                                            <Grid Margin="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                </Grid.RowDefinitions>
-                                                <TextBlock Margin="0,0,0,10" FontFamily="Century Gothic" FontSize="18" Grid.Row="0" x:Name="PrCrdProductName" Text="{Binding Name}"/>
-                                                <TextBlock Margin="0,0,0,10" FontFamily="Century Gothic" FontSize="16" Grid.Row="1" x:Name="PrCrdProductDescription" Text="{Binding Description}"/>
-                                            </Grid>
-                                            <Grid Grid.Column="2">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="64"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid Grid.Row="0" Margin="5">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Image Margin="10,0,0,0" Source="/Resources/info_gray_outline.png" Grid.Column="0" Width="24" Height="24"/>
-                                                    <TextBlock Grid.Column="1" FontFamily="Century Gothic" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center"  FontWeight="Bold" x:Name="PrCrdproductCost">
-                                                        <Run Text="{Binding Cost}"/>
-                                                        <Run Text=" ₽"/>
-                                                    </TextBlock>
-                                                </Grid>
-                                                <StackPanel Grid.Row="1" Orientation="Vertical">
-                                                    <Button x:Name="PrCrdBtnBuy" Margin="10,5,10,5" Height="45" Content="Купить" Background="#FFED9109" Foreground="#000" Style="{StaticResource BtnSuccess}"/>
-                                                    <Button x:Name="PrCrdBtnEdit" Command="{Binding Path=DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}" Margin="10,5,10,5" Height="45" Content="Edit" Background="#FFED9109" Foreground="#000" Style="{StaticResource BtnSuccess}" Click="PrCrdBtnEdit_Click"/>
-                                                </StackPanel>
-                                            </Grid>
-                                        </Grid>
-                                        <TextBlock Grid.Row="1" Margin="0,10,0,0" FontFamily="Century Gothic" FontSize="14" x:Name="PrCrdProductAmount">
-                                            <Run Text="В наличии: "/>
-                                            <Run Text="lol"/>
+        <ItemsControl x:Name="ICProducts" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#FFF" CornerRadius="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="270" Opacity=".3" BlurRadius="5"/>
+                        </Border.Effect>
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="144"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="144"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" HorizontalAlignment="Left" CornerRadius="10">
+                                    <Image Source="{Binding ImagePath}" Width="144" Height="144">
+                                        <Image.Clip>
+                                            <RectangleGeometry RadiusX="10" RadiusY="10" Rect="0,0,144,144"/>
+                                        </Image.Clip>
+                                    </Image>
+                                </Border>
+                                <Grid Margin="15,5,15,5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Margin="0,0,0,10" FontFamily="Century Gothic" FontSize="20" Grid.Row="0" x:Name="PrCrdProductName" Text="{Binding Name}"/>
+                                    <TextBlock Margin="0,0,0,10" FontFamily="Century Gothic" FontSize="18" Grid.Row="1" x:Name="PrCrdProductDescription" Text="{Binding Description}"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="64"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Margin="10,0,0,0" Source="/Resources/info_gray_outline.png" Grid.Column="0" Width="24" Height="24"/>
+                                        <TextBlock Grid.Column="1" FontFamily="Century Gothic" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center"  FontWeight="Bold" x:Name="PrCrdproductCost">
+                                            <Run Text="{Binding Cost}"/>
+                                            <Run Text=" ₽"/>
                                         </TextBlock>
                                     </Grid>
+                                    <StackPanel Grid.Row="1" Orientation="Vertical">
+                                        <Button x:Name="PrCrdBtnBuy" Command="{Binding Path=DataContext.BuyCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Margin="10,5,10,5" Height="45" Content="Купить" Background="#FFED9109" Foreground="#000" Style="{StaticResource BtnSuccess}"/>
+                                        <Button x:Name="PrCrdBtnEdit" Command="{Binding Path=DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Margin="10,5,10,5" Height="45" Content="Edit" Background="#FFED9109" Foreground="#000" Style="{StaticResource BtnSuccess}" Click="PrCrdBtnEdit_Click"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                            <TextBlock Grid.Row="1" Margin="0,10,0,0" FontFamily="Century Gothic" FontSize="18" x:Name="PrCrdProductAmount">
+                                <Run Text="В наличии: "/>
+                                <Run Text="{Binding Amount}"/>
+                            </TextBlock>
+                        </Grid>
 
-                                </Border>
-                            </ListBoxItem>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </StackPanel>
-        </ScrollViewer>
-
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Page>

@@ -103,7 +103,6 @@ namespace Techtronica.Data.ViewModels.Data
                         GetFileService.CopyImageToProject();
                         ConnectToDB.appDBContext.SaveChanges();
 
-                        ClearInputs();
                     }
                     catch (Exception ex)
                     {
@@ -112,17 +111,6 @@ namespace Techtronica.Data.ViewModels.Data
                     }
                 });
             }
-        }
-        private void ClearInputs()
-        {
-            Name = default;
-            Cost = 0;
-            Description = default;
-            ImagePath = default;
-            IsActive = default;
-            Amount = default;
-            ProductCategoryId = default;
-            ManufacturerId = default;
         }
         public RelayCommand AddImage
         {

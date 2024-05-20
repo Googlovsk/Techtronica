@@ -63,6 +63,8 @@ namespace Techtronica.Data.ViewModels.Auth
             try
             {
                 var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.UserName == _userName || u.Email == _email);
+                var userCart = ConnectToDB.appDBContext.Carts.SingleOrDefault(c => c.UserId == user.Id);
+
 
                 if (user == null)
                 {
@@ -74,10 +76,12 @@ namespace Techtronica.Data.ViewModels.Auth
                 {
                     Properties.ApplicationSettings.Default.AccountName = user.UserName;
                     Properties.ApplicationSettings.Default.AccountEmail = user.Email;
+                    Properties.ApplicationSettings.Default.AccountCart = userCart.UserId;
                     Properties.ApplicationSettings.Default.Save();
 
-                    ObjectContext.CurrentUser = user;
 
+                    ObjectContext.CurrentUser = user;
+                    ObjectContext.CurrentCart = userCart;
                     NavigationSupport.mainFrame.Navigate(new MainPage());
                 }
                 else

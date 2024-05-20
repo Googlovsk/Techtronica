@@ -3,10 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Techtronica.Data.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="1280"
-      Title="AccountPage" Unloaded="Page_Unloaded">
+      Title="AccountPage">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Border Width="330" 
@@ -143,7 +142,7 @@
                 </Border>
 
 
-                <Border Background="#FFDAC8B7" Grid.Row="2" CornerRadius="10" Margin="5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                <Border x:Name="BtnLogOut" Background="#FFDAC8B7" Grid.Row="2" CornerRadius="10" Margin="5" MouseLeftButtonDown="BtnLogOut_MouseLeftButtonDown">
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,5,20,5" Cursor="Hand">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="20"/>

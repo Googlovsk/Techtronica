@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,26 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Techtronica.Data.Context;
-using Techtronica.Data.Models;
-using Techtronica.Data.Services;
-using Techtronica.Data.ViewModels.Data;
 
-namespace Techtronica.View
+namespace Techtronica.View.ViewData
 {
     /// <summary>
-    /// Логика взаимодействия для ProductPage.xaml
+    /// Логика взаимодействия для CartPage.xaml
     /// </summary>
-    public partial class ProductPage : Page
+    public partial class CartPage : Page
     {
-        public ProductPage()
+        public CartPage()
         {
             InitializeComponent();
-            ObjectContext.ItemsControlProducts = ICProducts;
-        }
-        private void PrCrdBtnEdit_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

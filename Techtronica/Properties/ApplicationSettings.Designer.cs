@@ -12,7 +12,7 @@ namespace Techtronica.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     internal sealed partial class ApplicationSettings : global::System.Configuration.ApplicationSettingsBase {
         
         private static ApplicationSettings defaultInstance = ((ApplicationSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ApplicationSettings())));
@@ -37,13 +37,25 @@ namespace Techtronica.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("techtronica@support.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-")]
         public string AccountEmail {
             get {
                 return ((string)(this["AccountEmail"]));
             }
             set {
                 this["AccountEmail"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int AccountCart {
+            get {
+                return ((int)(this["AccountCart"]));
+            }
+            set {
+                this["AccountCart"] = value;
             }
         }
     }

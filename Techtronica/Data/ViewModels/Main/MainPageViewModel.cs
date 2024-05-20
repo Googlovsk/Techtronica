@@ -6,10 +6,15 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Techtronica.Data.Context;
+using Techtronica.Data.Models;
+using Techtronica.Data.Services;
+using Techtronica.Data.ViewModels.Data;
+using Techtronica.View;
 
 namespace Techtronica.Data.ViewModels.Main
 {
-    class MainPageViewModel : INotifyPropertyChanged
+
+    public class MainPageViewModel : INotifyPropertyChanged
     {
         private string _userName = "";
 
@@ -31,6 +36,22 @@ namespace Techtronica.Data.ViewModels.Main
             if (ObjectContext.CurrentUser != null)
             {
                 _userName = ObjectContext.CurrentUser.UserName;
+            }
+        }
+        private string searchText;
+        public string SearchText
+        {
+            get { return searchText; }
+            set
+            {
+                if (searchText != value)
+                {
+                    searchText = value;
+                    ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products
+                                                                    .Where(p => p.Name.ToLower().Contains(searchText.ToLower()))
+                                                                    .ToList();
+                    OnPropertyChanged();
+                }
             }
         }
     }

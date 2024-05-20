@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Techtronica.Data.ViewModels.Data"
       mc:Ignorable="d" 
-      d:DesignHeight="780" d:DesignWidth="1280"
+      d:DesignHeight="780" d:DesignWidth="995"
       Title="AddProductPage">
 
     <Page.DataContext>
@@ -13,64 +13,67 @@
     </Page.DataContext>
 
     <Grid>
-        <!--<Border Background="#FFF" CornerRadius="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
-            <Border.Effect>
-                <DropShadowEffect Color="#000" ShadowDepth="0" BlurRadius="5" Opacity=".3"/>
-            </Border.Effect>
-            
-        </Border>-->
         <Grid HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
-                <!--<RowDefinition Height="Auto"/>-->
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <!--<Border Grid.Row="0" 
-            CornerRadius="10" 
-            BorderThickness="0,0,0,2" 
-            BorderBrush="White" 
-            Background="#FFDAC8B7" 
-            HorizontalAlignment="Stretch"
-            Margin="5,5,5,0"
-            MouseLeftButtonDown="BtnBack_MouseLeftButtonDown">
-        <Image x:Name="BtnBack" 
-               Source="/Resources/white_arrow_up.png" 
-               Width="20" Height="20" 
-               Margin="0,5,5,5" 
-               VerticalAlignment="Center" 
-               HorizontalAlignment="Center"/>
-    </Border>-->
             <Border Grid.Row="0" 
-            CornerRadius="10" 
-            Background="#FFDADADA" 
-            Margin="5,5,5,0">
+                    CornerRadius="10" 
+                    Background="#FFF" 
+                    Margin="5,5,5,0">
                 <StackPanel HorizontalAlignment="Stretch"  
                             VerticalAlignment="Top"
-                            Margin="05,10,5,10">
+                            Margin="5,10,5,10">
                     <Label Content="Добавление товара" 
                            HorizontalAlignment="Left" 
                            HorizontalContentAlignment="Left"
-                           Margin="0,10,0,10" 
-                           FontSize="20" 
+                           Margin="5,10,5,30" 
+                           FontSize="26" 
                            FontWeight="Bold" 
                            Foreground="#000"
                            Style="{StaticResource LoginLabel}" 
-                           Width="380"/>
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,0,0" Cursor="Hand">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" x:Name="ProductNameLabel" Text="Название"/>
-                        <TextBox Grid.Row="1" 
-                         x:Name="TBProductName"
-                         Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
-                         Foreground="Gray"
-                         HorizontalAlignment="Stretch"
-                         Style="{StaticResource TBInput}"/>
-                        <TextBlock Grid.Row="2" x:Name="ProductNameWarnLabel" Text="Заполните поле!"/>
+                           Width="1248"
+                           Height="Auto"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,0,0" Cursor="Hand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Style="{StaticResource TBlParameterTitleBlack18px}" x:Name="ProductNameLabel" Text="Название"/>
+                            <TextBox Grid.Row="1" 
+                                     x:Name="TBProductName"
+                                     Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                                     Foreground="Gray"
+                                     HorizontalAlignment="Stretch"
+                                     Style="{StaticResource TBInputField}"/>
+                            <TextBlock Grid.Row="2" Style="{StaticResource TBlWarn}" x:Name="ProductNameWarnLabel" Text="Заполните поле!"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,0,0" Cursor="Hand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Style="{StaticResource TBlParameterTitleBlack18px}" x:Name="ProductCostLabel" Text="Цена"/>
+                            <TextBox Grid.Row="1" 
+                                     x:Name="TBProductCost"
+                                     Text="{Binding Cost, UpdateSourceTrigger=PropertyChanged}"
+                                     Foreground="Gray"
+                                     Background="#FFEBEBF5"
+                                     HorizontalAlignment="Stretch"
+                                     Style="{StaticResource TBInputField}"/>
+                            <TextBlock Grid.Row="2" Style="{StaticResource TBlWarn}" x:Name="ProductCostWarnLabel" Text="Заполните поле!"/>
+                        </Grid>
                     </Grid>
+                    
 
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,0,0" Cursor="Hand">
                         <Grid.RowDefinitions>
@@ -78,31 +81,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" x:Name="ProductCostLabel" Text="Цена"/>
+                        <TextBlock Grid.Row="0" Style="{StaticResource TBlParameterTitleBlack18px}" x:Name="ProductDesriptionLabel" Text="Описание"/>
                         <TextBox Grid.Row="1" 
-                                 x:Name="TBProductCost"
-                                 Text="{Binding Cost, UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="TBProductDesription"
+                                 Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                                  Foreground="Gray"
-                                 Background="#FFEBEBF5"
                                  HorizontalAlignment="Stretch"
-                                 Style="{StaticResource TBInput}"/>
-                        <TextBlock Grid.Row="2" x:Name="ProductCostWarnLabel" Text="Заполните поле!"/>
-                    </Grid>
-
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,0,0" Cursor="Hand">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" x:Name="ProductDesriptionLabel" Text="Описание"/>
-                        <TextBox Grid.Row="1" 
-                         x:Name="TBProductDesription"
-                         Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
-                         Foreground="Gray"
-                         HorizontalAlignment="Stretch"
-                         Style="{StaticResource TBInput}"/>
-                        <TextBlock Grid.Row="2" x:Name="ProductDesriptionWarnLabel" Text="Заполните поле!"/>
+                                 Style="{StaticResource TBInputField}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource TBlWarn}" x:Name="ProductDesriptionWarnLabel" Text="Заполните поле!"/>
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -115,30 +101,30 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" x:Name="ProductImageLabel" Text="Изображение"/>
+                            <TextBlock Grid.Row="0" Style="{StaticResource TBlParameterTitleBlack18px}" x:Name="ProductImageLabel" Text="Изображение"/>
                             <TextBox Grid.Row="1" 
                              x:Name="TBProductImage"
                              Text="{Binding ImagePath, UpdateSourceTrigger=PropertyChanged}"
                              Foreground="Gray"
                              HorizontalAlignment="Stretch"
-                             Style="{StaticResource TBInput}"/>
-                            <TextBlock Grid.Row="2" x:Name="ProductImageWarnLabel" Text="Заполните поле!"/>
+                             Style="{StaticResource TBInputField}"/>
+                            <TextBlock Grid.Row="2" Style="{StaticResource TBlWarn}" x:Name="ProductImageWarnLabel" Text="Заполните поле!"/>
                         </Grid>
                         <Button Grid.Column="1" x:Name="BtnAddImage" Command="{Binding AddImage}" Content="+" Width="32" Height="32" Margin="0,10,0,0" Style="{StaticResource BtnSuccess}"/>
                     </Grid>
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                        <Grid Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,0" Cursor="Hand">
+                        <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,0" Cursor="Hand">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" x:Name="ProductCategoryLabel" Text="Категория"/>
+                            <TextBlock Grid.Row="0" Style="{StaticResource TBlParameterTitleBlack18px}" x:Name="ProductCategoryLabel" Text="Категория"/>
                             <ComboBox Grid.Row="1" 
                               SelectedValue="{Binding ProductCategoryId, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                               SelectedValuePath="Id"
@@ -148,15 +134,15 @@
                               Text="Введите описание товара"
                               Foreground="Gray"
                               HorizontalAlignment="Stretch"/>
-                            <TextBlock Grid.Row="2" x:Name="ProductCategoryWarnLabel" Text="Заполните поле!"/>
+                            <TextBlock Grid.Row="2" Style="{StaticResource TBlWarn}" x:Name="ProductCategoryWarnLabel" Text="Заполните поле!"/>
                         </Grid>
-                        <Grid Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,0,0" Cursor="Hand">
+                        <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,0,0" Cursor="Hand">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" x:Name="ProductManufacturerLabel" Text="Производитель"/>
+                            <TextBlock Grid.Row="0" Style="{StaticResource TBlParameterTitleBlack18px}" x:Name="ProductManufacturerLabel" Text="Производитель"/>
                             <ComboBox Grid.Row="1" 
                               SelectedValue="{Binding ManufacturerId, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                               SelectedValuePath="Id"
@@ -166,7 +152,7 @@
                               Text="Введите описание товара"
                               Foreground="Gray"
                               HorizontalAlignment="Stretch"/>
-                            <TextBlock Grid.Row="2" x:Name="ProductManufacturerWarnLabel" Text="Заполните поле!"/>
+                            <TextBlock Grid.Row="2" Style="{StaticResource TBlWarn}" x:Name="ProductManufacturerWarnLabel" Text="Заполните поле!"/>
                         </Grid>
                     </Grid>
 
@@ -176,14 +162,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" x:Name="ProductAmountLabel" Text="Количество товара"/>
+                        <TextBlock Grid.Row="0" Style="{StaticResource TBlParameterTitleBlack18px}" x:Name="ProductAmountLabel" Text="Количество товара"/>
                         <TextBox Grid.Row="1" 
                          x:Name="TBProductAmount"
                          Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"
                          Foreground="Gray"
                          HorizontalAlignment="Stretch"
-                         Style="{StaticResource TBInput}"/>
-                        <TextBlock Grid.Row="2" x:Name="ProductAmountWarnLabel" Text="Заполните поле!"/>
+                         Style="{StaticResource TBInputField}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource TBlWarn}" x:Name="ProductAmountWarnLabel" Text="Заполните поле!"/>
                     </Grid>
 
                     <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" VerticalAlignment="Stretch" Margin="10,10,0,0">
@@ -195,15 +181,15 @@
                 </StackPanel>
             </Border>
             <Button Grid.Row="1" 
-            x:Name="BtnAddProduct" 
-            Command="{Binding AddProduct}"
-            Content="Сохранить" 
-            Height="40" 
-            Background="#FF76A079"
-            Margin="5" 
-            Style="{StaticResource BtnSuccess}"  
-            VerticalAlignment="Bottom"
-            Cursor="Hand"/>
+                    x:Name="BtnAddProduct" 
+                    Command="{Binding AddProduct}"
+                    Content="Сохранить" 
+                    Height="40" 
+                    Background="#FF76A079"
+                    Margin="5" 
+                    Style="{StaticResource BtnSuccess}"  
+                    VerticalAlignment="Bottom"
+                    Cursor="Hand"/>
             <!--<Border Background="#FFDAC8B7" Grid.Row="2" CornerRadius="10" Margin="5">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,5,20,5" Cursor="Hand">
             <Label Grid.Column="1" Content="Выйти из аккаунта" Style="{StaticResource LoginLabel}" Width="189"/>

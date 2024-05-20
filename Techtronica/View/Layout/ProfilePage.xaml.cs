@@ -22,7 +22,6 @@ namespace Techtronica.View
     /// </summary>
     public partial class ProfilePage : Page
     {
-
         public ProfilePage()
         {
             InitializeComponent();
@@ -34,35 +33,27 @@ namespace Techtronica.View
         {
             NavigationSupport.mainFrame.Navigate(new MainPage());
             NavigationService.RemoveBackEntry();
-            //NavigateToPage(typeof(MainPage));
-        }
-
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var user = ObjectContext.CurrentUser;
-            user = null;
-            ObjectContext.CurrentUser = user!;
-
-
-            Properties.ApplicationSettings.Default.AccountName = null;
-            Properties.ApplicationSettings.Default.Save();
-
-
-            NavigationSupport.mainFrame.Navigate(new MainPage());
-
-
         }
 
         private void ProfileAdminPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var user = ObjectContext.CurrentUser;
             if (user.RoleId == 1) NavigationSupport.mainFrame.Navigate(new AdminPanelPage());
-            else MessageBox.Show("Ты как сюда попал!?", "Несанкционированный доступ!", MessageBoxButton.OK);
+            else MessageBox.Show("В доступе отказано!", "Несанкционированный доступ!", MessageBoxButton.OK);
         }
 
-        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        private void BtnLogOut_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             
+            ObjectContext.CurrentUser = null;
+
+            Properties.ApplicationSettings.Default.AccountName = null;
+            Properties.ApplicationSettings.Default.AccountEmail = null;
+            Properties.ApplicationSettings.Default.AccountCart = 0;
+            Properties.ApplicationSettings.Default.Save();
+
+
+            NavigationSupport.mainFrame.Navigate(new MainPage());
         }
     }
 }

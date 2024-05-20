@@ -18,14 +18,6 @@ namespace Techtronica.Data.ViewModels.Main
             get { return _categories; }
             set { _categories = value; OnPropertyChanged(); }
         }
-        //private bool _isChecked = false;
-        //public bool IsChecked 
-        //{ 
-        //    get { return _isChecked; } 
-        //    set { _isChecked = value; OnPropertyChanged(); } 
-        //}
-
-
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

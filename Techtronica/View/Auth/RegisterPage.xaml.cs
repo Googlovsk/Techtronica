@@ -25,7 +25,7 @@ namespace Techtronica.View
         public RegisterPage()
         {
             InitializeComponent();
-            Hints.SetHint(TBPhoneField, "+7(000)-000-00-00", true);
+            //Hints.SetHint(TBPhoneField, "+7(000)-000-00-00", true);
         }
         private void ToSuccessRegister_Click(object sender, RoutedEventArgs e)
         {
@@ -48,35 +48,35 @@ namespace Techtronica.View
 
 
 
-        private static readonly Regex phoneRegex = new Regex(@"^[0-9+\-()]*$");
-        private void TBPhoneField_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !phoneRegex.IsMatch(e.Text);
-        }
-        private void TBPhoneField_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textBox = sender as TextBox;
+        //private static readonly Regex phoneRegex = new Regex(@"^[0-9+\-()]*$");
+        //private void TBPhoneField_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        //{
+        //    e.Handled = !phoneRegex.IsMatch(e.Text);
+        //}
+        //private void TBPhoneField_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    var textBox = sender as TextBox;
 
-            if (textBox == null) return;
+        //    if (textBox == null) return;
 
-            string enteredText = new string(textBox.Text.Where(char.IsDigit).ToArray());
+        //    string enteredText = new string(textBox.Text.Where(char.IsDigit).ToArray());
 
-            if (enteredText.Length > 0)
-            {
-                var formaText = "+7";
+        //    if (enteredText.Length > 0)
+        //    {
+        //        var formaText = "+7";
 
-                if (enteredText.Length > 1)
-                    formaText += $"({enteredText.Substring(1, Math.Min(3, enteredText.Length - 1))})";
-                if (enteredText.Length > 4)
-                    formaText += $"-{enteredText.Substring(4, Math.Min(3, enteredText.Length - 4))}";
-                if (enteredText.Length > 7)
-                    formaText += $"-{enteredText.Substring(7, Math.Min(2, enteredText.Length - 7))}";
-                if (enteredText.Length > 9)
-                    formaText += $"-{enteredText.Substring(9, Math.Min(2, enteredText.Length - 9))}";
+        //        if (enteredText.Length > 1)
+        //            formaText += $"({enteredText.Substring(1, Math.Min(3, enteredText.Length - 1))})";
+        //        if (enteredText.Length > 4)
+        //            formaText += $"-{enteredText.Substring(4, Math.Min(3, enteredText.Length - 4))}";
+        //        if (enteredText.Length > 7)
+        //            formaText += $"-{enteredText.Substring(7, Math.Min(2, enteredText.Length - 7))}";
+        //        if (enteredText.Length > 9)
+        //            formaText += $"-{enteredText.Substring(9, Math.Min(2, enteredText.Length - 9))}";
 
-                textBox.Text = formaText;
-                textBox.CaretIndex = textBox.Text.Length;
-            }
-        }
+        //        textBox.Text = formaText;
+        //        textBox.CaretIndex = textBox.Text.Length;
+        //    }
+        //}
     }
 }

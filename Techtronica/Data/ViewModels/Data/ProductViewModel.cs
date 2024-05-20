@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Navigation;
 using Techtronica.Data.Context;
 using Techtronica.Data.Models;
 using Techtronica.Data.Services;
 using Techtronica.View;
+using Techtronica.View.ViewData;
 
 namespace Techtronica.Data.ViewModels.Data
 {
-    class ProductViewModel : INotifyPropertyChanged
+    public class ProductViewModel : INotifyPropertyChanged
     {
 
-        public List<Product> products = ConnectToDB.appDBContext.Products.ToList();
+
+        public List<Product> products = new List<Product>(ConnectToDB.appDBContext.Products);
         public List<Product> Products
         {
             get => products;
@@ -33,9 +37,40 @@ namespace Techtronica.Data.ViewModels.Data
                 var product = obj as Product;
                 if (product != null)
                 {
-                    ObjectContext.CorrentProduct = product;
+                    ObjectContext.CurrentProduct = product;
                     NavigationSupport.mainFrame.Navigate(new EditProductPage(product)); // Передаем продукт
 
+                }
+            });
+        }
+        public RelayCommand BuyCommand
+        {
+            get => new RelayCommand(obj =>
+            {
+                if (ObjectContext.CurrentUser != null)
+                {
+                    var product = obj as Product;
+                    if (product != null)
+                    {
+                        var newCartItem = new CartItem
+                        {
+                            CartId = ObjectContext.CurrentCart.Id,
+                            ProductId = product.Id,
+                            Name = product.Name,
+                            Description = product.Description,
+                            ImagePath = product.ImagePath,
+                            Amount = product.Amount,
+                            UnitPrice = product.Cost
+
+                        };
+                        ConnectToDB.appDBContext.CartItems.Add(newCartItem);
+                        ConnectToDB.appDBContext.SaveChanges();
+                    }    
+                }
+                else
+                {
+                    ObjectContext.BlurOverlayVisibility = true;
+                    NavigationSupport.mainFrame.Navigate(new LoginPage());
                 }
             });
         }
@@ -45,5 +80,6 @@ namespace Techtronica.Data.ViewModels.Data
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
         }
+
     }
 }
