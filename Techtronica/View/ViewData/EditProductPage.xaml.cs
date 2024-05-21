@@ -35,7 +35,9 @@ namespace Techtronica.View
                 ImagePath = product.ImagePath,
                 IsActive = product.IsActive,
                 ProductCategoryId = product.ProductCategoryId,
-                ManufacturerId = product.ManufacturerId
+                ManufacturerId = product.ManufacturerId,
+                Amount = product.Amount
+                
             };
 
             this.DataContext = editProductViewModel;

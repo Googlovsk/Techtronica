@@ -24,58 +24,122 @@ namespace Techtronica.Data.ViewModels.Data
         public string Name
         {
             get { return _name; }
-            set { _name = value; OnPropertyChanged(value); }
+            set { _name = value; OnPropertyChanged(); }
         }
         private int _cost = ObjectContext.CurrentProduct.Cost;
         public int Cost
         {
             get { return _cost; }
-            set { _cost = value; OnPropertyChanged(value); }
+            set { _cost = value; OnPropertyChanged(); }
         }
         private string _description = ObjectContext.CurrentProduct.Description;
 
         public string Description
         {
             get { return _description; }
-            set { _description = value; OnPropertyChanged(value); }
+            set { _description = value; OnPropertyChanged(); }
         }
         private string _imagePath = ObjectContext.CurrentProduct.ImagePath;
         public string ImagePath
         {
             get { return _imagePath; }
-            set { _imagePath = value; OnPropertyChanged(value); }
+            set { _imagePath = value; OnPropertyChanged(); }
         }
         private bool _isActive = true;
         public bool IsActive
         {
             get { return _isActive; }
-            set { _isActive = value; OnPropertyChanged(value); }
+            set { _isActive = value; OnPropertyChanged(); }
         }
         private int _amount;
         public int Amount
         {
             get { return _amount; }
-            set { _amount = value; OnPropertyChanged(value); }
+            set { _amount = value; OnPropertyChanged(); }
         }
         private int _productCategoryId = ObjectContext.CurrentProduct.ProductCategoryId;
         public int ProductCategoryId
         {
             get { return _productCategoryId; }
-            set { _productCategoryId = value; OnPropertyChanged(value); }
+            set { _productCategoryId = value; OnPropertyChanged(); }
         }
         private int _manufacturerId = ObjectContext.CurrentProduct.ManufacturerId;
         public int ManufacturerId
         {
             get { return _manufacturerId; }
-            set { _manufacturerId = value; OnPropertyChanged(value); }
+            set { _manufacturerId = value; OnPropertyChanged(); }
         }
 
 
         public IEnumerable<ProductCategory> ProductCategories { get => ConnectToDB.appDBContext.ProductCategories.ToList(); }
         public IEnumerable<Manufacturer> Manufacturers { get => ConnectToDB.appDBContext.Manufacturers.ToList(); }
 
+
+        /*-----------------------------------*/
+
+        private bool _isNameValid = true;
+        public bool IsNameValid
+        {
+            get { return _isNameValid; }
+            set { _isNameValid = value; OnPropertyChanged(); }
+        }
+
+        private bool _isCostValid = true;
+        public bool IsCostValid
+        {
+            get { return _isCostValid; }
+            set { _isCostValid = value; OnPropertyChanged(); }
+        }
+
+        private bool _isDescriptionValid = true;
+        public bool IsDescriptionValid
+        {
+            get { return _isDescriptionValid; }
+            set { _isDescriptionValid = value; OnPropertyChanged(); }
+        }
+
+        private bool _isImagePathValid = true;
+        public bool IsImagePathValid
+        {
+            get { return _isImagePathValid; }
+            set { _isImagePathValid = value; OnPropertyChanged(); }
+        }
+
+        private bool _isProductCategoryIdValid = true;
+        public bool IsProductCategoryIdValid
+        {
+            get { return _isProductCategoryIdValid; }
+            set { _isProductCategoryIdValid = value; OnPropertyChanged(); }
+        }
+
+        private bool _isManufacturerIdValid = true;
+        public bool IsManufacturerIdValid
+        {
+            get { return _isManufacturerIdValid; }
+            set { _isManufacturerIdValid = value; OnPropertyChanged(); }
+        }
+
+        private bool _isAmountValid = true;
+        public bool IsAmountValid
+        {
+            get { return _isAmountValid; }
+            set { _isAmountValid = value; OnPropertyChanged(); }
+        }
+        private bool Validate()
+        {
+            IsNameValid = !string.IsNullOrEmpty(Name);
+            IsCostValid = Cost > 0;
+            IsDescriptionValid = !string.IsNullOrEmpty(Description);
+            IsImagePathValid = !string.IsNullOrEmpty(ImagePath);
+            IsProductCategoryIdValid = ProductCategoryId > 0;
+            IsManufacturerIdValid = ManufacturerId > 0;
+            IsAmountValid = Amount > 0;
+
+            return IsNameValid && IsCostValid && IsDescriptionValid && IsImagePathValid && IsProductCategoryIdValid && IsManufacturerIdValid && IsAmountValid;
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
-        private void OnPropertyChanged<T>(T value, [CallerMemberName] string member = null)
+        private void OnPropertyChanged([CallerMemberName] string member = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
         }
@@ -90,34 +154,34 @@ namespace Techtronica.Data.ViewModels.Data
             {
                 return saveProduct ?? new RelayCommand(obj =>
                 {
-                    try
+                    if (Validate())
                     {
-
-                        var product = ConnectToDB.appDBContext.Products.SingleOrDefault(p => p.Id == Id);
-                        if (product != null)
+                        try
                         {
-                            product.Name = Name;
-                            product.Cost = Cost;
-                            product.Description = Description;
-                            product.ImagePath = ImagePath;
-                            product.ManufacturerId = ManufacturerId;
-                            product.ProductCategoryId = ProductCategoryId;
+                            var product = ConnectToDB.appDBContext.Products.SingleOrDefault(p => p.Id == Id);
+                            if (product != null)
+                            {
+                                product.Name = Name;
+                                product.Cost = Cost;
+                                product.Description = Description;
+                                product.ImagePath = ImagePath;
+                                product.ManufacturerId = ManufacturerId;
+                                product.ProductCategoryId = ProductCategoryId;
 
-                            ConnectToDB.appDBContext.Entry(product).State = EntityState.Modified;
+                                ConnectToDB.appDBContext.Entry(product).State = EntityState.Modified;
+                            }
+                            else
+                            {
+                                ConnectToDB.appDBContext.Add(product); //Добавляем продукт в БД, если его по какой-то причине не существует
+                            }
+                            GetFileService.CopyImageToProject();
+                            ConnectToDB.appDBContext.SaveChanges();
+                            ObjectContext.CurrentProduct = null;
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            ConnectToDB.appDBContext.Add(product); //Добавляем продукт в БД, если его по какой-то причине не существует
+                            MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
-
-
-                        GetFileService.CopyImageToProject();
-                        ConnectToDB.appDBContext.SaveChanges();
-                        ObjectContext.CurrentProduct = null;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     //NavigationSupport.mainFrame.Navigate(new MainPage());
                     ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products;

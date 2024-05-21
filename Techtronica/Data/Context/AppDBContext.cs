@@ -35,7 +35,15 @@ namespace Techtronica.Data.Context
         /// <param name="optionsBuilder"></param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(/*GetConnectionString()*/ /*@"Server=IS-2;database=Techtronica;Trusted_connection=true"*/ @"Server=LAPTOP-6MCSV5P1;database=Techtronica;Trusted_connection=true"/*подключение к серверу на устройстве*/);
+            try
+            {
+                optionsBuilder.UseSqlServer( @"Server=LAPTOP-6MCSV5P1;database=Techtronica;Trusted_connection=true" /*подключение к серверу на устройстве*/);
+            }
+            catch (Exception)
+            {
+                optionsBuilder.UseSqlServer( /*GetConnectionString()*/ @"Server=IS-2;database=Techtronica;Trusted_connection=true");
+            }
+            
         }
 
         /// <summary>

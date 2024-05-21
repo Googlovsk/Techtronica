@@ -23,28 +23,16 @@ namespace Techtronica.View
     {
         public LoginPage()
         {
-            InitializeComponent();
-            
+            InitializeComponent(); 
         }
         private void ToRegister_Click(object sender, RoutedEventArgs e)
         {
             NavigationSupport.mainFrame.Navigate(new RegisterPage());
         }
-
         private void ToForgetPassword_Click(object sender, RoutedEventArgs e)
         {
-            string url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-
-            try
-            {
-                System.Diagnostics.Process.Start(url);
-            }
-            catch
-            {
-                System.Diagnostics.Process.Start("C://Program Files/Google/Chrome/Application/Chrome.EXE", url);
-            }
+            ToRickRoll.OpenWeb();
         }
-
         private void ToLogin_Click(object sender, RoutedEventArgs e)
         {
             NavigationSupport.mainFrame.Navigate(new MainPage());
@@ -58,12 +46,10 @@ namespace Techtronica.View
         {
             NavigationSupport.mainFrame.Navigate(new MainPage());
         }
-
         private void SuccessLoginBtn_MouseEnter(object sender, MouseEventArgs e)
         {
             (sender as Button).Background = (SolidColorBrush)FindResource("HoverOnSuccessButton");
         }
-
         private void SuccessLoginBtn_MouseLeave(object sender, MouseEventArgs e)
         {
             (sender as Button).Background = (SolidColorBrush)FindResource("LeaveOnSuccessButton");

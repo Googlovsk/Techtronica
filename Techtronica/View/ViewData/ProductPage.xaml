@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Techtronica.Data.ViewModels.Data"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="1280"
-      Title="ProductPage">
+      Title="ProductPage" Loaded="Page_Loaded">
 
     <Page.DataContext>
         <local:ProductViewModel/>
@@ -63,8 +63,8 @@
                                         </TextBlock>
                                     </Grid>
                                     <StackPanel Grid.Row="1" Orientation="Vertical">
-                                        <Button x:Name="PrCrdBtnBuy" Command="{Binding Path=DataContext.BuyCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Margin="10,5,10,5" Height="45" Content="Купить" Background="#FFED9109" Foreground="#000" Style="{StaticResource BtnSuccess}"/>
-                                        <Button x:Name="PrCrdBtnEdit" Command="{Binding Path=DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Margin="10,5,10,5" Height="45" Content="Edit" Background="#FFED9109" Foreground="#000" Style="{StaticResource BtnSuccess}" Click="PrCrdBtnEdit_Click"/>
+                                        <Button x:Name="ToBuyProductBtn" Command="{Binding Path=DataContext.BuyCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Margin="10,5,10,5" Height="45" Content="Купить" Background="#FFED9109" Foreground="#000" Style="{StaticResource BtnSuccess}"/>
+                                        <Button x:Name="ToEditProductBtn" Command="{Binding Path=DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Margin="10,5,10,5" Height="45" Content="Edit" Background="#FFED9109" Foreground="#000" Style="{StaticResource BtnSuccess}"/>
                                     </StackPanel>
                                 </Grid>
                             </Grid>

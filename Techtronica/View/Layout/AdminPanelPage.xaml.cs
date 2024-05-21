@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Techtronica.Data.Services;
+using Techtronica.View.ViewData;
 
 namespace Techtronica.View
 {
@@ -57,7 +58,19 @@ namespace Techtronica.View
         {
             //NavigationSupport.mainFrame.Navigate(new AddProductPage());
             NavigationSupport.mainFrame.Navigate(new MainPage());
+           
             NavigationSupport.innerFrame.Navigate(new AddProductPage());
+        }
+
+        private void BtnToAddManufacturer_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationSupport.mainFrame.Navigate(new MainPage());
+            NavigationSupport.innerFrame.Navigate(new AddManufacurerPage());
+        }
+        private void BtnTOAddCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationSupport.mainFrame.Navigate(new MainPage());
+            NavigationSupport.innerFrame.Navigate(new AddProductCategoryPage());
         }
     }
 }

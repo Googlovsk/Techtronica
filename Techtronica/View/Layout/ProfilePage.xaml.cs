@@ -34,14 +34,12 @@ namespace Techtronica.View
             NavigationSupport.mainFrame.Navigate(new MainPage());
             NavigationService.RemoveBackEntry();
         }
-
         private void ProfileAdminPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var user = ObjectContext.CurrentUser;
             if (user.RoleId == 1) NavigationSupport.mainFrame.Navigate(new AdminPanelPage());
             else MessageBox.Show("В доступе отказано!", "Несанкционированный доступ!", MessageBoxButton.OK);
         }
-
         private void BtnLogOut_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             
@@ -52,8 +50,29 @@ namespace Techtronica.View
             Properties.ApplicationSettings.Default.AccountCart = 0;
             Properties.ApplicationSettings.Default.Save();
 
-
             NavigationSupport.mainFrame.Navigate(new MainPage());
+        }
+
+        //неактивные кнопки
+        private void ToInfoBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ToRickRoll.OpenWeb();
+        }
+        private void ToSupportBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ToRickRoll.OpenWeb();
+        }
+        private void ToSettingsBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ToRickRoll.OpenWeb();
+        }
+        private void ToBalanceBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ToRickRoll.OpenWeb();
+        }
+        private void ToNotifyBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ToRickRoll.OpenWeb();
         }
     }
 }

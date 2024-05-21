@@ -113,6 +113,16 @@ namespace Techtronica.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] branch {
+            get {
+                object obj = ResourceManager.GetObject("branch", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] cross {
             get {
                 object obj = ResourceManager.GetObject("cross", resourceCulture);

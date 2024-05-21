@@ -19,6 +19,17 @@ namespace Techtronica.Data.ViewModels.Data
     public class ProductViewModel : INotifyPropertyChanged
     {
 
+        //public ProductViewModel()
+        //{
+        //    var user = ObjectContext.CurrentUser;
+        //    if (user != null)
+        //    {
+        //        //EditButtonVisibility = user.RoleId == 1 ? Visibility.Visible : Visibility.Collapsed;
+        //        if (user.RoleId == 1) EditButtonVisibility = Visibility.Visible;
+        //        else EditButtonVisibility = Visibility.Collapsed;
+        //    }
+        //    else return; 
+        //}
 
         public List<Product> products = new List<Product>(ConnectToDB.appDBContext.Products);
         public List<Product> Products
@@ -30,6 +41,18 @@ namespace Techtronica.Data.ViewModels.Data
                 OnPropertyChanged();
             }
         }
+
+        //private Visibility _editButtonVisibility;
+        //public Visibility EditButtonVisibility
+        //{
+        //    get { return _editButtonVisibility; }
+        //    set
+        //    {
+        //        _editButtonVisibility = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
         public RelayCommand EditCommand
         {
             get => new RelayCommand(obj =>
@@ -38,7 +61,7 @@ namespace Techtronica.Data.ViewModels.Data
                 if (product != null)
                 {
                     ObjectContext.CurrentProduct = product;
-                    NavigationSupport.mainFrame.Navigate(new EditProductPage(product)); // Передаем продукт
+                    NavigationSupport.innerFrame.Navigate(new EditProductPage(product)); // Передаем продукт
 
                 }
             });

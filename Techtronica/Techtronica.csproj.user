@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\ViewData\AddManufacurerPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ViewData\AddProductCategoryPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\ViewData\AddProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -43,6 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ViewData\AddManufacurerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ViewData\AddProductCategoryPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ViewData\AddProductPage.xaml">
