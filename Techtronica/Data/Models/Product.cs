@@ -20,7 +20,6 @@ namespace Techtronica.Data.Models
 
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
-        public virtual ICollection<CartItem> CartItems { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

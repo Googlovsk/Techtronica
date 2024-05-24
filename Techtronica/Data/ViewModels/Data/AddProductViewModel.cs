@@ -161,11 +161,8 @@ namespace Techtronica.Data.ViewModels.Data
                             };
 
                             ConnectToDB.appDBContext.Products.Add(newProduct);
-
-
                             GetFileService.CopyImageToProject();
                             ConnectToDB.appDBContext.SaveChanges();
-
                         }
                         catch (Exception ex)
                         {

@@ -143,6 +143,16 @@ namespace Techtronica.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] edit_gray {
+            get {
+                object obj = ResourceManager.GetObject("edit_gray", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] factory {
             get {
                 object obj = ResourceManager.GetObject("factory", resourceCulture);
@@ -296,6 +306,16 @@ namespace Techtronica.Properties {
         internal static byte[] user {
             get {
                 object obj = ResourceManager.GetObject("user", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] user_menu {
+            get {
+                object obj = ResourceManager.GetObject("user_menu", resourceCulture);
                 return ((byte[])(obj));
             }
         }

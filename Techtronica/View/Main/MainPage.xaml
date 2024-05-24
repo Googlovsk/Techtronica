@@ -67,7 +67,7 @@
                                      Background="Transparent" 
                                      BorderThickness="0" 
                                      Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                     Width="510" Height="50" PreviewTextInput="TBSearch_PreviewTextInput" TextChanged="TBSearch_TextChanged"/>
+                                     Width="510" Height="50"/>
 
                             <Border Grid.Column="1" 
                                     x:Name="TextRemove"
@@ -91,7 +91,7 @@
                     <StackPanel Grid.Column="2" HorizontalAlignment="Left" 
                                 VerticalAlignment="Center" 
                                 Margin="0,0,0,0" Height="60" Width="330">
-                        <StackPanel x:Name="MainPageUIUnAuthorizedUser" 
+                        <!--<StackPanel x:Name="MainPageUIUnAuthorizedUser" 
                                     Visibility="Visible" 
                                     Orientation="Horizontal"
                                     
@@ -109,112 +109,50 @@
                                     Width="Auto" 
                                     Margin="5"
                                     Click="BtnRegister_Click" />
-                        </StackPanel>
-                        <Grid x:Name="MainPageUIAuthorizedUser" Visibility="Collapsed" Margin="5,0,0,0"><!--<Флаг>-->
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                        </StackPanel>-->
+                        <Border Grid.Column="1" 
+                                Cursor="Hand" HorizontalAlignment="Stretch" 
+                                CornerRadius="10" 
+                                Background="#FFDAC8B7" 
+                                Margin="5,5,0,5" 
+                                MouseLeftButtonDown="Border_MouseLeftButtonDown">
 
-                            <Border Grid.Column="0"
-                                    x:Name="ToCartBtn"
-                                    HorizontalAlignment="Stretch" 
-                                    CornerRadius="10" 
-                                    Background="#FFDAC8B7" 
-                                    Margin="5" 
-                                    Cursor="Hand" MouseLeftButtonDown="ToCartBtn_MouseLeftButtonDown">
-                                <Image Source="/Resources/basket.png" Width="20" Height="20"/>
-                            </Border>
-                            <Border Grid.Column="1" 
-                                    Cursor="Hand" HorizontalAlignment="Stretch" 
-                                    CornerRadius="10" 
-                                    Background="#FFDAC8B7" 
-                                    Margin="5,5,0,5" 
-                                    MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                                <Grid Margin="5">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" 
-                                               FontFamily="Century Gothic"
-                                               FontSize="18"
-                                               Foreground="#FFF"
-                                               FontWeight="Bold"
-                                               Text="{Binding UserName}" VerticalAlignment="Center"/>
-                                    <Grid Grid.Column="1">
-                                        <Ellipse Stroke="White" StrokeThickness="1.5" Height="40" Width="40" Fill="White"/>
-                                        <Image Source="/Resources/user.png" Height="35" Width="35" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="True">
-                                            <Image.Clip>
-                                                <EllipseGeometry RadiusX="20" RadiusY="20" Center="17.5,17.5"/>
-                                            </Image.Clip>
-                                        </Image>
-                                    </Grid>
+                                <TextBlock Grid.Column="0" 
+                                           FontFamily="Century Gothic"
+                                           FontSize="18"
+                                           Foreground="#FFF"
+                                           FontWeight="Bold"
+                                           Text="{Binding UserName}" VerticalAlignment="Center"/>
+                                <Grid Grid.Column="1">
+                                    <Ellipse Stroke="White" StrokeThickness="1.5" Height="40" Width="40" Fill="White"/>
+                                    <Image Source="/Resources/user.png" Height="35" Width="35" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="True">
+                                        <Image.Clip>
+                                            <EllipseGeometry RadiusX="20" RadiusY="20" Center="17.5,17.5"/>
+                                        </Image.Clip>
+                                    </Image>
                                 </Grid>
-                            </Border>
-                        </Grid>
+                            </Grid>
+                        </Border>
                     </StackPanel>
 
                 </Grid>
             </Border>
 
-            <Grid Grid.Row="1" Margin="20,20,20,20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="245"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+            <Border Grid.Row="1" CornerRadius="10" Margin="100,20,100,20" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Border.Effect>
+                    <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="0" Opacity=".3" BlurRadius="5"/>
+                </Border.Effect>
 
-                <Border CornerRadius="10" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-                    <Border.Effect>
-                        <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="0" Opacity=".3" BlurRadius="5"/>
-                    </Border.Effect>
-                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
-                        <Border CornerRadius="10">
-                            <StackPanel>
-                                <Border Height="Auto" VerticalAlignment="Top" Margin="0,0,0,5" BorderBrush="LightGray" BorderThickness="0,0,0,1" CornerRadius="0,0,10,10" >
-                                    <StackPanel x:Name="MainPageCatalog">
-                                        <Grid x:Name="GridBtnCatalog" Margin="5" MouseLeftButtonDown="GridBtnCatalog_MouseLeftButtonDown">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="26"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Image Grid.Column="0" x:Name="MenuPunktCatalogArrow" Source="/Resources/gray_arrow_down.png" Width="16" Height="16" Margin="5"/>
-                                            <Label Grid.Column="1" Content="Каталог" FontFamily="Century Gothic" FontWeight="Bold" FontSize="20" Foreground="#FF636363"/>
-                                        </Grid>
-                                        <Frame Margin="15,0,0,0" x:Name="MainPageCatalogFrame" Visibility="Visible" NavigationUIVisibility="Hidden"/>
-                                    </StackPanel>
-                                </Border>
-                                <Border Height="Auto" VerticalAlignment="Top" Margin="0,0,0,5" BorderBrush="LightGray" BorderThickness="0,0,0,1" CornerRadius="0,0,10,10">
-                                    <StackPanel x:Name="MainPageManufacturer">
-                                        <Grid x:Name="GridBtnManufacturer" Margin="5" MouseLeftButtonDown="GridBtnManufacturer_MouseLeftButtonDown">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="26"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Image Grid.Column="0" x:Name="MenuPunktManufacturerArrow" Source="/Resources/gray_arrow_down.png" Width="16" Height="16" Margin="5"/>
-                                            <Label Grid.Column="1" Content="Производители" FontFamily="Century Gothic" FontWeight="Bold" FontSize="20" Foreground="#FF636363"/>
-                                        </Grid>
-                                        <Frame Margin="15,0,0,0" x:Name="MainPageManufacturerFrame" Visibility="Visible" NavigationUIVisibility="Hidden"/>
-                                    </StackPanel>
-                                </Border>
-                                <Button x:Name="MainMenuSearchBtn" Content="Поиск" Background="#FF76A079" Height="40" Margin="5" VerticalAlignment="Bottom" Style="{StaticResource BtnSuccess}"/>
-                            </StackPanel>
-
-                        </Border>
-                    </ScrollViewer>
-                </Border>
-                <Border Grid.Column="1" CornerRadius="10" Margin="10,0,0,0" Background="#FFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <Border.Effect>
-                        <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="0" Opacity=".3" BlurRadius="5"/>
-                    </Border.Effect>
-
-                    <ScrollViewer VerticalScrollBarVisibility="Visible">
-                        <Frame x:Name="MainPageFrame" NavigationUIVisibility="Hidden"/>
-                    </ScrollViewer>
-                </Border>
-            </Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <Frame x:Name="MainPageFrame" NavigationUIVisibility="Hidden"/>
+                </ScrollViewer>
+            </Border>
         </Grid>
 
         <Border x:Name="BlurOverlay" 

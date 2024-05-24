@@ -35,7 +35,7 @@ namespace Techtronica.Data.ViewModels.Main
         {
             if (ObjectContext.CurrentUser != null)
             {
-                _userName = ObjectContext.CurrentUser.UserName;
+                _userName = ObjectContext.CurrentUser.Name;
             }
         }
         private string searchText;
@@ -47,9 +47,9 @@ namespace Techtronica.Data.ViewModels.Main
                 if (searchText != value)
                 {
                     searchText = value;
-                    ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products
-                                                                    .Where(p => p.Name.ToLower().Contains(searchText.ToLower()))
-                                                                    .ToList();
+                    ObjectContext.ItemsControlProducts.ItemsSource = 
+                        ConnectToDB.appDBContext.Products.
+                        Where(p => p.Name.ToLower().Contains(searchText.ToLower())).ToList();
                     OnPropertyChanged();
                 }
             }

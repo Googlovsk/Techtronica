@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Techtronica.Data.Context;
 using Techtronica.Data.Services;
+using Techtronica.View.ViewData;
 
 namespace Techtronica.View
 {
@@ -46,11 +47,9 @@ namespace Techtronica.View
             ObjectContext.CurrentUser = null;
 
             Properties.ApplicationSettings.Default.AccountName = null;
-            Properties.ApplicationSettings.Default.AccountEmail = null;
-            Properties.ApplicationSettings.Default.AccountCart = 0;
             Properties.ApplicationSettings.Default.Save();
 
-            NavigationSupport.mainFrame.Navigate(new MainPage());
+            NavigationSupport.mainFrame.Navigate(new LoginPage());
         }
 
         //неактивные кнопки
@@ -58,21 +57,15 @@ namespace Techtronica.View
         {
             ToRickRoll.OpenWeb();
         }
-        private void ToSupportBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            ToRickRoll.OpenWeb();
-        }
         private void ToSettingsBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ToRickRoll.OpenWeb();
         }
-        private void ToBalanceBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+
+        private void ToOrdersBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            ToRickRoll.OpenWeb();
-        }
-        private void ToNotifyBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            ToRickRoll.OpenWeb();
+            NavigationSupport.mainFrame.Navigate(new MainPage());
+            NavigationSupport.innerFrame.Navigate(new OrderPage());
         }
     }
 }

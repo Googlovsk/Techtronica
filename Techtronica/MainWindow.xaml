@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Techtronica"
         mc:Ignorable="d"
-        Title="MainWindow" Height="780" Width="1280">
+        Title="Техтроника" Height="780" Width="1280">
     <Grid>
-        
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

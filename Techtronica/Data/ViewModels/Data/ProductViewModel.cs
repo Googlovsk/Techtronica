@@ -19,18 +19,6 @@ namespace Techtronica.Data.ViewModels.Data
     public class ProductViewModel : INotifyPropertyChanged
     {
 
-        //public ProductViewModel()
-        //{
-        //    var user = ObjectContext.CurrentUser;
-        //    if (user != null)
-        //    {
-        //        //EditButtonVisibility = user.RoleId == 1 ? Visibility.Visible : Visibility.Collapsed;
-        //        if (user.RoleId == 1) EditButtonVisibility = Visibility.Visible;
-        //        else EditButtonVisibility = Visibility.Collapsed;
-        //    }
-        //    else return; 
-        //}
-
         public List<Product> products = new List<Product>(ConnectToDB.appDBContext.Products);
         public List<Product> Products
         {
@@ -41,18 +29,6 @@ namespace Techtronica.Data.ViewModels.Data
                 OnPropertyChanged();
             }
         }
-
-        //private Visibility _editButtonVisibility;
-        //public Visibility EditButtonVisibility
-        //{
-        //    get { return _editButtonVisibility; }
-        //    set
-        //    {
-        //        _editButtonVisibility = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
         public RelayCommand EditCommand
         {
             get => new RelayCommand(obj =>
@@ -61,43 +37,58 @@ namespace Techtronica.Data.ViewModels.Data
                 if (product != null)
                 {
                     ObjectContext.CurrentProduct = product;
-                    NavigationSupport.innerFrame.Navigate(new EditProductPage(product)); // Передаем продукт
+                    NavigationSupport.innerFrame.Navigate(new EditProductPage(product));
 
                 }
             });
         }
-        public RelayCommand BuyCommand
+        private RelayCommand addToOrder;
+        public RelayCommand AddToOrder
         {
-            get => new RelayCommand(obj =>
+            get
             {
-                if (ObjectContext.CurrentUser != null)
+                return addToOrder ?? (addToOrder = new RelayCommand(obj =>
                 {
                     var product = obj as Product;
                     if (product != null)
                     {
-                        var newCartItem = new CartItem
+                        if(ObjectContext.CurrentUser != null)
                         {
-                            CartId = ObjectContext.CurrentCart.Id,
-                            ProductId = product.Id,
-                            Name = product.Name,
-                            Description = product.Description,
-                            ImagePath = product.ImagePath,
-                            Amount = product.Amount,
-                            UnitPrice = product.Cost
+                            try
+                            {
+                                var order = new Order
+                                {
+                                    UserId = ObjectContext.CurrentUser.Id,
+                                    Number = Guid.NewGuid(),
+                                    OrderItems = new List<OrderItem>()
+                                };
+                                ConnectToDB.appDBContext.Orders.Add(order);
 
-                        };
-                        ConnectToDB.appDBContext.CartItems.Add(newCartItem);
-                        ConnectToDB.appDBContext.SaveChanges();
-                    }    
-                }
-                else
-                {
-                    ObjectContext.BlurOverlayVisibility = true;
-                    NavigationSupport.mainFrame.Navigate(new LoginPage());
-                }
-            });
+                                var orderItem = new OrderItem
+                                {
+                                    OrderId = order.Id,
+                                    ProductId = product.Id,
+                                    Amount = 1,
+                                    UnitPrice = product.Cost
+                                };
+                                order.OrderItems.Add(orderItem);
+                                product.Amount -= 1;
+                                ConnectToDB.appDBContext.OrderItems.Add(orderItem);
+                                ConnectToDB.appDBContext.SaveChanges();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Не удалось создать заказ\n{ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
+                        else
+                        {
+                            NavigationSupport.mainFrame.Navigate(new LoginPage());
+                        }
+                    }
+                }));
+            }
         }
-
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string member = null)
         {

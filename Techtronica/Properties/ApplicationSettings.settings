@@ -5,11 +5,5 @@
     <Setting Name="AccountName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Admin</Value>
     </Setting>
-    <Setting Name="AccountEmail" Type="System.String" Scope="User">
-      <Value Profile="(Default)">-</Value>
-    </Setting>
-    <Setting Name="AccountCart" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

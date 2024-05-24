@@ -172,7 +172,7 @@ namespace Techtronica.Data.ViewModels.Data
                             }
                             else
                             {
-                                ConnectToDB.appDBContext.Add(product); //Добавляем продукт в БД, если его по какой-то причине не существует
+                                ConnectToDB.appDBContext.Add(product);
                             }
                             GetFileService.CopyImageToProject();
                             ConnectToDB.appDBContext.SaveChanges();
@@ -180,10 +180,11 @@ namespace Techtronica.Data.ViewModels.Data
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", 
+                                MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
-                    //NavigationSupport.mainFrame.Navigate(new MainPage());
+                    NavigationSupport.mainFrame.Navigate(new MainPage());
                     ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products;
                 });
             }
@@ -207,9 +208,10 @@ namespace Techtronica.Data.ViewModels.Data
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show($"Что-то пошло не так\n{ex}", "Ошибка!", 
+                            MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    //NavigationSupport.mainFrame.Navigate(new MainPage());
+                    NavigationSupport.mainFrame.Navigate(new MainPage());
                     ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products;
                 });
             }

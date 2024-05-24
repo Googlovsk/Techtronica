@@ -16,6 +16,7 @@
     <None Remove="Resources\branch.png" />
     <None Remove="Resources\cross.png" />
     <None Remove="Resources\edit.png" />
+    <None Remove="Resources\edit_gray.png" />
     <None Remove="Resources\factory.png" />
     <None Remove="Resources\gray_arrow_down.png" />
     <None Remove="Resources\gray_arrow_up.png" />
@@ -32,6 +33,7 @@
     <None Remove="Resources\support_chat.png" />
     <None Remove="Resources\trash.png" />
     <None Remove="Resources\user.png" />
+    <None Remove="Resources\user_menu.png" />
     <None Remove="Resources\wallet.png" />
     <None Remove="Resources\white_arrow.png" />
     <None Remove="Resources\white_arrow_right.png" />
@@ -51,6 +53,7 @@
     <Resource Include="Resources\branch.png" />
     <Resource Include="Resources\cross.png" />
     <Resource Include="Resources\edit.png" />
+    <Resource Include="Resources\edit_gray.png" />
     <Resource Include="Resources\factory.png" />
     <Resource Include="Resources\gray_arrow_down.png" />
     <Resource Include="Resources\gray_arrow_up.png" />
@@ -67,6 +70,7 @@
     <Resource Include="Resources\support_chat.png" />
     <Resource Include="Resources\trash.png" />
     <Resource Include="Resources\user.png" />
+    <Resource Include="Resources\user_menu.png" />
     <Resource Include="Resources\wallet.png" />
     <Resource Include="Resources\white_arrow.png" />
     <Resource Include="Resources\white_arrow_right.png" />

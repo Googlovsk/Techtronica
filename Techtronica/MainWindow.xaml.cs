@@ -37,31 +37,22 @@ namespace Techtronica
         private void LoadUser()
         {
             var savedAccountName = Properties.ApplicationSettings.Default.AccountName;
-            var savedAccountEmail = Properties.ApplicationSettings.Default.AccountEmail;
-            var savedAccountCart = Properties.ApplicationSettings.Default.AccountCart;
 
-
-            //Проверка поля настроек на содержание
-            if (!string.IsNullOrWhiteSpace(savedAccountEmail))
+            if (!string.IsNullOrWhiteSpace(savedAccountName))
             {
-
-
-                var userCart = ConnectToDB.appDBContext.Carts.SingleOrDefault(u => u.UserId == savedAccountCart);
-                var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.UserName == savedAccountName && u.Email == savedAccountEmail);
+                var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.Name == savedAccountName);
                 if (user != null)
                 {
                     ObjectContext.CurrentUser = user;
-                    ObjectContext.CurrentCart = userCart;
-
 
                     NavigationSupport.mainFrame.Navigate(new MainPage());
                 }
                 else
                 {
-                    NavigationSupport.mainFrame.Navigate(new MainPage());
+                    NavigationSupport.mainFrame.Navigate(new LoginPage());
                 }
             }
-            else NavigationSupport.mainFrame.Navigate(new MainPage());
+            else NavigationSupport.mainFrame.Navigate(new LoginPage());
         }
     }
 }

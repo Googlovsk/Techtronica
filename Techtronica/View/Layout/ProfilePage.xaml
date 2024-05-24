@@ -8,7 +8,7 @@
       Title="AccountPage">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Border Width="330" 
+        <Border Width="335" 
                 Margin="0,70,15,0" 
                 CornerRadius="0,0,10,10" 
                 Background="#FFECDFD2" 
@@ -66,7 +66,7 @@
                             <Label Grid.Column="1" Content="Панель администратора" Style="{StaticResource LoginLabel}" Width="245"/>
                             <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
                         </Grid>
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand">
+                        <Grid x:Name="ToOrdersBtn" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="ToOrdersBtn_MouseLeftButtonDown">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20"/>
                                 <ColumnDefinition Width="*"/>
@@ -74,26 +74,6 @@
                             </Grid.ColumnDefinitions>
                             <Image Source="/Resources/order.png" Grid.Column="0"/>
                             <Label Grid.Column="1" Content="Заказы" Style="{StaticResource LoginLabel}" Width="144"/>
-                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
-                        </Grid>
-                        <Grid x:Name="ToNotifyBtn" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="ToNotifyBtn_MouseLeftButtonDown">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="20"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Source="/Resources/notify.png" Grid.Column="0"/>
-                            <Label Grid.Column="1" Content="Уведомления" Style="{StaticResource LoginLabel}" Width="144"/>
-                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
-                        </Grid>
-                        <Grid x:Name="ToBalanceBtn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="ToBalanceBtn_MouseLeftButtonDown">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="20"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Source="/Resources/wallet.png" Grid.Column="0"/>
-                            <Label Grid.Column="1" Content="Баланс" Style="{StaticResource LoginLabel}" Width="144"/>
                             <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
                         </Grid>
                         <Label Content="Настройки" HorizontalAlignment="Left" Margin="0,10,0,10" FontSize="20" FontWeight="Bold" Style="{StaticResource LoginLabel}" Width="120"/>
@@ -108,16 +88,6 @@
                             <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
                         </Grid>
                         <Label Content="Информация" HorizontalAlignment="Left" Margin="0,10,0,10" FontSize="20" FontWeight="Bold" Style="{StaticResource LoginLabel}" Width="150"/>
-                        <Grid x:Name="ToSupportBtn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="ToSupportBtn_MouseLeftButtonDown">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="20"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Source="/Resources/support_chat.png" Grid.Column="0"/>
-                            <Label Grid.Column="1" Content="Служба поддержки" Style="{StaticResource LoginLabel}" Width="189"/>
-                            <Image Source="/Resources/white_arrow_right.png" Grid.Column="2"/>
-                        </Grid>
                         <Grid x:Name="ToInfoBtn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15,0,0,10" Cursor="Hand" MouseLeftButtonDown="ToInfoBtn_MouseLeftButtonDown">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20"/>

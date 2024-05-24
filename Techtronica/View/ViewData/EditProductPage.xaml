@@ -97,7 +97,7 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,0,0" Cursor="Hand">
                             <Grid.RowDefinitions>
@@ -114,7 +114,7 @@
                                      Style="{StaticResource TBInputField}"/>
                             <TextBlock Grid.Row="2" Style="{StaticResource TBlWarn}" Visibility="{Binding IsImagePathValid, Converter={StaticResource BoolToVisibilityConverter}}" x:Name="ProductImageWarnLabel" Text="Заполните поле!"/>
                         </Grid>
-                        <Button Grid.Column="1" x:Name="BtnAddImage" Command="{Binding AddImage}" Content="+" Width="32" Height="32" Margin="0,10,0,0" Style="{StaticResource BtnSuccess}"/>
+                        <Button Grid.Column="1" x:Name="BtnAddImage" Command="{Binding AddImage}" Content="+" Width="40" Height="40" VerticalAlignment="Top" Margin="0,35,0,0" Style="{StaticResource BtnSuccess}"/>
                     </Grid>
                     <Grid>
                         <Grid.RowDefinitions>

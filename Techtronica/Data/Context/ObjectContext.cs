@@ -12,10 +12,6 @@ namespace Techtronica.Data.Context
     {
         public static User CurrentUser { get; set; }
         public static Product CurrentProduct { get; set; }
-        public static Cart CurrentCart { get; set; }
         public static ItemsControl ItemsControlProducts { get; set; }
-
-        public static bool BlurOverlayVisibility = false;
-
     }
 }

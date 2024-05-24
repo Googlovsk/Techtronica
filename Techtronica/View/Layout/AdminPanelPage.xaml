@@ -63,7 +63,7 @@
                             <Label Grid.Column="1" Content="Товары" Style="{StaticResource LoginLabel}" Width="245"/>
                         </Grid>
                         <StackPanel x:Name="ProductActivities">
-                            <Grid x:Name="BtnToAddProduct" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnToAddProduct_MouseLeftButtonDown_1">
+                            <Grid x:Name="BtnToAddProduct" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnToAddProduct_MouseLeftButtonDown">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="20"/>
                                     <ColumnDefinition Width="*"/>
@@ -73,24 +73,14 @@
                                 <Label Grid.Column="1" Content="Добавить" Style="{StaticResource LoginLabel}" Width="245"/>
                                 <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
                             </Grid>
-                            <Grid x:Name="BtnToEditProduct" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="20"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="20"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="/Resources/edit.png" />
-                                <Label Grid.Column="1" Content="Редоктировать" Style="{StaticResource LoginLabel}" Width="245"/>
-                                <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
-                            </Grid>
                         </StackPanel>
-                        <Grid x:Name="BtnOpenManufacturerActivities" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand">
+                        <Grid x:Name="BtnOpenManufacturerActivities" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnOpenManufacturerActivities_MouseLeftButtonDown">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="/Resources/factory.png"/>
-                            <Label Grid.Column="1" Content="Производители" Style="{StaticResource LoginLabel}" Width="245" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                            <Label Grid.Column="1" Content="Производители" Style="{StaticResource LoginLabel}" Width="245"/>
                         </Grid>
                         <StackPanel x:Name="ManufacturerActivities">
                             <Grid x:Name="BtnToAddManufacturer" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnToAddManufacturer_MouseLeftButtonDown">
@@ -114,13 +104,13 @@
                                 <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
                             </Grid>
                         </StackPanel>
-                        <Grid x:Name="BtnOpenCategoryActivities" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand">
+                        <Grid x:Name="BtnOpenCategoryActivities" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnOpenCategoryActivities_MouseLeftButtonDown">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="/Resources/branch.png"/>
-                            <Label Grid.Column="1" Content="Категории товаров" Style="{StaticResource LoginLabel}" Width="245" MouseLeftButtonDown="Label_MouseLeftButtonDown_1"/>
+                            <Label Grid.Column="1" Content="Категории товаров" Style="{StaticResource LoginLabel}" Width="245"/>
                         </Grid>
                         <StackPanel x:Name="CategoryActivities">
                             <Grid x:Name="BtnTOAddCategory" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnTOAddCategory_MouseLeftButtonDown">
@@ -141,6 +131,26 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="/Resources/edit.png" />
                                 <Label Grid.Column="1" Content="Редоктировать" Style="{StaticResource LoginLabel}" Width="245"/>
+                                <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
+                            </Grid>
+                        </StackPanel>
+                        <Grid x:Name="BtnOpenUserActivities" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="15,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnOpenUserActivities_MouseLeftButtonDown">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="/Resources/user_menu.png"/>
+                            <Label Grid.Column="1" Content="Пользователи" Style="{StaticResource LoginLabel}" Width="245"/>
+                        </Grid>
+                        <StackPanel x:Name="UserActivities">
+                            <Grid x:Name="BtnToAddUser" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnToAddUser_MouseLeftButtonDown">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/add.png" />
+                                <Label Grid.Column="1" Content="Добавить" Style="{StaticResource LoginLabel}" Width="245"/>
                                 <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
                             </Grid>
                         </StackPanel>

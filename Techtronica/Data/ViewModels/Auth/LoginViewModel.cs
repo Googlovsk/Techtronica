@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Techtronica.Data.Context;
+using Techtronica.Data.Models;
 using Techtronica.Data.Services;
 using Techtronica.Data.Services.Crypt;
 using Techtronica.View;
@@ -15,23 +16,38 @@ namespace Techtronica.Data.ViewModels.Auth
 {
     class LoginViewModel : INotifyPropertyChanged
     {
-        private string _email;
-        public string Email
+        private string _name;
+        public string Name
         {
-            get { return _email; }
-            set { _email = value; OnPropertyChanged(value); }
-        }
-        private string _userName;
-        public string UserName
-        {
-            get { return _userName; }
-            set { _userName = value; OnPropertyChanged(value); }
+            get { return _name; }
+            set { _name = value; OnPropertyChanged(value); }
         }
         private string _password;
         public string Password
         {
             get { return _password; }
             set { _password = value; OnPropertyChanged(); }
+        }
+        /*-----------------------------------*/
+
+        private bool _isNameValid = true;
+        public bool IsNameValid
+        {
+            get { return _isNameValid; }
+            set { _isNameValid = value; OnPropertyChanged(); }
+        }
+        private bool _isPasswordValid = true;
+        public bool IsPasswordValid
+        {
+            get { return _isPasswordValid; }
+            set { _isPasswordValid = value; OnPropertyChanged(); }
+        }
+        private bool Validate()
+        {
+            IsNameValid = !string.IsNullOrEmpty(Name);
+            IsPasswordValid = !string.IsNullOrEmpty(Password);
+
+            return IsNameValid && IsPasswordValid;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -47,53 +63,43 @@ namespace Techtronica.Data.ViewModels.Auth
             {
                 return login ?? new RelayCommand(obj =>
                 {
-                    try
+                    if (Validate())
                     {
-                        PerformLogin();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Билли Бонс Умер...", ex.Message, MessageBoxButton.OK);
+                        try
+                        {
+                            var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.Name == _name);
+                            if (user != null)
+                            {
+                                string hashedInputPassword = Enc.HashPassword(_password, user.Salt);
+                                if (user.Password == hashedInputPassword)
+                                {
+                                    Properties.ApplicationSettings.Default.AccountName = user.Name;
+                                    Properties.ApplicationSettings.Default.Save();
+
+
+                                    ObjectContext.CurrentUser = user;
+                                    NavigationSupport.mainFrame.Navigate(new MainPage());
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Неверный пароль", "Ошибка", 
+                                        MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Пользователь не найден", "Ошибка", 
+                                    MessageBoxButton.OK, MessageBoxImage.Error);
+                                return;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK);
+                        }
                     }
                 });
             }
-        }
-        private void PerformLogin()
-        {
-            try
-            {
-                var user = ConnectToDB.appDBContext.Users.SingleOrDefault(u => u.UserName == _userName || u.Email == _email);
-                var userCart = ConnectToDB.appDBContext.Carts.SingleOrDefault(c => c.UserId == user.Id);
-
-
-                if (user == null)
-                {
-                    MessageBox.Show("Пользователь не найден", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-                string hashedInputPassword = Enc.HashPassword(_password, user.Salt);
-                if (user.Password == hashedInputPassword)
-                {
-                    Properties.ApplicationSettings.Default.AccountName = user.UserName;
-                    Properties.ApplicationSettings.Default.AccountEmail = user.Email;
-                    Properties.ApplicationSettings.Default.AccountCart = userCart.UserId;
-                    Properties.ApplicationSettings.Default.Save();
-
-
-                    ObjectContext.CurrentUser = user;
-                    ObjectContext.CurrentCart = userCart;
-                    NavigationSupport.mainFrame.Navigate(new MainPage());
-                }
-                else
-                {
-                    MessageBox.Show("Неверный пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Err", MessageBoxButton.OK);
-            }
-
         }
     }
 }

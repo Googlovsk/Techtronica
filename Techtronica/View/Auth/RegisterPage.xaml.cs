@@ -25,20 +25,12 @@ namespace Techtronica.View
         public RegisterPage()
         {
             InitializeComponent();
-            //Hints.SetHint(TBPhoneField, "+7(000)-000-00-00", true);
         }
         private void ToSuccessRegister_Click(object sender, RoutedEventArgs e)
         {
-            NavigationSupport.mainFrame.Navigate(new MainPage());
+           // NavigationSupport.mainFrame.Navigate(new MainPage());
         }
-        private void SuccessRegisterBtn_MouseEnter(object sender, MouseEventArgs e)
-        {
-            (sender as Button).Background = (SolidColorBrush)FindResource("HoverOnSuccessButton");
-        }
-        private void SuccessRegisterBtn_MouseLeave(object sender, MouseEventArgs e)
-        {
-            (sender as Button).Background = (SolidColorBrush)FindResource("LeaveOnSuccessButton");
-        }
+
         private void BtnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             NavigationSupport.mainFrame.Navigate(new MainPage());
