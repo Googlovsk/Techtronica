@@ -73,7 +73,7 @@
                             <Border Grid.Column="1" Background="#FFEBEBF5" CornerRadius="10" Margin="10">
                                 <StackPanel Orientation="Vertical">
                                     <Button Grid.Column="0" x:Name="BtnCompleteOrder" Width="144" Foreground="#FFF" Command="{Binding DataContext.CompleteOrder, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Margin="10,10,10,0" Height="45" Content="Завершить" Background="#FF76A079" Style="{StaticResource BtnSuccess}" Click="BtnCompleteOrder_Click" Loaded="BtnCompleteOrder_Loaded"/>
-                                    <Button Grid.Column="0" x:Name="BtnDeleteOrder" Width="144" Command="{Binding DataContext.DeleteOrder, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Margin="10,10,10,0" Height="45" Content="Удалить" Background="#FFCA6D6D" Foreground="#FFF" Style="{StaticResource BtnSuccess}"/>
+                                    <Button Grid.Column="0" x:Name="BtnDeleteOrder" Width="144" Command="{Binding DataContext.DeleteOrder, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Margin="10,10,10,0" Height="45" Content="Удалить" Visibility="{Binding DataContext.IsDeleteButtonVisible, RelativeSource={RelativeSource AncestorType=ItemsControl}, Converter={StaticResource BoolToVisibilityConverter}}" Background="#FFCA6D6D" Foreground="#FFF" Style="{StaticResource BtnSuccess}"/>
                                 </StackPanel>
                             </Border>
                         </Grid>

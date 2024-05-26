@@ -26,7 +26,14 @@ namespace Techtronica.Data.Context
         /// </summary>
         public AppDBContext()
         {
-            Database.EnsureCreated();
+            try
+            {
+                Database.EnsureCreated();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка!", $"Не удалось создать БД\n{ex.Message}", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         /// <summary>
         /// Подключение к БД
@@ -49,10 +56,8 @@ namespace Techtronica.Data.Context
                 {
                     MessageBox.Show("Ошибка!", $"Не удалось подклчится к БД\n{stry.Message}", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }
-            
+            } 
         }
-
         private string GetConnectionString() => new SqlConnectionStringBuilder()
         {
             //подключение к серверу
@@ -61,12 +66,12 @@ namespace Techtronica.Data.Context
             Password = "root",
             InitialCatalog = "Techtronica"
 
-            //подключение к локальной базе
-            //DataSource = @"(LocalDB)\MSSQLLocalDB",
-            //AttachDBFileName = @"Путь до файла базы",
-            //IntegratedSecurity = true
         }.ConnectionString;
 
+        /// <summary>
+        /// Автодобавление ролей и аккаунта администратора
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasData(new Role { Id = 1, Name = "Администратор" });

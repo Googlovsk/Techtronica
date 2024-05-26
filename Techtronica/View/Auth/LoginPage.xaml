@@ -32,7 +32,7 @@
                                 <Label Content="Логин" Foreground="#000" Style="{StaticResource RegisterLabel}" Grid.Column="0" Width="145"/>
                                 <TextBox x:Name="TBuserNameField" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource TBInputField}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                             </Grid>
-                            <TextBlock Text="Заполните поле" Style="{StaticResource TBlWarn}" Visibility="{Binding IsNameValid, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                            <TextBlock Text="Заполните поле!" Style="{StaticResource TBlWarn}" Visibility="{Binding IsNameValid, Converter={StaticResource BoolToVisibilityConverter}}"/>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Margin="0,0,0,5">
                             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" >
@@ -43,7 +43,7 @@
                                 <Label Content="Пароль" Foreground="#000" Style="{StaticResource RegisterLabel}" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                 <TextBox x:Name="TBPasswordField" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource TBInputField}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" BorderBrush="#00000000"/>
                             </Grid>
-                            <TextBlock Text="Заполните поле" Style="{StaticResource TBlWarn}" Visibility="{Binding IsPasswordValid, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                            <TextBlock Text="Неверный пароль!" Style="{StaticResource TBlWarn}" Visibility="{Binding IsPasswordValid, Converter={StaticResource BoolToVisibilityConverter}}"/>
                         </StackPanel>
                     </StackPanel>
                     <Button x:Name="SuccessLoginBtn" Command="{Binding Login}" Content="Войти" Click="ToLogin_Click" Margin="50,20,50,0" Background="#FF76A079" Height="40" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Style="{StaticResource BtnSuccess}"/>

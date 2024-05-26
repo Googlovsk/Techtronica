@@ -26,34 +26,13 @@ namespace Techtronica.View
         {
             InitializeComponent();
         }
-        private void ToRegister_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationSupport.mainFrame.Navigate(new RegisterPage());
-        }
-        private void ToForgetPassword_Click(object sender, RoutedEventArgs e)
-        {
-            ToRickRoll.OpenWeb();
-        }
         private void ToLogin_Click(object sender, RoutedEventArgs e)
         {
-            NavigationSupport.mainFrame.Navigate(new MainPage());
+            
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-        }
-        private void BtnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            NavigationSupport.mainFrame.Navigate(new MainPage());
-        }
-        private void SuccessLoginBtn_MouseEnter(object sender, MouseEventArgs e)
-        {
-            (sender as Button).Background = (SolidColorBrush)FindResource("HoverOnSuccessButton");
-        }
-        private void SuccessLoginBtn_MouseLeave(object sender, MouseEventArgs e)
-        {
-            (sender as Button).Background = (SolidColorBrush)FindResource("LeaveOnSuccessButton");
         }
     }
 }

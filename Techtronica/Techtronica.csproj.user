@@ -19,13 +19,22 @@
     <Compile Update="View\Layout\AdminPanelPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ViewData\CartPage.xaml.cs">
+    <Compile Update="View\ViewData\EditManufacturerPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ViewData\EditProductCategoryPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ViewData\EditProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\ViewData\ManufacturerPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\ViewData\OrderPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ViewData\ProductCategoryPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ViewData\ProductPage.xaml.cs">
@@ -60,13 +69,22 @@
     <Page Update="View\Layout\AdminPanelPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ViewData\CartPage.xaml">
+    <Page Update="View\ViewData\EditManufacturerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ViewData\EditProductCategoryPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ViewData\EditProductPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\ViewData\ManufacturerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\ViewData\OrderPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ViewData\ProductCategoryPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ViewData\ProductPage.xaml">

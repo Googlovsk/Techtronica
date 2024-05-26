@@ -33,5 +33,9 @@ namespace Techtronica.Data.Services
         {
             this.execute(parameter);
         }
+        public void RaiseCanExecuteChanged()
+        {
+            CommandManager.InvalidateRequerySuggested();
+        }
     }
 }

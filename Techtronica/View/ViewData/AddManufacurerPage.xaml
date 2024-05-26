@@ -9,7 +9,7 @@
       Title="AddManufacurerPage">
 
     <Page.DataContext>
-        <local:AddManufacturerViewModel/>
+        <local:EditManufacturerViewModel/>
     </Page.DataContext>
 
     <Grid>
@@ -51,16 +51,29 @@
                     </Grid>
                 </StackPanel>
             </Border>
-            <Button Grid.Row="1" 
-                x:Name="BtnAddProduct" 
-                Command="{Binding AddManufacurer}"
-                Content="Сохранить" 
-                Height="40" 
-                Background="#FF76A079"
-                Margin="5" 
-                Style="{StaticResource BtnSuccess}"  
-                VerticalAlignment="Bottom"
-                Cursor="Hand"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                         x:Name="BtnAddProduct" 
+                         Command="{Binding SaveManufacturer}"
+                         Content="Сохранить" 
+                         Height="40" 
+                         Background="#FF76A079"
+                         Margin="5,5,2.5,5" 
+                         Style="{StaticResource BtnSuccess}"
+                         Cursor="Hand"/>
+                <Button Grid.Column="1"
+                         x:Name="BtnDeleteProduct"
+                         Command="{Binding DeleteManuf}"
+                         Content="Удалить"
+                         Height="40"
+                         Margin="5,5,2.5,5"
+                         Background="#FFCA6D6D"
+                         Style="{StaticResource BtnSuccess}"/>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

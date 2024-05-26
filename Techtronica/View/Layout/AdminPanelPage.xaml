@@ -93,7 +93,7 @@
                                 <Label Grid.Column="1" Content="Добавить" Style="{StaticResource LoginLabel}" Width="245"/>
                                 <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
                             </Grid>
-                            <Grid x:Name="BtnToEditManufacturer" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand">
+                            <Grid x:Name="BtnToEditManufacturer" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnToEditManufacturer_MouseLeftButtonDown">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="20"/>
                                     <ColumnDefinition Width="*"/>
@@ -113,7 +113,7 @@
                             <Label Grid.Column="1" Content="Категории товаров" Style="{StaticResource LoginLabel}" Width="245"/>
                         </Grid>
                         <StackPanel x:Name="CategoryActivities">
-                            <Grid x:Name="BtnTOAddCategory" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnTOAddCategory_MouseLeftButtonDown">
+                            <Grid x:Name="BtnToAddCategory" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnToAddCategory_MouseLeftButtonDown">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="20"/>
                                     <ColumnDefinition Width="*"/>
@@ -123,7 +123,7 @@
                                 <Label Grid.Column="1" Content="Добавить" Style="{StaticResource LoginLabel}" Width="245"/>
                                 <Image Grid.Column="2" Source="/Resources/white_arrow_right.png"/>
                             </Grid>
-                            <Grid x:Name="BtnToEditCategory" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand">
+                            <Grid x:Name="BtnToEditCategory" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="35,0,0,0" Cursor="Hand" MouseLeftButtonDown="BtnToEditCategory_MouseLeftButtonDown">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="20"/>
                                     <ColumnDefinition Width="*"/>

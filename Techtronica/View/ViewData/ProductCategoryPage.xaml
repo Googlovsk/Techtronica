@@ -1,0 +1,44 @@
+﻿<Page x:Class="Techtronica.View.ViewData.ProductCategoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Techtronica.Data.ViewModels.Data"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductCategoryPage">
+
+    <Page.DataContext>
+        <local:ProductCategoryViewModel/>
+    </Page.DataContext>
+    
+    <Grid>
+        <ItemsControl x:Name="ICProducts" ItemsSource="{Binding Categories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#FFF" CornerRadius="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FF535867" ShadowDepth="0" Direction="270" Opacity=".3" BlurRadius="5"/>
+                        </Border.Effect>
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="0,0,0,10" FontFamily="Century Gothic" FontSize="20" Grid.Row="0" x:Name="PrCrdManufName" Text="{Binding Name}"/>
+                                <Button Grid.Column="1" x:Name="ToEditProductBtn" Style="{StaticResource TransparentButtonStyle}" Command="{Binding Path=DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}">
+                                    <Image Grid.Column="1" Width="32" Height="32" Source="/Resources/edit_gray.png"/>
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Page>

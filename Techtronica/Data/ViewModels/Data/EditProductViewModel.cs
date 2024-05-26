@@ -17,113 +17,172 @@ namespace Techtronica.Data.ViewModels.Data
 {
     public class EditProductViewModel : INotifyPropertyChanged
     {
-        private int _id = ObjectContext.CurrentProduct.Id;
-        private int Id { get { return _id; } }
-
+        private readonly int _id = ObjectContext.CurrentProduct.Id;
+        private int Id 
+        {
+            get { return _id; } 
+        }
         private string _name = ObjectContext.CurrentProduct.Name;
         public string Name
         {
             get { return _name; }
-            set { _name = value; OnPropertyChanged(); }
+            set 
+            {
+                _name = value; 
+                OnPropertyChanged(); 
+            }
         }
         private int _cost = ObjectContext.CurrentProduct.Cost;
         public int Cost
         {
             get { return _cost; }
-            set { _cost = value; OnPropertyChanged(); }
+            set 
+            { 
+                _cost = value; 
+                OnPropertyChanged(); 
+            }
         }
         private string _description = ObjectContext.CurrentProduct.Description;
 
         public string Description
         {
             get { return _description; }
-            set { _description = value; OnPropertyChanged(); }
+            set 
+            { 
+                _description = value; 
+                OnPropertyChanged(); 
+            }
         }
         private string _imagePath = ObjectContext.CurrentProduct.ImagePath;
         public string ImagePath
         {
             get { return _imagePath; }
-            set { _imagePath = value; OnPropertyChanged(); }
+            set 
+            { 
+                _imagePath = value; 
+                OnPropertyChanged(); 
+            }
         }
-        private bool _isActive = true;
+        private bool _isActive = ObjectContext.CurrentProduct.IsActive;
         public bool IsActive
         {
             get { return _isActive; }
-            set { _isActive = value; OnPropertyChanged(); }
+            set 
+            { 
+                _isActive = value; 
+                OnPropertyChanged(); 
+            }
         }
-        private int _amount;
+        private int _amount = ObjectContext.CurrentProduct.Amount;
         public int Amount
         {
             get { return _amount; }
-            set { _amount = value; OnPropertyChanged(); }
+            set 
+            { 
+                _amount = value; 
+                OnPropertyChanged();
+            }
         }
         private int _productCategoryId = ObjectContext.CurrentProduct.ProductCategoryId;
         public int ProductCategoryId
         {
             get { return _productCategoryId; }
-            set { _productCategoryId = value; OnPropertyChanged(); }
+            set 
+            { 
+                _productCategoryId = value; 
+                OnPropertyChanged(); 
+            }
         }
         private int _manufacturerId = ObjectContext.CurrentProduct.ManufacturerId;
         public int ManufacturerId
         {
             get { return _manufacturerId; }
-            set { _manufacturerId = value; OnPropertyChanged(); }
+            set 
+            { 
+                _manufacturerId = value;
+                OnPropertyChanged(); 
+            }
         }
-
 
         public IEnumerable<ProductCategory> ProductCategories { get => ConnectToDB.appDBContext.ProductCategories.ToList(); }
         public IEnumerable<Manufacturer> Manufacturers { get => ConnectToDB.appDBContext.Manufacturers.ToList(); }
 
 
         /*-----------------------------------*/
-
         private bool _isNameValid = true;
         public bool IsNameValid
         {
             get { return _isNameValid; }
-            set { _isNameValid = value; OnPropertyChanged(); }
+            set 
+            { 
+                _isNameValid = value; 
+                OnPropertyChanged(); 
+            }
         }
 
         private bool _isCostValid = true;
         public bool IsCostValid
         {
             get { return _isCostValid; }
-            set { _isCostValid = value; OnPropertyChanged(); }
+            set 
+            { 
+                _isCostValid = value; 
+                OnPropertyChanged(); 
+            }
         }
 
         private bool _isDescriptionValid = true;
         public bool IsDescriptionValid
         {
             get { return _isDescriptionValid; }
-            set { _isDescriptionValid = value; OnPropertyChanged(); }
+            set 
+            { _isDescriptionValid = value; 
+                OnPropertyChanged(); 
+            }
         }
 
         private bool _isImagePathValid = true;
         public bool IsImagePathValid
         {
             get { return _isImagePathValid; }
-            set { _isImagePathValid = value; OnPropertyChanged(); }
+            set 
+            { 
+                _isImagePathValid = value; 
+                OnPropertyChanged(); 
+            }
         }
 
         private bool _isProductCategoryIdValid = true;
         public bool IsProductCategoryIdValid
         {
             get { return _isProductCategoryIdValid; }
-            set { _isProductCategoryIdValid = value; OnPropertyChanged(); }
+            set 
+            { 
+                _isProductCategoryIdValid = value; 
+                OnPropertyChanged(); 
+            }
         }
 
         private bool _isManufacturerIdValid = true;
         public bool IsManufacturerIdValid
         {
             get { return _isManufacturerIdValid; }
-            set { _isManufacturerIdValid = value; OnPropertyChanged(); }
+            set 
+            {
+                _isManufacturerIdValid = value; 
+                OnPropertyChanged();
+            }
         }
 
         private bool _isAmountValid = true;
         public bool IsAmountValid
         {
             get { return _isAmountValid; }
-            set { _isAmountValid = value; OnPropertyChanged(); }
+            set 
+            { 
+                _isAmountValid = value; 
+                OnPropertyChanged(); 
+            }
         }
         private bool Validate()
         {
@@ -137,15 +196,10 @@ namespace Techtronica.Data.ViewModels.Data
 
             return IsNameValid && IsCostValid && IsDescriptionValid && IsImagePathValid && IsProductCategoryIdValid && IsManufacturerIdValid && IsAmountValid;
         }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string member = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
-        }
+        /*-----------------------------------*/
 
         /// <summary>
-        /// Госпади какие же это были мучения
+        /// Команда сохранения изменений у продукта
         /// </summary>
         private RelayCommand saveProduct;
         public RelayCommand SaveProduct
@@ -167,12 +221,14 @@ namespace Techtronica.Data.ViewModels.Data
                                 product.ImagePath = ImagePath;
                                 product.ManufacturerId = ManufacturerId;
                                 product.ProductCategoryId = ProductCategoryId;
+                                product.IsActive = IsActive;
+                                product.Amount = (int)Amount;
 
                                 ConnectToDB.appDBContext.Entry(product).State = EntityState.Modified;
                             }
                             else
                             {
-                                ConnectToDB.appDBContext.Add(product);
+                                ConnectToDB.appDBContext.Products.Add(product);
                             }
                             GetFileService.CopyImageToProject();
                             ConnectToDB.appDBContext.SaveChanges();
@@ -185,10 +241,13 @@ namespace Techtronica.Data.ViewModels.Data
                         }
                     }
                     NavigationSupport.mainFrame.Navigate(new MainPage());
-                    ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products;
+                    //ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products;
                 });
             }
         }
+        /// <summary>
+        /// Команда удаления продукта
+        /// </summary>
         private RelayCommand deleteProduct;
         public RelayCommand DeleteProduct
         {
@@ -212,13 +271,19 @@ namespace Techtronica.Data.ViewModels.Data
                             MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     NavigationSupport.mainFrame.Navigate(new MainPage());
-                    ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products;
+                    //ObjectContext.ItemsControlProducts.ItemsSource = ConnectToDB.appDBContext.Products;
                 });
             }
         }
         public RelayCommand AddImage
         {
             get => new RelayCommand(obj => ImagePath = GetFileService.GetImagePath());
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string member = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
         }
     }
 }

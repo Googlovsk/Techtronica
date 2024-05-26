@@ -42,10 +42,5 @@ namespace Techtronica.View
 
             this.DataContext = editProductViewModel;
         }
-
-        private void BtnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            NavigationSupport.mainFrame.Navigate(new MainPage());
-        }
     }
 }

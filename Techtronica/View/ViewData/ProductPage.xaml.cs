@@ -27,8 +27,6 @@ namespace Techtronica.View
             InitializeComponent();
             ObjectContext.ItemsControlProducts = ICProducts;
         }
-
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var user = ObjectContext.CurrentUser;

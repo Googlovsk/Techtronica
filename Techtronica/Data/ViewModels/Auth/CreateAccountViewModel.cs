@@ -20,41 +20,64 @@ namespace Techtronica.Data.ViewModels.Auth
         public string Name
         {
             get { return _name; }
-            set { _name = value; OnPropertyChanged(); }
+            set 
+            { 
+                _name = value; 
+                OnPropertyChanged();
+            }
         }
         private string _password;
         public string Password
         {
             get { return _password; }
-            set { _password = value; OnPropertyChanged(); }
+            set 
+            { 
+                _password = value;
+                OnPropertyChanged(); 
+            }
         }
         private int _roleId;
         public int RoleId
         {
             get { return _roleId; }
-            set { _roleId = value; OnPropertyChanged(); }
+            set 
+            { 
+                _roleId = value;
+                OnPropertyChanged(); 
+            }
         }
         public IEnumerable<Role> Roles { get => ConnectToDB.appDBContext.Roles.ToList(); }
 
         /*-----------------------------------*/
-
         private bool _isNameValid = true;
         public bool IsNameValid
         {
             get { return _isNameValid; }
-            set { _isNameValid = value; OnPropertyChanged(); }
+            set
+            { 
+                _isNameValid = value; 
+                OnPropertyChanged();
+            }
         }
         private bool _isPasswordValid = true;
         public bool IsPasswordValid
         {
             get { return _isPasswordValid; }
-            set { _isPasswordValid = value; OnPropertyChanged(); }
+            set 
+            {
+                _isPasswordValid = value;
+                OnPropertyChanged();
+            }
         }
         private bool _isRoleIdValid = true;
         public bool ISRoleIdValid
         {
             get { return _isRoleIdValid; }
-            set { _isRoleIdValid = value; OnPropertyChanged(); }
+            set 
+            { 
+                _isRoleIdValid = value; 
+                OnPropertyChanged(); 
+            }
         }
         private bool Validate()
         {
@@ -64,14 +87,7 @@ namespace Techtronica.Data.ViewModels.Auth
 
             return IsNameValid && IsPasswordValid && ISRoleIdValid;
         }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string member = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
-        }
-
+        /*-----------------------------------*/
         private RelayCommand createAccount;
         public RelayCommand CreateAccount
         {
@@ -110,6 +126,11 @@ namespace Techtronica.Data.ViewModels.Auth
                     }
                 });
             }
+        }
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string member = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
         }
     }
 }

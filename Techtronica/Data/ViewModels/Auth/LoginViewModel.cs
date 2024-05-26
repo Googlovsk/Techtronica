@@ -20,27 +20,43 @@ namespace Techtronica.Data.ViewModels.Auth
         public string Name
         {
             get { return _name; }
-            set { _name = value; OnPropertyChanged(value); }
+            set 
+            { 
+                _name = value; 
+                OnPropertyChanged(); 
+            }
         }
         private string _password;
         public string Password
         {
             get { return _password; }
-            set { _password = value; OnPropertyChanged(); }
+            set 
+            { 
+                _password = value;
+                OnPropertyChanged(); 
+            }
         }
-        /*-----------------------------------*/
 
+        /*-----------------------------------*/
         private bool _isNameValid = true;
         public bool IsNameValid
         {
             get { return _isNameValid; }
-            set { _isNameValid = value; OnPropertyChanged(); }
+            set 
+            { 
+                _isNameValid = value; 
+                OnPropertyChanged(); 
+            }
         }
         private bool _isPasswordValid = true;
         public bool IsPasswordValid
         {
             get { return _isPasswordValid; }
-            set { _isPasswordValid = value; OnPropertyChanged(); }
+            set 
+            { 
+                _isPasswordValid = value; 
+                OnPropertyChanged(); 
+            }
         }
         private bool Validate()
         {
@@ -49,6 +65,7 @@ namespace Techtronica.Data.ViewModels.Auth
 
             return IsNameValid && IsPasswordValid;
         }
+        /*-----------------------------------*/
 
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string member = null)
@@ -56,6 +73,9 @@ namespace Techtronica.Data.ViewModels.Auth
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
         }
 
+        /// <summary>
+        /// Команда входа в аккаунт
+        /// </summary>
         private RelayCommand login;
         public RelayCommand Login
         {
@@ -82,15 +102,14 @@ namespace Techtronica.Data.ViewModels.Auth
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Неверный пароль", "Ошибка", 
-                                        MessageBoxButton.OK, MessageBoxImage.Error);
+                                    IsPasswordValid = false;
                                 }
                             }
                             else
                             {
+                                NavigationSupport.mainFrame.Navigate(new LoginPage());
                                 MessageBox.Show("Пользователь не найден", "Ошибка", 
                                     MessageBoxButton.OK, MessageBoxImage.Error);
-                                return;
                             }
                         }
                         catch (Exception ex)

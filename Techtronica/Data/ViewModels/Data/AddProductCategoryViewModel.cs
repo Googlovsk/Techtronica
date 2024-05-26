@@ -14,35 +14,35 @@ namespace Techtronica.Data.ViewModels.Data
 {
     public class AddProductCategoryViewModel : INotifyPropertyChanged
     {
-        private void OnPropertyChanged([CallerMemberName] string member = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
-        }
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         private string _name;
         public string Name
         {
             get { return _name; }
-            set { _name = value; OnPropertyChanged(); }
+            set 
+            { _name = value; 
+                OnPropertyChanged(); 
+            }
         }
 
         /*-----------------------------------*/
-
         private bool _isNameValid = true;
         public bool IsNameValid
         {
             get { return _isNameValid; }
-            set { _isNameValid = value; OnPropertyChanged(); }
+            set 
+            { 
+                _isNameValid = value; 
+                OnPropertyChanged(); 
+            }
         }
 
         private bool Validate()
         {
             IsNameValid = !string.IsNullOrEmpty(Name);
-
             return IsNameValid;
         }
-
+        /*-----------------------------------*/
 
         private RelayCommand addProductCategory;
         public RelayCommand AddProductCategory
@@ -73,5 +73,10 @@ namespace Techtronica.Data.ViewModels.Data
                 });
             }
         }
+        private void OnPropertyChanged([CallerMemberName] string member = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
+        }
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

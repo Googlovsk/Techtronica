@@ -12,6 +12,10 @@ namespace Techtronica.Data.Context
     {
         public static User CurrentUser { get; set; }
         public static Product CurrentProduct { get; set; }
+        public static Manufacturer CurrentManufacturer { get; set; }
+        public static ProductCategory CurrentCategory {  get; set; }
         public static ItemsControl ItemsControlProducts { get; set; }
+        public static ItemsControl ItemsControlOrders {  get; set; }
+
     }
 }

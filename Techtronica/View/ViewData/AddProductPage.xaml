@@ -104,7 +104,7 @@
                             <TextBlock Grid.Row="0" Style="{StaticResource TBlParameterTitleBlack18px}" x:Name="ProductImageLabel" Text="Изображение"/>
                             <TextBox Grid.Row="1" 
                              x:Name="TBProductImage"
-                             Text="{Binding ImagePath, UpdateSourceTrigger=PropertyChanged}"
+                             Text="{Binding ImagePath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              Foreground="Gray"
                              HorizontalAlignment="Stretch"
                              Style="{StaticResource TBInputField}"/>
@@ -118,7 +118,7 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,0" Cursor="Hand">
+                        <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,0,0" Cursor="Hand">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>

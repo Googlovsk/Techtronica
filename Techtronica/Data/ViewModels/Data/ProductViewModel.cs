@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 using Techtronica.Data.Context;
 using Techtronica.Data.Models;
@@ -18,8 +20,7 @@ namespace Techtronica.Data.ViewModels.Data
 {
     public class ProductViewModel : INotifyPropertyChanged
     {
-
-        public List<Product> products = new List<Product>(ConnectToDB.appDBContext.Products);
+        public List<Product> products;
         public List<Product> Products
         {
             get => products;
@@ -29,6 +30,25 @@ namespace Techtronica.Data.ViewModels.Data
                 OnPropertyChanged();
             }
         }
+
+        private void LoadProducts()
+        {
+            if (ObjectContext.CurrentUser.RoleId == 1)
+            {
+                Products = ConnectToDB.appDBContext.Products.ToList();
+            }
+            else
+            {
+                Products = ConnectToDB.appDBContext.Products.Where(p => p.IsActive == true).ToList();
+            }
+        }
+        public ProductViewModel()
+        {
+            LoadProducts();
+        }
+        /// <summary>
+        /// Команда редактирования продукта
+        /// </summary>
         public RelayCommand EditCommand
         {
             get => new RelayCommand(obj =>
@@ -38,10 +58,12 @@ namespace Techtronica.Data.ViewModels.Data
                 {
                     ObjectContext.CurrentProduct = product;
                     NavigationSupport.innerFrame.Navigate(new EditProductPage(product));
-
                 }
             });
         }
+        /// <summary>
+        /// Команда добавления товара в заказ
+        /// </summary>
         private RelayCommand addToOrder;
         public RelayCommand AddToOrder
         {
@@ -54,31 +76,39 @@ namespace Techtronica.Data.ViewModels.Data
                     {
                         if(ObjectContext.CurrentUser != null)
                         {
-                            try
+                            if(product.Amount > 0)
                             {
-                                var order = new Order
+                                try
                                 {
-                                    UserId = ObjectContext.CurrentUser.Id,
-                                    Number = Guid.NewGuid(),
-                                    OrderItems = new List<OrderItem>()
-                                };
-                                ConnectToDB.appDBContext.Orders.Add(order);
+                                    var order = new Order
+                                    {
+                                        UserId = ObjectContext.CurrentUser.Id,
+                                        Number = Guid.NewGuid(),
+                                        OrderItems = new List<OrderItem>()
+                                    };
+                                    ConnectToDB.appDBContext.Orders.Add(order);
 
-                                var orderItem = new OrderItem
+                                    var orderItem = new OrderItem
+                                    {
+                                        OrderId = order.Id,
+                                        ProductId = product.Id,
+                                        Amount = 1,
+                                        UnitPrice = product.Cost
+                                    };
+                                    order.OrderItems.Add(orderItem);
+                                    product.Amount -= 1;
+                                    ConnectToDB.appDBContext.OrderItems.Add(orderItem);
+                                    ConnectToDB.appDBContext.SaveChanges();
+                                }
+                                catch (Exception ex)
                                 {
-                                    OrderId = order.Id,
-                                    ProductId = product.Id,
-                                    Amount = 1,
-                                    UnitPrice = product.Cost
-                                };
-                                order.OrderItems.Add(orderItem);
-                                product.Amount -= 1;
-                                ConnectToDB.appDBContext.OrderItems.Add(orderItem);
-                                ConnectToDB.appDBContext.SaveChanges();
+                                    MessageBox.Show($"Не удалось создать заказ\n{ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                MessageBox.Show($"Не удалось создать заказ\n{ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                                MessageBox.Show($"Товара нет в наличии", "InvalidOperation", MessageBoxButton.OK, MessageBoxImage.Warning);
+
                             }
                         }
                         else
