@@ -30,7 +30,20 @@ namespace Techtronica.Data.ViewModels.Data
                 OnPropertyChanged();
             }
         }
+        private bool isEditButtonVisible;
+        public bool IsEditButtonVisible
+        {
+            get { return isEditButtonVisible; }
+            set
+            {
+                isEditButtonVisible = value;
+                OnPropertyChanged();
+            }
+        }
 
+        /// <summary>
+        /// Метод загрузки продуктов
+        /// </summary>
         private void LoadProducts()
         {
             if (ObjectContext.CurrentUser.RoleId == 1)
@@ -45,6 +58,7 @@ namespace Techtronica.Data.ViewModels.Data
         public ProductViewModel()
         {
             LoadProducts();
+            IsEditButtonVisible = ObjectContext.CurrentUser != null && ObjectContext.CurrentUser.RoleId != 1;
         }
         /// <summary>
         /// Команда редактирования продукта
@@ -99,6 +113,7 @@ namespace Techtronica.Data.ViewModels.Data
                                     product.Amount -= 1;
                                     ConnectToDB.appDBContext.OrderItems.Add(orderItem);
                                     ConnectToDB.appDBContext.SaveChanges();
+                                    LoadProducts();
                                 }
                                 catch (Exception ex)
                                 {
@@ -108,7 +123,6 @@ namespace Techtronica.Data.ViewModels.Data
                             else
                             {
                                 MessageBox.Show($"Товара нет в наличии", "InvalidOperation", MessageBoxButton.OK, MessageBoxImage.Warning);
-
                             }
                         }
                         else

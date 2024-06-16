@@ -32,7 +32,7 @@ namespace Techtronica.Data.Context
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка!", $"Не удалось создать БД\n{ex.Message}", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Не удалось создать БД\n{ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         /// <summary>
@@ -47,14 +47,14 @@ namespace Techtronica.Data.Context
             }
             catch (Exception ftry)
             {
-                MessageBox.Show("Ошибка!", $"Не удалось подклчится к БД\n{ftry.Message}", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Не удалось подклчится к БД\n{ftry.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 try
                 {
                     optionsBuilder.UseSqlServer(GetConnectionString());
                 }
                 catch (Exception stry)
                 {
-                    MessageBox.Show("Ошибка!", $"Не удалось подклчится к БД\n{stry.Message}", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"Не удалось подклчится к БД\n{stry.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             } 
         }
@@ -62,9 +62,9 @@ namespace Techtronica.Data.Context
         {
             //подключение к серверу
             DataSource = "192.168.1.100",
-            UserID = "igor",
-            Password = "root",
-            InitialCatalog = "Techtronica"
+            UserID = "yourServerID",
+            Password = "yourPassword",
+            InitialCatalog = "yourDBName"
 
         }.ConnectionString;
 

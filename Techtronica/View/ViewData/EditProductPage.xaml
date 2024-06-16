@@ -176,10 +176,10 @@
                         <TextBlock Grid.Row="2" Style="{StaticResource TBlWarn}" Visibility="{Binding IsAmountValid, Converter={StaticResource BoolToVisibilityConverter}}" x:Name="ProductAmountWarnLabel" Text="Заполните поле!"/>
                     </Grid>
 
-                    <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" VerticalAlignment="Stretch" Margin="10,10,0,0">
-                        <RadioButton IsChecked="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}" x:Name="RdBtnIsActive" Content="Доступен"/>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Stretch" Margin="10,10,0,0">
+                        <RadioButton FontSize="20" VerticalContentAlignment="Center" FontFamily="Century Gothic" IsChecked="{Binding IsActive}" x:Name="RdBtnIsActive" Content="Доступен"/>
                         <!--{Binding}-->
-                        <RadioButton x:Name="RdBtnIsNotActive" Content="Не доступен" IsChecked="False"/>
+                        <RadioButton FontSize="20" VerticalContentAlignment="Center" FontFamily="Century Gothic"  Margin="30,0,0,0" x:Name="RdBtnIsNotActive" Content="Не доступен" IsChecked="False"/>
                     </StackPanel>
 
                 </StackPanel>

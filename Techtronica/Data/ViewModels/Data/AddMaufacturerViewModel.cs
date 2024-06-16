@@ -45,12 +45,12 @@ namespace Techtronica.Data.ViewModels.Data
         /// <summary>
         /// Команда добавления производителя
         /// </summary>
-        private RelayCommand addManufacurer;
-        public RelayCommand AddManufacurer
+        private RelayCommand addManufacturer;
+        public RelayCommand AddManufacturer
         {
             get
             {
-                return addManufacurer ?? new RelayCommand(obj =>
+                return addManufacturer ?? new RelayCommand(obj =>
                 {
                     if (Validate())
                     {

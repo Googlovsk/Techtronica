@@ -83,29 +83,9 @@ namespace Techtronica.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
-        internal static byte[] arrow_down {
-            get {
-                object obj = ResourceManager.GetObject("arrow_down", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
         internal static byte[] Back_Arrow {
             get {
                 object obj = ResourceManager.GetObject("Back_Arrow", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] basket {
-            get {
-                object obj = ResourceManager.GetObject("basket", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -193,16 +173,6 @@ namespace Techtronica.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
-        internal static byte[] language_settings {
-            get {
-                object obj = ResourceManager.GetObject("language_settings", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
         internal static byte[] logout {
             get {
                 object obj = ResourceManager.GetObject("logout", resourceCulture);
@@ -276,26 +246,6 @@ namespace Techtronica.Properties {
         internal static byte[] Settings {
             get {
                 object obj = ResourceManager.GetObject("Settings", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] support_chat {
-            get {
-                object obj = ResourceManager.GetObject("support_chat", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] trash {
-            get {
-                object obj = ResourceManager.GetObject("trash", resourceCulture);
                 return ((byte[])(obj));
             }
         }

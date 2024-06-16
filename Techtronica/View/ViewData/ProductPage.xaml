@@ -64,7 +64,7 @@
                                         </Grid.RowDefinitions>
                                         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
                                             <Button Grid.Column="0" x:Name="BtnAddToOrder" Width="144" Command="{Binding Path=DataContext.AddToOrder, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Margin="10,5,10,5" Height="45" Content="В заказ" Background="#FF76A079" Foreground="#FFF" Style="{StaticResource BtnSuccess}"/>
-                                            <Button Grid.Column="1" x:Name="ToEditProductBtn" Style="{StaticResource TransparentButtonStyle}" Command="{Binding Path=DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}">
+                                            <Button Grid.Column="1" x:Name="ToEditProductBtn" Style="{StaticResource TransparentButtonStyle}" Command="{Binding Path=DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Visibility="{Binding DataContext.IsEditButtonVisible, RelativeSource={RelativeSource AncestorType=ItemsControl}, Converter={StaticResource BoolToVisibilityConverter}}">
                                                 <Image Grid.Column="1" Width="32" Height="32" Source="/Resources/edit_gray.png"/>
                                             </Button>
                                         </StackPanel>
